@@ -105,8 +105,8 @@ resource "aisia_api_key" "acme_ci" {
 
 ## Versioning — couplé à AISIA
 
-La version du provider **suit la version d'AISIA** : `aisia 6.9.30` cible la
-plateforme AISIA v6.9.30. À chaque release AISIA, une version identique du
+La version du provider **suit la version d'AISIA** : `aisia 6.9.63` cible la
+plateforme AISIA v6.9.63. À chaque release AISIA, une version identique du
 provider est publiée (`scripts/bump_version.py` automatise le couplage).
 
 ## Développement
