@@ -1,0 +1,42 @@
+# GoReleaser — build + signature GPG des binaires provider pour le Terraform Registry.
+# Le registry EXIGE un SHA256SUMS signé GPG. La clé GPG est fournie via secrets CI
+# (GPG_PRIVATE_KEY + PASSPHRASE) ; la clé PUBLIQUE est ajoutée par le founder au
+# registry (Account Settings > GPG keys).
+version: 2
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - env:
+      - CGO_ENABLED=0
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
+    ldflags:
+      - '-s -w -X main.version={{.Version}}'
+    goos: [linux, darwin, windows, freebsd]
+    goarch: [amd64, arm64, arm, '386']
+    ignore:
+      - goos: darwin
+        goarch: '386'
+    binary: '{{ .ProjectName }}_v{{ .Version }}'
+archives:
+  - format: zip
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+  algorithm: sha256
+signs:
+  - artifacts: checksum
+    args:
+      - "--batch"
+      - "--local-user"
+      - "{{ .Env.GPG_FINGERPRINT }}"
+      - "--output"
+      - "${signature}"
+      - "--detach-sign"
+      - "${artifact}"
+release:
+  draft: false
+changelog:
+  disable: true
