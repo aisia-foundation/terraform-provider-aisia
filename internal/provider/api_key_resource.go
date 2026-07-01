@@ -6,8 +6,8 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
@@ -27,14 +27,14 @@ type apiKeyResource struct {
 // Immuable : tout changement => recréation. La valeur brute n'est renvoyée QU'UNE
 // fois à la création (stockée en sortie sensible `key`).
 type apiKeyModel struct {
-	ID         types.String   `tfsdk:"id"`
-	OrgID      types.String   `tfsdk:"org_id"`
-	Name       types.String   `tfsdk:"name"`
-	Scopes     types.List     `tfsdk:"scopes"`
-	RateRPM    types.Int64    `tfsdk:"rate_limit_rpm"`
-	RateRPD    types.Int64    `tfsdk:"rate_limit_rpd"`
-	Key        types.String   `tfsdk:"key"`
-	KeyPrefix  types.String   `tfsdk:"key_prefix"`
+	ID        types.String `tfsdk:"id"`
+	OrgID     types.String `tfsdk:"org_id"`
+	Name      types.String `tfsdk:"name"`
+	Scopes    types.List   `tfsdk:"scopes"`
+	RateRPM   types.Int64  `tfsdk:"rate_limit_rpm"`
+	RateRPD   types.Int64  `tfsdk:"rate_limit_rpd"`
+	Key       types.String `tfsdk:"key"`
+	KeyPrefix types.String `tfsdk:"key_prefix"`
 }
 
 func (r *apiKeyResource) Metadata(_ context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -46,14 +46,14 @@ func (r *apiKeyResource) Schema(_ context.Context, _ resource.SchemaRequest, res
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "Clé d'accès programmatique AISIA (`aisia_sk_…`) scoped à une organisation. Immuable. La valeur brute n'est exposée qu'à la création (`key`, sensible).",
 		Attributes: map[string]schema.Attribute{
-			"id":          schema.StringAttribute{MarkdownDescription: "ID de la clé.", Computed: true, PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()}},
-			"org_id":      schema.StringAttribute{MarkdownDescription: "Org propriétaire.", Required: true, PlanModifiers: rr},
-			"name":        schema.StringAttribute{MarkdownDescription: "Nom de la clé.", Required: true, PlanModifiers: rr},
-			"scopes":      schema.ListAttribute{MarkdownDescription: "Scopes (défaut [\"invoke\"]).", ElementType: types.StringType, Optional: true, Computed: true, PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()}},
+			"id":             schema.StringAttribute{MarkdownDescription: "ID de la clé.", Computed: true, PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()}},
+			"org_id":         schema.StringAttribute{MarkdownDescription: "Org propriétaire.", Required: true, PlanModifiers: rr},
+			"name":           schema.StringAttribute{MarkdownDescription: "Nom de la clé.", Required: true, PlanModifiers: rr},
+			"scopes":         schema.ListAttribute{MarkdownDescription: "Scopes (défaut [\"invoke\"]).", ElementType: types.StringType, Optional: true, Computed: true, PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()}},
 			"rate_limit_rpm": schema.Int64Attribute{MarkdownDescription: "Limite req/min.", Optional: true, Computed: true},
 			"rate_limit_rpd": schema.Int64Attribute{MarkdownDescription: "Limite req/jour.", Optional: true, Computed: true},
-			"key":         schema.StringAttribute{MarkdownDescription: "Valeur brute (one-shot, sensible).", Computed: true, Sensitive: true},
-			"key_prefix":  schema.StringAttribute{MarkdownDescription: "Préfixe public de la clé.", Computed: true},
+			"key":            schema.StringAttribute{MarkdownDescription: "Valeur brute (one-shot, sensible).", Computed: true, Sensitive: true},
+			"key_prefix":     schema.StringAttribute{MarkdownDescription: "Préfixe public de la clé.", Computed: true},
 		},
 	}
 }

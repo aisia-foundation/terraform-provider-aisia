@@ -95,22 +95,29 @@ func (p *aisiaProvider) Configure(ctx context.Context, req provider.ConfigureReq
 }
 
 func (p *aisiaProvider) Resources(_ context.Context) []func() resource.Resource {
-	return []func() resource.Resource{
+	hand := []func() resource.Resource{
 		NewOrganizationResource,
 		NewProviderKeyResource,
 		NewUserResource,
 		NewApiKeyResource,
 		NewProviderResource,
 		NewLocalModelResource,
+		NewWebhookResource,
+		NewResellerResource,
+		NewGuardrailResource,
 	}
+	// generatedResources : resources CRUD générées depuis l'OpenAPI (resources_generated.go).
+	return append(hand, generatedResources...)
 }
 
 func (p *aisiaProvider) DataSources(_ context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
+	hand := []func() datasource.DataSource{
 		NewOrganizationDataSource,
 		NewProvidersDataSource,
 		NewLocalModelsDataSource,
 		NewPlansDataSource,
 		NewAgentsDataSource,
 	}
+	// generatedDataSources : data sources GET générées depuis l'OpenAPI (catalog_generated.go).
+	return append(hand, generatedDataSources...)
 }
