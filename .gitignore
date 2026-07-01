@@ -1,3 +1,5 @@
-dist/
-terraform-provider-aisia
-*.bak
+.terraform/
+*.tfstate*
+.terraform.lock.hcl
+*.tfvars
+crash.log

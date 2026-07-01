@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aisia = {
-      source  = "AISIA-fr/aisia"
+      source  = "aisia-foundation/aisia"
       version = "~> 6.9"
     }
   }

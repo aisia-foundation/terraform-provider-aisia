@@ -1,4 +1,4 @@
-module github.com/AISIA-fr/terraform-provider-aisia
+module github.com/aisia-foundation/terraform-provider-aisia
 
 go 1.22
 

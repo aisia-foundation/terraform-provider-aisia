@@ -9,7 +9,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/AISIA-fr/terraform-provider-aisia/internal/provider"
+	"github.com/aisia-foundation/terraform-provider-aisia/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 )
 
@@ -22,8 +22,8 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		// Adresse registry : <namespace>/<type> → AISIA-fr/aisia.
-		Address: "registry.terraform.io/AISIA-fr/aisia",
+		// Adresse registry : <namespace>/<type> → aisia-foundation/aisia.
+		Address: "registry.terraform.io/aisia-foundation/aisia",
 		Debug:   debug,
 	}
 

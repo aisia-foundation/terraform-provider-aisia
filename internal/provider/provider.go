@@ -100,11 +100,17 @@ func (p *aisiaProvider) Resources(_ context.Context) []func() resource.Resource 
 		NewProviderKeyResource,
 		NewUserResource,
 		NewApiKeyResource,
+		NewProviderResource,
+		NewLocalModelResource,
 	}
 }
 
 func (p *aisiaProvider) DataSources(_ context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewOrganizationDataSource,
+		NewProvidersDataSource,
+		NewLocalModelsDataSource,
+		NewPlansDataSource,
+		NewAgentsDataSource,
 	}
 }

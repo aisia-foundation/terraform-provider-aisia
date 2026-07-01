@@ -1,5 +1,6 @@
 name: provider-release
-# Build + signe GPG + publie les artefacts (consommés par le Terraform Registry).
+# Build + signe GPG + GitHub Release PUIS enregistre la version sur le registry HCP
+# privé via l'API (provider privé ≠ modules : pas de VCS auto-ingest). Repo public → Actions gratuit.
 on:
   push:
     tags: ['v*']
@@ -8,7 +9,7 @@ permissions:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
-    defaults: { run: { working-directory: . } }
+    defaults: { run: { working-directory: ai-aisia-lab/infra/terraform-provider-aisia } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -24,3 +25,12 @@ jobs:
         env:
           GPG_FINGERPRINT: ${{ steps.gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # --- Publication HCP (provider privé = API). Skip propre si TF_API_TOKEN absent. ---
+      - name: Publish version to HCP private registry
+        env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          GPG_FINGERPRINT: ${{ steps.gpg.outputs.fingerprint }}
+        run: |
+          export VERSION="${GITHUB_REF_NAME#v}"   # vX.Y.Z -> X.Y.Z
+          chmod +x scripts/publish-hcp.sh
+          ./scripts/publish-hcp.sh
