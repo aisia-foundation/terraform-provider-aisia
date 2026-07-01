@@ -46,7 +46,7 @@ var (
 
 type catalogModel struct {
 	JSON  types.String `tfsdk:"json"`
-	Count types.Int64  `tfsdk:"count"`
+	Count types.Int64  `tfsdk:"item_count"`
 	IDs   types.List   `tfsdk:"ids"`
 }
 
@@ -58,9 +58,9 @@ func (d *catalogDataSource) Schema(_ context.Context, _ datasource.SchemaRequest
 	resp.Schema = schema.Schema{
 		MarkdownDescription: d.desc + " Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.",
 		Attributes: map[string]schema.Attribute{
-			"json":  schema.StringAttribute{MarkdownDescription: "Réponse brute de l'API (JSON).", Computed: true},
-			"count": schema.Int64Attribute{MarkdownDescription: "Nombre d'items.", Computed: true},
-			"ids":   schema.ListAttribute{MarkdownDescription: "Identifiants des items (id/slug/name/model_id).", ElementType: types.StringType, Computed: true},
+			"json":       schema.StringAttribute{MarkdownDescription: "Réponse brute de l'API (JSON).", Computed: true},
+			"item_count": schema.Int64Attribute{MarkdownDescription: "Nombre d'items.", Computed: true},
+			"ids":        schema.ListAttribute{MarkdownDescription: "Identifiants des items (id/slug/name/model_id).", ElementType: types.StringType, Computed: true},
 		},
 	}
 }

@@ -326,9 +326,6 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_oidc_providers", path: "/admin/oidc-providers", listKey: "admin_oidc_providers", desc: "Lecture de /admin/oidc-providers."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_ollama_models", path: "/admin/ollama-models", listKey: "admin_ollama_models", desc: "Lecture de /admin/ollama-models."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ollama_models", path: "/admin/ollama/models", listKey: "admin_ollama_models", desc: "Lecture de /admin/ollama/models."}
 	},
 	func() datasource.DataSource {
@@ -395,9 +392,6 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_redis_info", path: "/admin/redis/info", listKey: "admin_redis_info", desc: "Lecture de /admin/redis/info."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_resellers", path: "/admin/resellers", listKey: "admin_resellers", desc: "Lecture de /admin/resellers."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_resellers", path: "/admin/resellers/", listKey: "admin_resellers", desc: "Lecture de /admin/resellers/."}
 	},
 	func() datasource.DataSource {
@@ -434,16 +428,10 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_usage", path: "/admin/usage/", listKey: "admin_usage", desc: "Lecture de /admin/usage/."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_users", path: "/admin/users", listKey: "admin_users", desc: "Lecture de /admin/users."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_users", path: "/admin/users/", listKey: "admin_users", desc: "Lecture de /admin/users/."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_vault", path: "/admin/vault", listKey: "admin_vault", desc: "Lecture de /admin/vault."}
-	},
-	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_verticals", path: "/admin/verticals", listKey: "admin_verticals", desc: "Lecture de /admin/verticals."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_verticals", path: "/admin/verticals/", listKey: "admin_verticals", desc: "Lecture de /admin/verticals/."}

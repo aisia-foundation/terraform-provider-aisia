@@ -17,7 +17,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_blog_posts", path: "/admin/blog/posts", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/blog/posts (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_bot_conversations", path: "/admin/bot/conversations", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/bot/conversations (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_bot_conversations", path: "/admin/bot/conversations", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/bot/conversations (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_config_snapshots", path: "/admin/config/snapshots", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/config/snapshots (create/read/update/delete via API)."}
@@ -47,7 +47,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_hierarchy_nodes", path: "/admin/hierarchy/nodes", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/hierarchy/nodes (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/i18n/locales (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/i18n/locales (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_learning_finetune_runs", path: "/admin/learning/finetune-runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/learning/finetune-runs (create/read/update/delete via API)."}
