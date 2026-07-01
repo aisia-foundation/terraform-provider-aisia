@@ -50,9 +50,15 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/i18n/locales (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
+		return &apiResource{name: "admin_learning_finetune_runs", path: "/admin/learning/finetune-runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/learning/finetune-runs (create/read/update/delete via API)."}
+	},
+	func() resource.Resource {
 		return &apiResource{name: "admin_oidc_providers", path: "/admin/oidc-providers", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/oidc-providers (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_seo_feeds", path: "/admin/seo/feeds", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/seo/feeds (create/read/update/delete via API)."}
+	},
+	func() resource.Resource {
+		return &apiResource{name: "v1_runs", path: "/v1/runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /v1/runs (create/read/update/delete via API)."}
 	},
 }
