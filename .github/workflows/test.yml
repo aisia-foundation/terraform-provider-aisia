@@ -1,12 +1,12 @@
 name: provider-test
 on:
-  push: { paths: ['ai-aisia-lab/infra/terraform-provider-aisia/**'] }
-  pull_request: { paths: ['ai-aisia-lab/infra/terraform-provider-aisia/**'] }
+  push: { paths: ['**.go', 'go.mod', 'go.sum'] }
+  pull_request: { paths: ['**.go', 'go.mod', 'go.sum'] }
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults: { run: { working-directory: ai-aisia-lab/infra/terraform-provider-aisia } }
+    defaults: { run: { working-directory: . } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5

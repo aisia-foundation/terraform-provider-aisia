@@ -9,7 +9,7 @@ permissions:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
-    defaults: { run: { working-directory: ai-aisia-lab/infra/terraform-provider-aisia } }
+    defaults: { run: { working-directory: . } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
