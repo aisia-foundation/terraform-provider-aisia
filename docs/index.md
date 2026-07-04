@@ -42,11 +42,12 @@ depuis le bloc `provider {}`.
 
 | Variable d'environnement | Description |
 |---|---|
-| `AISIA_TOKEN` | Jeton Bearer admin AISIA — **sensible, ne jamais commiter** |
+| `AISIA_TOKEN` | Cle API AISIA `ak_live_…` (Bearer) — **sensible, ne jamais commiter** |
 | `AISIA_ENDPOINT` | URL de l'API (defaut : `https://api.aisia.fr`) |
 
-Obtenez votre jeton admin dans l'interface AISIA : **Admin > API Keys > Creer une cle**.
-Selectionnez le scope `super_admin` pour la gestion IaC complete.
+Obtenez votre cle dans l'interface AISIA : **Admin > API Keys > Creer une cle**.
+La cle a le prefixe **`ak_live_`** et sert de jeton `Authorization: Bearer ak_live_…`.
+Selectionnez le scope `super_admin` (ou `admin`) pour la gestion IaC complete.
 
 ```terraform
 # Methode recommandee : variables d'environnement
@@ -145,7 +146,7 @@ output "ci_api_key" {
 |---|---|
 | [`aisia_organization`](resources/organization) | Organisation (tenant) AISIA — CRUD complet |
 | [`aisia_user`](resources/user) | Utilisateur avec role, org et mot de passe one-shot |
-| [`aisia_api_key`](resources/api_key) | Cle d'API programmatique `aisia_sk_…` (one-shot) |
+| [`aisia_api_key`](resources/api_key) | Cle d'API programmatique `ak_live_…` (one-shot ; `Authorization: Bearer` ou `X-API-Key`) |
 | [`aisia_provider_key`](resources/provider_key) | Cle provider LLM par org (isolation KEY-2, write-only) |
 | [`aisia_guardrail`](resources/guardrail) | Regle de filtrage de contenu (guardrail) |
 | [`aisia_webhook`](resources/webhook) | Webhook sortant avec signature HMAC |
