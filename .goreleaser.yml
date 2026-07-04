@@ -30,6 +30,12 @@ signs:
   - artifacts: checksum
     args:
       - "--batch"
+      # v6.9.85 — signature non-interactive en CI : sans loopback + passphrase,
+      # gpg tente un prompt TTY (absent en runner) → "Inappropriate ioctl for device".
+      - "--pinentry-mode"
+      - "loopback"
+      - "--passphrase"
+      - "{{ .Env.PASSPHRASE }}"
       - "--local-user"
       - "{{ .Env.GPG_FINGERPRINT }}"
       - "--output"

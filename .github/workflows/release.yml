@@ -25,6 +25,8 @@ jobs:
         env:
           GPG_FINGERPRINT: ${{ steps.gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # v6.9.85 — passphrase dispo pour la signature loopback non-interactive (.goreleaser.yml)
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
       # --- Publication HCP (provider privé = API). Skip propre si TF_API_TOKEN absent. ---
       - name: Publish version to HCP private registry
         env:
