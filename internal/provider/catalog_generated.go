@@ -26,6 +26,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_agent_tasks", path: "/admin/agent/tasks", listKey: "admin_agent_tasks", desc: "Lecture de /admin/agent/tasks."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agents_catalog", path: "/admin/agents-catalog", listKey: "admin_agents_catalog", desc: "Lecture de /admin/agents-catalog."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_agents_tasks", path: "/admin/agents/tasks", listKey: "admin_agents_tasks", desc: "Lecture de /admin/agents/tasks."}
 	},
 	func() datasource.DataSource {
@@ -35,6 +38,12 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_ai_act_model_cards", path: "/admin/ai-act/model-cards", listKey: "admin_ai_act_model_cards", desc: "Lecture de /admin/ai-act/model-cards."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_model_cards_registry", path: "/admin/ai-act/model-cards/registry", listKey: "admin_ai_act_model_cards_registry", desc: "Lecture de /admin/ai-act/model-cards/registry."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_qms", path: "/admin/ai-act/qms", listKey: "admin_ai_act_qms", desc: "Lecture de /admin/ai-act/qms."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_risk_assessments", path: "/admin/ai-act/risk-assessments", listKey: "admin_ai_act_risk_assessments", desc: "Lecture de /admin/ai-act/risk-assessments."}
 	},
 	func() datasource.DataSource {
@@ -42,6 +51,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_audit", path: "/admin/ai-act/v2/audit", listKey: "admin_ai_act_v2_audit", desc: "Lecture de /admin/ai-act/v2/audit."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_v2_incidents", path: "/admin/ai-act/v2/incidents", listKey: "admin_ai_act_v2_incidents", desc: "Lecture de /admin/ai-act/v2/incidents."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_kill_switch", path: "/admin/ai-act/v2/kill-switch", listKey: "admin_ai_act_v2_kill_switch", desc: "Lecture de /admin/ai-act/v2/kill-switch."}
@@ -65,6 +77,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_ai_rules", path: "/admin/ai-rules", listKey: "admin_ai_rules", desc: "Lecture de /admin/ai-rules."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_alerts", path: "/admin/alerts", listKey: "admin_alerts", desc: "Lecture de /admin/alerts."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_analytics", path: "/admin/analytics", listKey: "admin_analytics", desc: "Lecture de /admin/analytics."}
 	},
 	func() datasource.DataSource {
@@ -81,6 +96,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_audit", path: "/admin/audit/", listKey: "admin_audit", desc: "Lecture de /admin/audit/."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_auto_test", path: "/admin/auto-test", listKey: "admin_auto_test", desc: "Lecture de /admin/auto-test."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_autonomy_status", path: "/admin/autonomy/status", listKey: "admin_autonomy_status", desc: "Lecture de /admin/autonomy/status."}
@@ -146,10 +164,16 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_campaigns", path: "/admin/campaigns/", listKey: "admin_campaigns", desc: "Lecture de /admin/campaigns/."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_catalog_sync_status", path: "/admin/catalog/sync/status", listKey: "admin_catalog_sync_status", desc: "Lecture de /admin/catalog/sync/status."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_certificates", path: "/admin/certificates", listKey: "admin_certificates", desc: "Lecture de /admin/certificates."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_circuit_breakers", path: "/admin/circuit-breakers", listKey: "admin_circuit_breakers", desc: "Lecture de /admin/circuit-breakers."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_cloud_models", path: "/admin/cloud-models", listKey: "admin_cloud_models", desc: "Lecture de /admin/cloud-models."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_cloud_providers", path: "/admin/cloud-providers", listKey: "admin_cloud_providers", desc: "Lecture de /admin/cloud-providers."}
@@ -182,7 +206,13 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_connectors_catalog", path: "/admin/connectors-catalog", listKey: "admin_connectors_catalog", desc: "Lecture de /admin/connectors-catalog."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_connectors_auth_methods", path: "/admin/connectors/auth-methods", listKey: "admin_connectors_auth_methods", desc: "Lecture de /admin/connectors/auth-methods."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_connectors_manifests", path: "/admin/connectors/manifests", listKey: "admin_connectors_manifests", desc: "Lecture de /admin/connectors/manifests."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_connectors_mcp_servers", path: "/admin/connectors/mcp/servers", listKey: "admin_connectors_mcp_servers", desc: "Lecture de /admin/connectors/mcp/servers."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_contracts", path: "/admin/contracts", listKey: "admin_contracts", desc: "Lecture de /admin/contracts."}
@@ -245,6 +275,18 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_feature_flags", path: "/admin/feature-flags", listKey: "admin_feature_flags", desc: "Lecture de /admin/feature-flags."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_finetune", path: "/admin/finetune", listKey: "admin_finetune", desc: "Lecture de /admin/finetune."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_finops_cost_by_org", path: "/admin/finops/cost-by-org", listKey: "admin_finops_cost_by_org", desc: "Lecture de /admin/finops/cost-by-org."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_finops_cost_by_provider", path: "/admin/finops/cost-by-provider", listKey: "admin_finops_cost_by_provider", desc: "Lecture de /admin/finops/cost-by-provider."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_finops_cost_trend", path: "/admin/finops/cost-trend", listKey: "admin_finops_cost_trend", desc: "Lecture de /admin/finops/cost-trend."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", listKey: "admin_gdpr_requests", desc: "Lecture de /admin/gdpr/requests."}
 	},
 	func() datasource.DataSource {
@@ -261,6 +303,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_guardrails", path: "/admin/guardrails", listKey: "admin_guardrails", desc: "Lecture de /admin/guardrails."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_healthcheck", path: "/admin/healthcheck", listKey: "admin_healthcheck", desc: "Lecture de /admin/healthcheck."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_hierarchy", path: "/admin/hierarchy", listKey: "admin_hierarchy", desc: "Lecture de /admin/hierarchy."}
@@ -299,7 +344,16 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_learning_status", path: "/admin/learning/status", listKey: "admin_learning_status", desc: "Lecture de /admin/learning/status."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_learning_summary", path: "/admin/learning/summary", listKey: "admin_learning_summary", desc: "Lecture de /admin/learning/summary."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_licenses", path: "/admin/licenses", listKey: "admin_licenses", desc: "Lecture de /admin/licenses."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_linkedin_connect", path: "/admin/linkedin/connect", listKey: "admin_linkedin_connect", desc: "Lecture de /admin/linkedin/connect."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_linkedin_status", path: "/admin/linkedin/status", listKey: "admin_linkedin_status", desc: "Lecture de /admin/linkedin/status."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_logs", path: "/admin/logs", listKey: "admin_logs", desc: "Lecture de /admin/logs."}
@@ -315,6 +369,15 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_me", path: "/admin/me", listKey: "admin_me", desc: "Lecture de /admin/me."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_metrics_dashboards", path: "/admin/metrics/dashboards", listKey: "admin_metrics_dashboards", desc: "Lecture de /admin/metrics/dashboards."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_metrics_query", path: "/admin/metrics/query", listKey: "admin_metrics_query", desc: "Lecture de /admin/metrics/query."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_models", path: "/admin/models", listKey: "admin_models", desc: "Lecture de /admin/models."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_multitenant_subdomains", path: "/admin/multitenant/subdomains", listKey: "admin_multitenant_subdomains", desc: "Lecture de /admin/multitenant/subdomains."}
@@ -365,6 +428,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_prometheus_targets", path: "/admin/prometheus/targets", listKey: "admin_prometheus_targets", desc: "Lecture de /admin/prometheus/targets."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_provider_pricing", path: "/admin/provider-pricing", listKey: "admin_provider_pricing", desc: "Lecture de /admin/provider-pricing."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_providers_capabilities", path: "/admin/providers/capabilities", listKey: "admin_providers_capabilities", desc: "Lecture de /admin/providers/capabilities."}
 	},
 	func() datasource.DataSource {
@@ -389,13 +455,25 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_rbac", path: "/admin/rbac", listKey: "admin_rbac", desc: "Lecture de /admin/rbac."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_rbac_roles", path: "/admin/rbac/roles", listKey: "admin_rbac_roles", desc: "Lecture de /admin/rbac/roles."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_redis_info", path: "/admin/redis/info", listKey: "admin_redis_info", desc: "Lecture de /admin/redis/info."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_resellers", path: "/admin/resellers/", listKey: "admin_resellers", desc: "Lecture de /admin/resellers/."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_routing_policy", path: "/admin/routing/policy", listKey: "admin_routing_policy", desc: "Lecture de /admin/routing/policy."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_scheduled_backups", path: "/admin/scheduled-backups", listKey: "admin_scheduled_backups", desc: "Lecture de /admin/scheduled-backups."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_security", path: "/admin/security", listKey: "admin_security", desc: "Lecture de /admin/security."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_self_audit", path: "/admin/self-audit", listKey: "admin_self_audit", desc: "Lecture de /admin/self-audit."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_seo_comments", path: "/admin/seo/comments", listKey: "admin_seo_comments", desc: "Lecture de /admin/seo/comments."}
@@ -413,16 +491,31 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_seo_stats_global", path: "/admin/seo/stats/global", listKey: "admin_seo_stats_global", desc: "Lecture de /admin/seo/stats/global."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_service_inventory", path: "/admin/service-inventory", listKey: "admin_service_inventory", desc: "Lecture de /admin/service-inventory."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_sessions", path: "/admin/sessions", listKey: "admin_sessions", desc: "Lecture de /admin/sessions."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_sessions_bulk_revoke", path: "/admin/sessions/bulk-revoke", listKey: "admin_sessions_bulk_revoke", desc: "Lecture de /admin/sessions/bulk-revoke."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_slo", path: "/admin/slo", listKey: "admin_slo", desc: "Lecture de /admin/slo."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_support", path: "/admin/support", listKey: "admin_support", desc: "Lecture de /admin/support."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_swarm_services", path: "/admin/swarm/services", listKey: "admin_swarm_services", desc: "Lecture de /admin/swarm/services."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_tests_history", path: "/admin/tests/history", listKey: "admin_tests_history", desc: "Lecture de /admin/tests/history."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_truth_pack", path: "/admin/truth/pack", listKey: "admin_truth_pack", desc: "Lecture de /admin/truth/pack."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_truth_ui", path: "/admin/truth/ui", listKey: "admin_truth_ui", desc: "Lecture de /admin/truth/ui."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_usage", path: "/admin/usage/", listKey: "admin_usage", desc: "Lecture de /admin/usage/."}
@@ -449,6 +542,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "api_investor_docs_access", path: "/api/investor-docs/access", listKey: "api_investor_docs_access", desc: "Lecture de /api/investor-docs/access."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "api_plans", path: "/api/plans", listKey: "api_plans", desc: "Lecture de /api/plans."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "api_privacy_json", path: "/api/privacy.json", listKey: "api_privacy_json", desc: "Lecture de /api/privacy.json."}
 	},
 	func() datasource.DataSource {
@@ -470,6 +566,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "auth_oidc_providers", path: "/auth/oidc/providers", listKey: "auth_oidc_providers", desc: "Lecture de /auth/oidc/providers."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "auth_saml_metadata", path: "/auth/saml/metadata", listKey: "auth_saml_metadata", desc: "Lecture de /auth/saml/metadata."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "auth_verify_email", path: "/auth/verify-email", listKey: "auth_verify_email", desc: "Lecture de /auth/verify-email."}
 	},
 	func() datasource.DataSource {
@@ -482,7 +581,25 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "events_upcoming", path: "/events/upcoming", listKey: "events_upcoming", desc: "Lecture de /events/upcoming."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_account", path: "/org/account", listKey: "org_account", desc: "Lecture de /org/account."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_account_mfa", path: "/org/account/mfa", listKey: "org_account_mfa", desc: "Lecture de /org/account/mfa."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_agents", path: "/org/agents", listKey: "org_agents", desc: "Lecture de /org/agents."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_api_keys", path: "/org/api-keys", listKey: "org_api_keys", desc: "Lecture de /org/api-keys."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_audit_log", path: "/org/audit-log", listKey: "org_audit_log", desc: "Lecture de /org/audit-log."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_billing", path: "/org/billing", listKey: "org_billing", desc: "Lecture de /org/billing."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_branding", path: "/org/branding", listKey: "org_branding", desc: "Lecture de /org/branding."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_budget", path: "/org/budget", listKey: "org_budget", desc: "Lecture de /org/budget."}
@@ -494,22 +611,70 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_deployments", path: "/org/deployments", listKey: "org_deployments", desc: "Lecture de /org/deployments."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_groups", path: "/org/groups", listKey: "org_groups", desc: "Lecture de /org/groups."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_integrations", path: "/org/integrations", listKey: "org_integrations", desc: "Lecture de /org/integrations."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_invoices", path: "/org/invoices", listKey: "org_invoices", desc: "Lecture de /org/invoices."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_knowledge", path: "/org/knowledge", listKey: "org_knowledge", desc: "Lecture de /org/knowledge."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_me", path: "/org/me", listKey: "org_me", desc: "Lecture de /org/me."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_members", path: "/org/members", listKey: "org_members", desc: "Lecture de /org/members."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_notifications", path: "/org/notifications", listKey: "org_notifications", desc: "Lecture de /org/notifications."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_oidc_config", path: "/org/oidc-config", listKey: "org_oidc_config", desc: "Lecture de /org/oidc-config."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_quotas", path: "/org/quotas", listKey: "org_quotas", desc: "Lecture de /org/quotas."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_roles", path: "/org/roles", listKey: "org_roles", desc: "Lecture de /org/roles."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_sessions", path: "/org/sessions", listKey: "org_sessions", desc: "Lecture de /org/sessions."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_settings", path: "/org/settings", listKey: "org_settings", desc: "Lecture de /org/settings."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_support_tickets", path: "/org/support/tickets", listKey: "org_support_tickets", desc: "Lecture de /org/support/tickets."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_usage", path: "/org/usage", listKey: "org_usage", desc: "Lecture de /org/usage."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_webhooks", path: "/org/webhooks", listKey: "org_webhooks", desc: "Lecture de /org/webhooks."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "privacy", path: "/privacy", listKey: "privacy", desc: "Lecture de /privacy."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "scim_v2_groups", path: "/scim/v2/Groups", listKey: "scim_v2_groups", desc: "Lecture de /scim/v2/Groups."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "scim_v2_users", path: "/scim/v2/Users", listKey: "scim_v2_users", desc: "Lecture de /scim/v2/Users."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "support_tickets", path: "/support/tickets/", listKey: "support_tickets", desc: "Lecture de /support/tickets/."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_capabilities", path: "/v1/capabilities", listKey: "v1_capabilities", desc: "Lecture de /v1/capabilities."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_conversations", path: "/v1/conversations", listKey: "v1_conversations", desc: "Lecture de /v1/conversations."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_debates", path: "/v1/debates", listKey: "v1_debates", desc: "Lecture de /v1/debates."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_info", path: "/v1/info", listKey: "v1_info", desc: "Lecture de /v1/info."}
@@ -534,5 +699,26 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_public_stats", path: "/v1/public/stats", listKey: "v1_public_stats", desc: "Lecture de /v1/public/stats."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_status", path: "/v1/status", listKey: "v1_status", desc: "Lecture de /v1/status."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_status_incidents", path: "/v1/status/incidents", listKey: "v1_status_incidents", desc: "Lecture de /v1/status/incidents."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_trust_certifications", path: "/v1/trust/certifications", listKey: "v1_trust_certifications", desc: "Lecture de /v1/trust/certifications."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_truth_capabilities", path: "/v1/truth/capabilities", listKey: "v1_truth_capabilities", desc: "Lecture de /v1/truth/capabilities."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_truth_me", path: "/v1/truth/me", listKey: "v1_truth_me", desc: "Lecture de /v1/truth/me."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_truth_pricing", path: "/v1/truth/pricing", listKey: "v1_truth_pricing", desc: "Lecture de /v1/truth/pricing."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_truth_summary", path: "/v1/truth/summary", listKey: "v1_truth_summary", desc: "Lecture de /v1/truth/summary."}
 	},
 }

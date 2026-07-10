@@ -105,6 +105,7 @@ func (p *aisiaProvider) Resources(_ context.Context) []func() resource.Resource 
 		NewWebhookResource,
 		NewResellerResource,
 		NewGuardrailResource,
+		NewAgentResource,
 	}
 	// generatedResources : resources CRUD générées depuis l'OpenAPI (resources_generated.go).
 	return append(hand, generatedResources...)
