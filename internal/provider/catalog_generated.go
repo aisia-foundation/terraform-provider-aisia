@@ -203,6 +203,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_config_identity", path: "/admin/config/identity", listKey: "admin_config_identity", desc: "Lecture de /admin/config/identity."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_config_saml", path: "/admin/config/saml", listKey: "admin_config_saml", desc: "Lecture de /admin/config/saml."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_connectors_catalog", path: "/admin/connectors-catalog", listKey: "admin_connectors_catalog", desc: "Lecture de /admin/connectors-catalog."}
 	},
 	func() datasource.DataSource {
@@ -567,6 +570,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "auth_saml_metadata", path: "/auth/saml/metadata", listKey: "auth_saml_metadata", desc: "Lecture de /auth/saml/metadata."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "auth_saml_status", path: "/auth/saml/status", listKey: "auth_saml_status", desc: "Lecture de /auth/saml/status."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "auth_verify_email", path: "/auth/verify-email", listKey: "auth_verify_email", desc: "Lecture de /auth/verify-email."}

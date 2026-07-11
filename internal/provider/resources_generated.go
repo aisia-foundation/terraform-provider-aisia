@@ -143,6 +143,9 @@ var generatedResources = []func() resource.Resource{
 		return &singletonApiResource{name: "admin_config_identity_config", path: "/admin/config/identity", updateVerb: "PUT", desc: "Configuration singleton /admin/config/identity (GET+PUT via API)."}
 	},
 	func() resource.Resource {
+		return &singletonApiResource{name: "admin_config_saml_config", path: "/admin/config/saml", updateVerb: "PUT", desc: "Configuration singleton /admin/config/saml (GET+PUT via API)."}
+	},
+	func() resource.Resource {
 		return &singletonApiResource{name: "admin_routing_policy_config", path: "/admin/routing/policy", updateVerb: "PUT", desc: "Configuration singleton /admin/routing/policy (GET+PUT via API)."}
 	},
 	func() resource.Resource {
