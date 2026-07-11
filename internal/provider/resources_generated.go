@@ -8,28 +8,28 @@ import "github.com/hashicorp/terraform-plugin-framework/resource"
 // generatedResources : resources WRITE générées depuis l'OpenAPI.
 var generatedResources = []func() resource.Resource{
 	func() resource.Resource {
-		return &apiResource{name: "admin_ai_act_model_cards", path: "/admin/ai-act/model-cards", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/ai-act/model-cards (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_ai_act_model_cards", path: "/admin/ai-act/model-cards", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/ai-act/model-cards (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}, {Name: "provider_id", TFType: "string", Required: false, Desc: "champ provider_id"}, {Name: "model_name", TFType: "string", Required: false, Desc: "champ model_name"}, {Name: "intended_use", TFType: "string", Required: false, Desc: "champ intended_use"}, {Name: "out_of_scope_use", TFType: "string", Required: false, Desc: "champ out_of_scope_use"}, {Name: "training_data", TFType: "string", Required: false, Desc: "champ training_data"}, {Name: "evaluation_data", TFType: "string", Required: false, Desc: "champ evaluation_data"}, {Name: "ethical_considerations", TFType: "string", Required: false, Desc: "champ ethical_considerations"}, {Name: "known_limitations", TFType: "string", Required: false, Desc: "champ known_limitations"}, {Name: "biases_identified", TFType: "string", Required: false, Desc: "champ biases_identified"}, {Name: "risk_level", TFType: "string", Required: false, Desc: "champ risk_level"}, {Name: "annexe_iii_category", TFType: "string", Required: false, Desc: "champ annexe_iii_category"}, {Name: "published", TFType: "bool", Required: false, Desc: "champ published"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_ai_act_v2_incidents", path: "/admin/ai-act/v2/incidents", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/ai-act/v2/incidents (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_ai_act_v2_incidents", path: "/admin/ai-act/v2/incidents", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/ai-act/v2/incidents (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "severity", TFType: "string", Required: false, Desc: "champ severity"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}, {Name: "impact_assessment", TFType: "string", Required: false, Desc: "champ impact_assessment"}, {Name: "metadata", TFType: "string", Required: false, Desc: "champ metadata"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_alerts", path: "/admin/alerts", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/alerts (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_blog_posts", path: "/admin/blog/posts", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/blog/posts (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_blog_posts", path: "/admin/blog/posts", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/blog/posts (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "id", TFType: "string", Required: false, Desc: "champ id"}, {Name: "slug", TFType: "string", Required: false, Desc: "champ slug"}, {Name: "title", TFType: "string", Required: false, Desc: "champ title"}, {Name: "content_md", TFType: "string", Required: false, Desc: "champ content_md"}, {Name: "excerpt", TFType: "string", Required: false, Desc: "champ excerpt"}, {Name: "tags", TFType: "list", Required: false, Desc: "champ tags"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_bot_conversations", path: "/admin/bot/conversations", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/bot/conversations (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_campaigns", path: "/admin/campaigns", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/campaigns (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_campaigns", path: "/admin/campaigns", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/campaigns (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: true, Desc: "champ name"}, {Name: "channel", TFType: "string", Required: true, Desc: "champ channel"}, {Name: "target_audience", TFType: "string", Required: false, Desc: "champ target_audience"}, {Name: "content", TFType: "string", Required: true, Desc: "champ content"}, {Name: "scheduled_at", TFType: "string", Required: false, Desc: "champ scheduled_at"}, {Name: "status", TFType: "string", Required: false, Desc: "champ status"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_cloud_providers_item", path: "/admin/cloud-providers", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/cloud-providers (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_config_email_templates_item", path: "/admin/config/email/templates", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/config/email/templates (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_config_email_templates_item", path: "/admin/config/email/templates", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/config/email/templates (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: false, Desc: "champ name"}, {Name: "subject", TFType: "string", Required: false, Desc: "champ subject"}, {Name: "html", TFType: "string", Required: false, Desc: "champ html"}, {Name: "text", TFType: "string", Required: false, Desc: "champ text"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_config_snapshots", path: "/admin/config/snapshots", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/config/snapshots (create/read/update/delete via API)."}
@@ -38,7 +38,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_connectors_catalog_item", path: "/admin/connectors-catalog", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/connectors-catalog (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_connectors_mcp_servers", path: "/admin/connectors/mcp/servers", updateVerb: "", canDelete: true, desc: "Entité CRUD /admin/connectors/mcp/servers (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_connectors_mcp_servers", path: "/admin/connectors/mcp/servers", updateVerb: "", canDelete: true, desc: "Entité CRUD /admin/connectors/mcp/servers (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "server_id", TFType: "string", Required: true, Desc: "champ server_id"}, {Name: "url", TFType: "string", Required: true, Desc: "champ url"}, {Name: "headers", TFType: "string", Required: false, Desc: "champ headers"}, {Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_credentials_item", path: "/admin/credentials", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/credentials (create/read/update/delete via API)."}
@@ -50,7 +50,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_discovery_scans", path: "/admin/discovery/scans", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/discovery/scans (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_dns_records", path: "/admin/dns/records", updateVerb: "", canDelete: true, desc: "Entité CRUD /admin/dns/records (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_dns_records", path: "/admin/dns/records", updateVerb: "", canDelete: true, desc: "Entité CRUD /admin/dns/records (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "field_type", TFType: "string", Required: false, Desc: "champ field_type"}, {Name: "force_acme_subdomain", TFType: "bool", Required: false, Desc: "champ force_acme_subdomain"}, {Name: "sub_domain", TFType: "string", Required: false, Desc: "champ sub_domain"}, {Name: "target", TFType: "string", Required: false, Desc: "champ target"}, {Name: "ttl", TFType: "int", Required: false, Desc: "champ ttl"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_dr_drills", path: "/admin/dr/drills", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/dr/drills (create/read/update/delete via API)."}
@@ -59,7 +59,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_email_templates", path: "/admin/email-templates", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/email-templates (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_events", path: "/admin/events", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/events (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_events", path: "/admin/events", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/events (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "type", TFType: "string", Required: true, Desc: "champ type"}, {Name: "title", TFType: "string", Required: true, Desc: "champ title"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "host_email", TFType: "string", Required: false, Desc: "champ host_email"}, {Name: "scheduled_at", TFType: "string", Required: true, Desc: "champ scheduled_at"}, {Name: "duration_min", TFType: "int", Required: false, Desc: "champ duration_min"}, {Name: "max_attendees", TFType: "int", Required: false, Desc: "champ max_attendees"}, {Name: "registration_url", TFType: "string", Required: false, Desc: "champ registration_url"}, {Name: "status", TFType: "string", Required: false, Desc: "champ status"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_finetune_jobs", path: "/admin/finetune/jobs", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/finetune/jobs (create/read/update/delete via API)."}
@@ -68,7 +68,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/gdpr/requests (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_groups", path: "/admin/groups", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/groups (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_groups", path: "/admin/groups", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/groups (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: true, Desc: "champ name"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_hierarchy_nodes", path: "/admin/hierarchy/nodes", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/hierarchy/nodes (create/read/update/delete via API)."}
@@ -80,10 +80,10 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_leads_item", path: "/admin/leads", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/leads (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_learning_finetune_runs", path: "/admin/learning/finetune-runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/learning/finetune-runs (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_learning_finetune_runs", path: "/admin/learning/finetune-runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /admin/learning/finetune-runs (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "base_model", TFType: "string", Required: true, Desc: "champ base_model"}, {Name: "dataset", TFType: "string", Required: true, Desc: "champ dataset"}, {Name: "epochs", TFType: "int", Required: false, Desc: "champ epochs"}, {Name: "lr", TFType: "float", Required: false, Desc: "champ lr"}, {Name: "notes", TFType: "string", Required: false, Desc: "champ notes"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_oidc_providers", path: "/admin/oidc-providers", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/oidc-providers (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_oidc_providers", path: "/admin/oidc-providers", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/oidc-providers (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "provider_id", TFType: "string", Required: false, Desc: "champ provider_id"}, {Name: "enabled", TFType: "bool", Required: false, Desc: "champ enabled"}, {Name: "config", TFType: "string", Required: false, Desc: "champ config"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_orgs_quotas_item", path: "/admin/orgs/quotas", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/orgs/quotas (create/read/update/delete via API)."}
@@ -95,31 +95,31 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_provider_pricing_item", path: "/admin/provider-pricing", updateVerb: "PUT", canDelete: false, desc: "Entité CRUD /admin/provider-pricing (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_seo_feeds", path: "/admin/seo/feeds", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/seo/feeds (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_seo_feeds", path: "/admin/seo/feeds", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/seo/feeds (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "id", TFType: "string", Required: false, Desc: "champ id"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "url", TFType: "string", Required: false, Desc: "champ url"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_token_quotas", path: "/admin/token-quotas", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /admin/token-quotas (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "org_agents", path: "/org/agents", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /org/agents (create/read/update/delete via API)."}
+		return &apiResource{name: "org_agents", path: "/org/agents", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /org/agents (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "allowed_tools", TFType: "list", Required: false, Desc: "champ allowed_tools"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "max_steps", TFType: "int", Required: false, Desc: "champ max_steps"}, {Name: "max_tokens", TFType: "int", Required: false, Desc: "champ max_tokens"}, {Name: "model", TFType: "string", Required: false, Desc: "champ model"}, {Name: "model_id", TFType: "string", Required: false, Desc: "champ model_id"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}, {Name: "schedule_interval_s", TFType: "int", Required: false, Desc: "champ schedule_interval_s"}, {Name: "system_prompt", TFType: "string", Required: false, Desc: "champ system_prompt"}, {Name: "temperature", TFType: "float", Required: false, Desc: "champ temperature"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "org_api_keys", path: "/org/api-keys", updateVerb: "", canDelete: true, desc: "Entité CRUD /org/api-keys (create/read/update/delete via API)."}
+		return &apiResource{name: "org_api_keys", path: "/org/api-keys", updateVerb: "", canDelete: true, desc: "Entité CRUD /org/api-keys (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "expires_at", TFType: "string", Required: false, Desc: "champ expires_at"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}, {Name: "rate_limit_rpd", TFType: "int", Required: false, Desc: "champ rate_limit_rpd"}, {Name: "rate_limit_rpm", TFType: "int", Required: false, Desc: "champ rate_limit_rpm"}, {Name: "scopes", TFType: "list", Required: false, Desc: "champ scopes"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "org_groups", path: "/org/groups", updateVerb: "", canDelete: false, desc: "Entité CRUD /org/groups (create/read/update/delete via API)."}
+		return &apiResource{name: "org_groups", path: "/org/groups", updateVerb: "", canDelete: false, desc: "Entité CRUD /org/groups (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "org_support_tickets", path: "/org/support/tickets", updateVerb: "", canDelete: false, desc: "Entité CRUD /org/support/tickets (create/read/update/delete via API)."}
+		return &apiResource{name: "org_support_tickets", path: "/org/support/tickets", updateVerb: "", canDelete: false, desc: "Entité CRUD /org/support/tickets (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "priority", TFType: "string", Required: false, Desc: "champ priority"}, {Name: "subject", TFType: "string", Required: false, Desc: "champ subject"}}}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "org_webhooks", path: "/org/webhooks", updateVerb: "", canDelete: true, desc: "Entité CRUD /org/webhooks (create/read/update/delete via API)."}
+		return &apiResource{name: "org_webhooks", path: "/org/webhooks", updateVerb: "", canDelete: true, desc: "Entité CRUD /org/webhooks (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "active", TFType: "bool", Required: false, Desc: "champ active"}, {Name: "events", TFType: "list", Required: false, Desc: "champ events"}, {Name: "secret", TFType: "string", Required: false, Desc: "champ secret"}, {Name: "url", TFType: "string", Required: false, Desc: "champ url"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "scim_v2_users", path: "/scim/v2/Users", updateVerb: "PUT", canDelete: true, desc: "Entité CRUD /scim/v2/Users (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "support_tickets", path: "/support/tickets", updateVerb: "", canDelete: false, desc: "Entité CRUD /support/tickets (create/read/update/delete via API)."}
+		return &apiResource{name: "support_tickets", path: "/support/tickets", updateVerb: "", canDelete: false, desc: "Entité CRUD /support/tickets (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "subject", TFType: "string", Required: true, Desc: "champ subject"}, {Name: "description", TFType: "string", Required: true, Desc: "champ description"}, {Name: "priority", TFType: "string", Required: false, Desc: "champ priority"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "v1_conversations_item", path: "/v1/conversations", updateVerb: "PATCH", canDelete: true, desc: "Entité CRUD /v1/conversations (create/read/update/delete via API)."}
@@ -128,7 +128,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "v1_debate", path: "/v1/debate", updateVerb: "", canDelete: false, desc: "Entité CRUD /v1/debate (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "v1_runs", path: "/v1/runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /v1/runs (create/read/update/delete via API)."}
+		return &apiResource{name: "v1_runs", path: "/v1/runs", updateVerb: "", canDelete: false, desc: "Entité CRUD /v1/runs (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: true, Desc: "champ name"}, {Name: "prompts", TFType: "list", Required: true, Desc: "champ prompts"}, {Name: "providers", TFType: "list", Required: false, Desc: "champ providers"}, {Name: "iterations", TFType: "int", Required: false, Desc: "champ iterations"}, {Name: "concurrency", TFType: "int", Required: false, Desc: "champ concurrency"}, {Name: "timeout_s", TFType: "int", Required: false, Desc: "champ timeout_s"}}}
 	},
 	func() resource.Resource {
 		return &singletonApiResource{name: "admin_ai_rules_config", path: "/admin/ai-rules", updateVerb: "PUT", desc: "Configuration singleton /admin/ai-rules (GET+PUT via API)."}
