@@ -1,5 +1,5 @@
-// Code généré par scripts/gen_terraform_provider.py — NE PAS ÉDITER À LA MAIN.
-// Régénérer : python3 scripts/gen_terraform_provider.py --openapi <spec>
+// Code généré par scripts/generate/06_terraform_provider.py — NE PAS ÉDITER À LA MAIN.
+// Régénérer : python3 scripts/generate/06_terraform_provider.py --openapi <spec>
 
 package provider
 

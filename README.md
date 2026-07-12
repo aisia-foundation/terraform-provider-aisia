@@ -1,42 +1,55 @@
+<!--
+  GÉNÉRÉ — ne pas éditer à la main.
+  Source: scripts/generate/09_publications.py
+  Régénérer: python3 scripts/aisia.py regen
+  Gate deploy: python3 scripts/release/deploy.py <ver> --mode docs
+-->
+
+> **Prod live vérifiée** : **v6.12.22** (2026-07-12) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
+
 # Terraform Provider AISIA
 
 [![Registry](https://img.shields.io/badge/registry-AISIA%2Faisia-7B42BC)](https://app.terraform.io/app/AISIA/registry/providers/private/AISIA/aisia)
 [![License: MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-blue)](./LICENSE)
 
-Provider Terraform officiel pour **AISIA** — gérez vos ressources AISIA
-(organisations, clés providers par org, utilisateurs, clés d'API) **en
-Infrastructure-as-Code**, contre l'API AISIA (`api.aisia.fr`).
+Provider Terraform officiel pour **AISIA** — organisations, clés providers par org,
+utilisateurs et clés API en **Infrastructure-as-Code** (`api.aisia.fr`).
+
+## Cœur d'AISIA (identité produit)
+
+AISIA est le **chef d'orchestre IA local-first** : une requête entre, le meilleur modèle (local ou cloud) exécute, la réponse sort traçable et gouvernée.
+
+**Fonction première** : orchestrer chaque requête IA en **local-first** (Ollama sur cluster)
+puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
+
+**Différenciation** : orchestration local-first — pas un proxy LLM stateless.
+
+| vs proxy LLM | AISIA |
+|--------------|-------|
+| 1 provider fixe | **87** providers + **58** modèles locaux |
+| Stateless | Qdrant + audit AI Act + multi-tenant |
+| SaaS opaque | Déployable Swarm/K8s — **v6.12.22** LIVE |
+
+Documentation complète : [README racine](https://github.com/slambert-lambdaprod/Inteligence-Artificiel/blob/main/README.md) ·
+[Product Identity](../../specification/03-Project-State/Product-Identity-AISIA.md)
+
+```mermaid
+flowchart LR
+  App[Application] --> AISIA[AISIA orchestration]
+  AISIA --> Local[Ollama local]
+  AISIA --> Cloud[Providers cloud]
+```
+
 
 ---
 
-## C'est quoi AISIA ?
+## Ce que ce provider vous permet de faire
 
-**AISIA** est une plateforme d'**orchestration d'IA souveraine, local-first et
-multi-providers**. Elle place une couche d'orchestration intelligente entre vos
-applications et les modèles d'IA (cloud **et** locaux), pour router chaque requête
-vers le meilleur modèle au meilleur coût, sans verrouillage fournisseur, en
-gardant la maîtrise de vos données.
+- Gérer vos **organisations** (tenants), **clés providers** isolées par org, **utilisateurs** et **clés d'API**.
+- **Multi-tenant** : isolation par organisation, quotas, déploiement self-service.
+- **IaC** : ce provider (gérer AISIA) + module [`terraform-aisia-cluster`](https://app.terraform.io/app/AISIA/registry/modules/private/AISIA/aisia/kubernetes) (déployer AISIA).
 
-### Les problèmes qu'AISIA résout
-
-| Problème | Réponse AISIA |
-|---|---|
-| **Coûts LLM** qui explosent | Routage *cost-aware* + modèles **locaux** → réduction significative des coûts |
-| **Vendor lock-in** (un seul fournisseur) | Providers cloud unifiés derrière une API OpenAI-compatible + bascule automatique |
-| **Souveraineté / RGPD / EU AI Act** | Déploiement **on-prem / cloud souverain**, données maîtrisées, journal d'audit AI Act |
-| **Fiabilité** | Multi-provider, fallback IA locale, haute disponibilité |
-| **Multi-tenant** (B2B/B2C, SaaS/BaaS/PaaS) | Isolation par organisation, clés par org, quotas, déploiement self-service |
-
-### Ce que ce provider vous permet de faire
-
-- Gérer vos **organisations** (tenants), leurs **clés providers** isolées par org, leurs **utilisateurs** et leurs **clés d'API** — en Infrastructure-as-Code.
-- **Multi-tenant** : isolation par organisation, clés providers **par organisation**, quotas.
-- **IaC** : ce provider (gérer les ressources AISIA) + le module [`terraform-aisia-cluster`](https://app.terraform.io/app/AISIA/registry/modules/private/AISIA/aisia/kubernetes) (déployer la plateforme).
-
-> Module (déployer AISIA) **+** provider (gérer AISIA) = cycle de vie complet en Terraform.
->
-> ℹ️ AISIA est une solution **propriétaire** (brevet / dépôt INPI). Cette documentation
-> décrit **l'usage** de l'outillage IaC, pas l'architecture interne ni la conception du produit.
+> Module (déployer) **+** provider (gouverner) = cycle de vie complet en Terraform.
 
 ---
 
@@ -46,82 +59,41 @@ gardant la maîtrise de vos données.
 terraform {
   required_providers {
     aisia = {
-      source  = "app.terraform.io/AISIA/aisia" # registry privé HCP
-      version = "~> 6.9"
+      source  = "app.terraform.io/AISIA/aisia"
+      version = "~> 6.12"
     }
   }
 }
 
 provider "aisia" {
-  # endpoint = "https://api.aisia.fr"  # défaut, ou env AISIA_ENDPOINT
-  # token    = "..."                    # préférez l'env AISIA_TOKEN (sensible)
+  # endpoint = "https://api.aisia.fr"
+  # token via AISIA_TOKEN
 }
 
-# Une organisation cliente isolée
 resource "aisia_organization" "acme" {
   name          = "ACME Corp"
   slug          = "acme"
   contract_type = "saas"
-}
-
-# Sa clé OpenAI dédiée (isolée des autres orgs — KEY-2)
-resource "aisia_provider_key" "acme_openai" {
-  org_id      = aisia_organization.acme.id
-  provider_id = "openai"
-  key_value   = var.openai_key
-}
-
-# Un admin pour cette org (mot de passe auto-généré)
-resource "aisia_user" "alice" {
-  email  = "alice@acme.example"
-  role   = "org_admin"
-  org_id = aisia_organization.acme.id
-}
-
-# Une clé d'API programmatique pour leur CI
-resource "aisia_api_key" "acme_ci" {
-  org_id = aisia_organization.acme.id
-  name   = "ci-pipeline"
-  scopes = ["invoke", "compare"]
 }
 ```
 
 ## Authentification
 
 | Variable | Rôle |
-|---|---|
+|----------|------|
 | `AISIA_ENDPOINT` | URL API (défaut `https://api.aisia.fr`) |
-| `AISIA_TOKEN` | Jeton admin AISIA (Bearer) — **sensible**, ne jamais commiter |
+| `AISIA_TOKEN` | Jeton admin Bearer — **sensible** |
 
-## Ressources & data sources
+## Versioning
 
-| Type | Description |
-|---|---|
-| [`aisia_organization`](docs/resources/organization.md) | Organisation (tenant) — CRUD |
-| [`aisia_provider_key`](docs/resources/provider_key.md) | Clé provider LLM **par org** (isolation), write-only |
-| [`aisia_user`](docs/resources/user.md) | Utilisateur (rôle, org, mot de passe one-shot) |
-| [`aisia_api_key`](docs/resources/api_key.md) | Clé d'accès programmatique (`aisia_sk_…`), one-shot |
-| [`aisia_organization` (data)](docs/data-sources/organization.md) | Lecture d'une org existante |
-
-## Versioning — couplé à AISIA
-
-La version du provider **suit la version d'AISIA** : `aisia 6.9.63` cible la
-plateforme AISIA v6.9.63. À chaque release AISIA, une version identique du
-provider est publiée (`scripts/bump_version.py` automatise le couplage).
+Provider **couplé à AISIA** : `aisia 6.12.22` cible la plateforme **v6.12.22**.
 
 ## Développement
 
 ```bash
-make build      # compile
-make validate   # go vet + build
-make docs       # tfplugindocs (régénère docs/)
-make testacc    # tests d'acceptation (TF_ACC=1, instance AISIA requise)
+make build && make validate && make docs
 ```
-
-## Sécurité
-
-Voir [SECURITY.md](./SECURITY.md). Binaires signés GPG (clé `96D2AD35E6565778`).
 
 ## Licence
 
-[MPL-2.0](./LICENSE).
+[MPL-2.0](./LICENSE)
