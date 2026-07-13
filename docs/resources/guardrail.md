@@ -8,16 +8,12 @@ description: |-
 
 # aisia_guardrail (Resource)
 
-Une regle de garde-fou (guardrail) AISIA (/admin/guardrails) : motif filtre et action associee.
-
-Les guardrails s'appliquent **globalement** a toutes les invocations LLM transitant par AISIA.
-Ils permettent de bloquer, signaler ou redacter du contenu sensible avant qu'il n'atteigne
-les providers LLM (conformite EU AI Act Art. 5 / Art. 50, RGPD, politiques internes).
+Une règle de garde-fou (guardrail) AISIA (/admin/guardrails) : motif filtré et action associée.
 
 ## Example Usage
 
 ```terraform
-# Bloquer les demandes contenant des informations de carte bancaire
+# Guardrail : bloquer les numeros de carte bancaire dans les prompts
 resource "aisia_guardrail" "no_credit_card" {
   name    = "no-credit-card"
   pattern = "\\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\\b"
@@ -25,17 +21,9 @@ resource "aisia_guardrail" "no_credit_card" {
   enabled = true
 }
 
-# Signaler (sans bloquer) les demandes mentionnant des concurrents
-resource "aisia_guardrail" "flag_competitors" {
-  name    = "flag-competitors"
-  pattern = "(?i)(concurrent_a|concurrent_b)"
-  action  = "flag"
-  enabled = true
-}
-
-# Redacter les numeros de telephone dans les reponses
-resource "aisia_guardrail" "redact_phone" {
-  name    = "redact-phone"
+# Guardrail : redacter les numeros de telephone dans les reponses LLM
+resource "aisia_guardrail" "redact_phone_fr" {
+  name    = "redact-phone-fr"
   pattern = "\\b0[1-9][0-9]{8}\\b"
   action  = "redact"
   enabled = true
@@ -58,3 +46,13 @@ resource "aisia_guardrail" "redact_phone" {
 ### Read-Only
 
 - `id` (String) Identifiant du guardrail (généré par AISIA).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_guardrail` — synchronisée avec l'OpenAPI AISIA.

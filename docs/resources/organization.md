@@ -35,3 +35,13 @@ resource "aisia_organization" "acme" {
 ### Read-Only
 
 - `id` (String) Identifiant de l'organisation (généré par AISIA).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_organization` — synchronisée avec l'OpenAPI AISIA.

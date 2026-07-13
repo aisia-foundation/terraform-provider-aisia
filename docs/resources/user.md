@@ -45,3 +45,13 @@ output "alice_generated_password" {
 
 - `generated_password` (String, Sensitive) Mot de passe auto-généré (one-shot, sensible).
 - `id` (String) ID utilisateur (généré).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_user` — synchronisée avec l'OpenAPI AISIA.

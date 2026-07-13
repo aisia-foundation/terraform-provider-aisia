@@ -42,9 +42,16 @@ func (r *actionApiResource) Metadata(_ context.Context, req resource.MetadataReq
 	resp.TypeName = req.ProviderTypeName + "_" + r.name
 }
 
+func (r *actionApiResource) actionDocPath() string {
+	if r.pathTemplate != "" {
+		return r.pathTemplate
+	}
+	return r.path
+}
+
 func (r *actionApiResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: r.desc,
+		MarkdownDescription: r.desc + docLinksForEndpoint(r.actionDocPath()),
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
 				MarkdownDescription: "Identifiant fixe de la mutation.",

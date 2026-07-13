@@ -10,29 +10,21 @@ description: |-
 
 Un revendeur (reseller) AISIA (/admin/resellers), avec part de revenu et branding optionnel.
 
-Un revendeur est un partenaire B2B qui distribue AISIA sous son propre branding.
-Chaque revendeur recoit une part configuree du revenu genere par ses clients.
-
 ## Example Usage
 
 ```terraform
-# Revendeur partenaire avec 30% de part de revenu
-resource "aisia_reseller" "integrator_acme" {
-  name           = "ACME Integrator"
-  contact_email  = "partnership@acme-integrator.example"
-  domain         = "ai.acme-integrator.example"
-  rev_share_pct  = 30
-  notes          = "Partenaire Gold — integration ERP"
+# Revendeur partenaire avec 30% de part de revenu et domaine personnalise
+resource "aisia_reseller" "partner_acme" {
+  name          = "ACME Integrator"
+  contact_email = "partnership@acme-integrator.example"
+  domain        = "ai.acme-integrator.example"
+  rev_share_pct = 30
+  notes         = "Partenaire Gold — integration ERP secteur manufacturing"
 }
 
-# Revendeur minimal (part de revenu par defaut : 25%)
-resource "aisia_reseller" "startup_xyz" {
-  name          = "Startup XYZ"
-  contact_email = "founder@startup-xyz.example"
-}
-
-output "acme_reseller_id" {
-  value = aisia_reseller.integrator_acme.id
+output "reseller_id" {
+  value       = aisia_reseller.partner_acme.id
+  description = "ID du revendeur ACME (a passer aux organisations enfants)."
 }
 ```
 
@@ -55,3 +47,13 @@ output "acme_reseller_id" {
 ### Read-Only
 
 - `id` (String) Identifiant du revendeur (généré par AISIA).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_reseller` — synchronisée avec l'OpenAPI AISIA.

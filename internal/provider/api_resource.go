@@ -85,7 +85,7 @@ func (r *apiResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *
 		}
 		attrs["body"] = schema.StringAttribute{MarkdownDescription: "Corps JSON de l'entité (payload create/update), ex. `jsonencode({...})`.", Required: true, PlanModifiers: bodyMods}
 	}
-	resp.Schema = schema.Schema{MarkdownDescription: r.desc, Attributes: attrs}
+	resp.Schema = schema.Schema{MarkdownDescription: r.desc + docLinksForEndpoint(r.path), Attributes: attrs}
 }
 
 func (r *apiResource) Configure(_ context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {

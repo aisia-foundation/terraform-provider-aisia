@@ -36,7 +36,7 @@ func (r *singletonApiResource) Metadata(_ context.Context, req resource.Metadata
 
 func (r *singletonApiResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: r.desc,
+		MarkdownDescription: r.desc + docLinksForEndpoint(r.path),
 		Attributes: map[string]schema.Attribute{
 			"id":   schema.StringAttribute{MarkdownDescription: "Identifiant fixe (singleton).", Computed: true},
 			"body": schema.StringAttribute{MarkdownDescription: "Corps JSON (payload PUT/PATCH).", Required: true},

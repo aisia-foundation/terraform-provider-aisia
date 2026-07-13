@@ -56,7 +56,7 @@ func (d *catalogDataSource) Metadata(_ context.Context, req datasource.MetadataR
 
 func (d *catalogDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: d.desc + " Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.",
+		MarkdownDescription: d.desc + " Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails." + docLinksForEndpoint(d.path),
 		Attributes: map[string]schema.Attribute{
 			"json":       schema.StringAttribute{MarkdownDescription: "Réponse brute de l'API (JSON).", Computed: true},
 			"item_count": schema.Int64Attribute{MarkdownDescription: "Nombre d'items.", Computed: true},

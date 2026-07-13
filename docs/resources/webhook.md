@@ -8,38 +8,31 @@ description: |-
 
 # aisia_webhook (Resource)
 
-Un webhook sortant AISIA (/admin/webhooks). Notifie une URL externe sur les evenements souscrits.
-
-AISIA signe chaque livraison avec `X-AISIA-Signature: sha256=<hmac>` (HMAC-SHA256 du corps, cle = `secret`).
-Verifiez systematiquement cette signature cote recepteur avant de traiter le payload.
+Un webhook sortant AISIA (/admin/webhooks). Notifie une URL externe sur les événements souscrits.
 
 ## Example Usage
 
 ```terraform
-# Webhook vers un endpoint Slack (notifications invoke)
-resource "aisia_webhook" "slack_notifications" {
-  name   = "slack-invoke-alerts"
+variable "webhook_secret" {
+  type        = string
+  sensitive   = true
+  description = "Secret HMAC-SHA256 pour la signature des livraisons webhook."
+}
+
+# Webhook : notifications Slack sur les erreurs d'invocation
+resource "aisia_webhook" "slack_alerts" {
+  name   = "slack-error-alerts"
   url    = "https://hooks.slack.com/services/T.../B.../xxx"
-  events = ["invoke.completed", "invoke.failed"]
-  secret = var.slack_webhook_secret
+  events = ["invoke.failed", "provider.circuit_open"]
+  secret = var.webhook_secret
 }
 
-variable "slack_webhook_secret" {
-  type      = string
-  sensitive = true
-}
-
-# Webhook monitoring : creation/suppression d'organisations
-resource "aisia_webhook" "org_lifecycle" {
-  name   = "org-lifecycle-monitor"
-  url    = "https://monitoring.acme.example/aisia/webhooks"
-  events = ["org.created", "org.deleted", "user.created"]
-  secret = var.monitoring_secret
-}
-
-variable "monitoring_secret" {
-  type      = string
-  sensitive = true
+# Webhook : audit du cycle de vie des organisations (RGPD)
+resource "aisia_webhook" "org_audit" {
+  name   = "org-lifecycle-audit"
+  url    = "https://audit.acme.example/aisia"
+  events = ["org.created", "org.deleted", "user.created", "user.deleted"]
+  secret = var.webhook_secret
 }
 ```
 
@@ -59,3 +52,13 @@ variable "monitoring_secret" {
 ### Read-Only
 
 - `id` (String) Identifiant du webhook (généré par AISIA).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_webhook` — synchronisée avec l'OpenAPI AISIA.

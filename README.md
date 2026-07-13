@@ -5,7 +5,7 @@
   Gate deploy: python3 scripts/release/deploy.py <ver> --mode docs
 -->
 
-> **Prod live vérifiée** : **v6.12.24** (2026-07-13) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
+> **Prod live vérifiée** : **v6.12.25** (2026-07-13) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
 
 # Terraform Provider AISIA
 
@@ -28,7 +28,7 @@ puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
 |--------------|-------|
 | 1 provider fixe | **87** providers + **58** modèles locaux |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — **v6.12.24** LIVE |
+| SaaS opaque | Déployable Swarm/K8s — **v6.12.25** LIVE |
 
 Documentation : [README racine](./README.md) ·
 [Product Identity](./specification/03-Project-State/Product-Identity-AISIA.md)
@@ -48,6 +48,7 @@ flowchart LR
 - Gérer vos **organisations** (tenants), **clés providers** isolées par org, **utilisateurs** et **clés d'API**.
 - **Multi-tenant** : isolation par organisation, quotas, déploiement self-service.
 - **IaC** : ce provider (gérer AISIA) + module [`terraform-aisia-cluster`](https://app.terraform.io/app/AISIA/registry/modules/private/AISIA/aisia/kubernetes) (déployer AISIA).
+- **Guide** : [getting-started](docs/guides/getting-started.md) — parcours déployer + gérer en Terraform.
 
 > Module (déployer) **+** provider (gouverner) = cycle de vie complet en Terraform.
 
@@ -86,7 +87,7 @@ resource "aisia_organization" "acme" {
 
 ## Versioning
 
-Provider **couplé à AISIA** : `aisia 6.12.24` cible la plateforme **v6.12.24**.
+Provider **couplé à AISIA** : `aisia 6.12.25` cible la plateforme **v6.12.25**.
 
 ## Développement
 

@@ -3,22 +3,12 @@
 page_title: "aisia_api_key Resource - aisia"
 subcategory: ""
 description: |-
-  Clé d'accès programmatique AISIA (préfixe ak_live_) scoped à une organisation. Immuable. La valeur brute n'est exposée qu'à la création (key, sensible).
+  Clé d'accès programmatique AISIA (aisia_sk_…) scoped à une organisation. Immuable. La valeur brute n'est exposée qu'à la création (key, sensible).
 ---
 
 # aisia_api_key (Resource)
 
-Clé d'accès programmatique AISIA, scoped à une organisation. Immuable. La valeur
-brute n'est exposée qu'à la création (`key`, sensible).
-
-La clé générée a le préfixe **`ak_live_`** (ex. `ak_live_XXXXXXXX…`). Elle
-s'utilise sur l'API AISIA de deux façons équivalentes :
-
-- en-tête `Authorization: Bearer ak_live_…` (endpoints REST) ;
-- en-tête `X-API-Key: ak_live_…` (notamment le serveur **MCP** `POST /v1/mcp`,
-  pour brancher un agent — Claude Desktop, etc.).
-
-La clé est utilisable **immédiatement** après création.
+Clé d'accès programmatique AISIA (`aisia_sk_…`) scoped à une organisation. Immuable. La valeur brute n'est exposée qu'à la création (`key`, sensible).
 
 ## Example Usage
 
@@ -55,3 +45,13 @@ output "acme_ci_key" {
 - `id` (String) ID de la clé.
 - `key` (String, Sensitive) Valeur brute (one-shot, sensible).
 - `key_prefix` (String) Préfixe public de la clé.
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_api_key` — synchronisée avec l'OpenAPI AISIA.

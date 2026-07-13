@@ -8,19 +8,14 @@ description: |-
 
 # aisia_local_model (Resource)
 
-Modele local AISIA gere en DB (overlay du `local_models.yaml`).
-`config_json` = definition complete du modele (runtime, endpoint, model_name, priority...).
-
-Les modeles locaux sont des modeles LLM heberges sur votre infrastructure (Ollama, vLLM, etc.)
-et integres dans le routeur AISIA. Ils sont prioritaires sur les providers cloud quand `priority`
-est eleve, et permettent le **routage local-first** pour la souverainete et la reduction de couts.
+Modèle local AISIA géré en DB (overlay du `local_models.yaml`). `config_json` = définition complète (runtime, endpoint, model_name, priority…).
 
 ## Example Usage
 
 ```terraform
-# Modele haute capacite sur noeud GPU (haute priorite locale)
-resource "aisia_local_model" "llama3_gpu" {
-  model_id    = "llama3.3-70b-local"
+# Modele haute capacite sur noeud GPU (priorite haute, routage local-first)
+resource "aisia_local_model" "llama3_70b_gpu" {
+  model_id = "llama3.3-70b-local"
   config_json = jsonencode({
     runtime    = "ollama"
     model_name = "llama3.3:70b"
@@ -31,9 +26,9 @@ resource "aisia_local_model" "llama3_gpu" {
   })
 }
 
-# Modele leger sur noeud edge (basse priorite, fallback)
-resource "aisia_local_model" "mistral7b_edge" {
-  model_id    = "mistral-7b-edge"
+# Modele leger sur noeud edge (priorite basse, fallback)
+resource "aisia_local_model" "mistral_7b_edge" {
+  model_id = "mistral-7b-edge"
   config_json = jsonencode({
     runtime    = "ollama"
     model_name = "mistral:7b"
@@ -44,8 +39,8 @@ resource "aisia_local_model" "mistral7b_edge" {
   })
 }
 
-output "llama_status" {
-  value = aisia_local_model.llama3_gpu.status
+output "gpu_model_status" {
+  value = aisia_local_model.llama3_70b_gpu.status
 }
 ```
 
@@ -61,3 +56,13 @@ output "llama_status" {
 
 - `display_name` (String) Nom affiché (dérivé).
 - `status` (String) Statut (active/inactive).
+
+<!-- TF-DOCS-ENRICH:09_publications -->
+## Documentation AISIA
+
+- **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
+- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
+- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
+
+> Ressource `resource` : `aisia_local_model` — synchronisée avec l'OpenAPI AISIA.
