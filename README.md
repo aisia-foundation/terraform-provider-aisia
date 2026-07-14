@@ -5,7 +5,7 @@
   Gate deploy: python3 scripts/release/deploy.py <ver> --mode docs
 -->
 
-> **Prod live vérifiée** : **v6.12.30** (2026-07-14) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
+> **Prod live vérifiée** : **v6.12.31** (2026-07-14) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
 
 # Terraform Provider AISIA
 
@@ -28,7 +28,7 @@ puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
 |--------------|-------|
 | 1 provider fixe | **87** providers + **58** modèles locaux |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — **v6.12.30** LIVE |
+| SaaS opaque | Déployable Swarm/K8s — **v6.12.31** LIVE |
 
 Documentation : [README racine](./README.md) ·
 [Product Identity](./specification/03-Project-State/Product-Identity-AISIA.md)
@@ -87,7 +87,7 @@ resource "aisia_organization" "acme" {
 
 ## Versioning
 
-Provider **couplé à AISIA** : `aisia 6.12.30` cible la plateforme **v6.12.30**.
+Provider **couplé à AISIA** : `aisia 6.12.31` cible la plateforme **v6.12.31**.
 
 ## Développement
 
