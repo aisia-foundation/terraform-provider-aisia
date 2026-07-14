@@ -602,6 +602,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_orgs_org_id_quota_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/quota", method: "PUT", readPath: "/admin/orgs", desc: "Mutation admin PUT `/admin/orgs/{org_id}/quota` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_orgs_org_id_routing_mode_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/routing-mode", method: "PUT", readPath: "/admin/orgs", desc: "Mutation admin PUT `/admin/orgs/{org_id}/routing-mode` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_orgs_org_id_security_policy_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/security-policy", method: "PUT", readPath: "/admin/orgs", desc: "Mutation admin PUT `/admin/orgs/{org_id}/security-policy` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
@@ -615,6 +618,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_orgs_org_id_webhooks_webhook_id_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/webhooks/{webhook_id}", method: "DELETE", readPath: "/admin/orgs", desc: "Mutation admin DELETE `/admin/orgs/{org_id}/webhooks/{webhook_id}` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_providers_keys_rotate_cycle_action", path: "/admin/providers/keys/rotate-cycle", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/providers/keys/rotate-cycle` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_providers_keys_verify_action", path: "/admin/providers/keys/verify", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/providers/keys/verify` (idempotent via Terraform, GOV-01)."}
