@@ -470,6 +470,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_rbac", path: "/admin/rbac", listKey: "admin_rbac", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/rbac`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_rbac_legacy_admin_debt", path: "/admin/rbac/legacy-admin-debt", listKey: "admin_rbac_legacy_admin_debt", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/rbac/legacy-admin-debt`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_rbac_roles", path: "/admin/rbac/roles", listKey: "admin_rbac_roles", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/rbac/roles`."}
 	},
 	func() datasource.DataSource {
@@ -513,6 +516,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_sessions_bulk_revoke", path: "/admin/sessions/bulk-revoke", listKey: "admin_sessions_bulk_revoke", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/sessions/bulk-revoke`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_skills", path: "/admin/skills", listKey: "admin_skills", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/skills`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_slo", path: "/admin/slo", listKey: "admin_slo", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/slo`."}
@@ -717,6 +723,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_public_stats", path: "/v1/public/stats", listKey: "v1_public_stats", desc: "Endpoint public API v1 — lecture GET de `/v1/public/stats`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_skills", path: "/v1/skills", listKey: "v1_skills", desc: "Endpoint public API v1 — lecture GET de `/v1/skills`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_status", path: "/v1/status", listKey: "v1_status", desc: "Endpoint public API v1 — lecture GET de `/v1/status`."}
