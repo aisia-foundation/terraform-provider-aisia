@@ -53,10 +53,16 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_ai_act_v2_audit", path: "/admin/ai-act/v2/audit", listKey: "admin_ai_act_v2_audit", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/audit`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_v2_enforcement_preview", path: "/admin/ai-act/v2/enforcement/preview", listKey: "admin_ai_act_v2_enforcement_preview", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/enforcement/preview`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_incidents", path: "/admin/ai-act/v2/incidents", listKey: "admin_ai_act_v2_incidents", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/incidents`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_kill_switch", path: "/admin/ai-act/v2/kill-switch", listKey: "admin_ai_act_v2_kill_switch", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/kill-switch`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_v2_model_cards_stubs", path: "/admin/ai-act/v2/model-cards-stubs", listKey: "admin_ai_act_v2_model_cards_stubs", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/model-cards-stubs`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_oversight_queue", path: "/admin/ai-act/v2/oversight/queue", listKey: "admin_ai_act_v2_oversight_queue", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/oversight/queue`."}
