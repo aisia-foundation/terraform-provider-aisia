@@ -218,6 +218,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_connectors_catalog_ecosystem", path: "/admin/connectors-catalog/ecosystem", listKey: "admin_connectors_catalog_ecosystem", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors-catalog/ecosystem`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_connectors_catalog_unified", path: "/admin/connectors-catalog/unified", listKey: "admin_connectors_catalog_unified", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors-catalog/unified`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_connectors_auth_methods", path: "/admin/connectors/auth-methods", listKey: "admin_connectors_auth_methods", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors/auth-methods`."}
 	},
 	func() datasource.DataSource {
@@ -699,6 +702,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_debates", path: "/v1/debates", listKey: "v1_debates", desc: "Endpoint public API v1 — lecture GET de `/v1/debates`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_feature_flags", path: "/v1/feature-flags", listKey: "v1_feature_flags", desc: "Endpoint public API v1 — lecture GET de `/v1/feature-flags`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_info", path: "/v1/info", listKey: "v1_info", desc: "Endpoint public API v1 — lecture GET de `/v1/info`."}
