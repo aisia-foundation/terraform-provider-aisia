@@ -5,7 +5,7 @@
   Gate deploy: python3 scripts/release/deploy.py <ver> --mode docs
 -->
 
-> **Prod live vérifiée** : **v6.12.70** (2026-07-19) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
+> **Prod live vérifiée** : **v6.12.71** (2026-07-19) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
 
 # Terraform Provider AISIA
 
@@ -29,7 +29,7 @@ puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
 | 1 provider fixe | **88** providers déclarés |
 | Catalogue modèles | **3275** modèles catalogue · **115** locaux déclarés · **58** locaux actifs |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — **v6.12.70** LIVE |
+| SaaS opaque | Déployable Swarm/K8s — **v6.12.71** LIVE |
 
 Documentation : [README racine](../../../README.md) ·
 [Product Identity](../../../specification/03-Project-State/Product-Identity-AISIA.md)
@@ -88,23 +88,23 @@ resource "aisia_organization" "acme" {
 
 ## Versioning
 
-Provider **couplé à AISIA** : `aisia 6.12.70` cible la plateforme **v6.12.70**.
+Provider **couplé à AISIA** : `aisia 6.12.71` cible la plateforme **v6.12.71**.
 
 <!-- TF-REGISTRY-STATUS -->
 ## Statut publication registry (honnête)
 
-> Mesuré à la régénération docs · version repo **v6.12.70** (`VERSION` modules + provider).
+> Mesuré à la régénération docs · version repo **v6.12.71** (`VERSION` modules + provider).
 
 | Artefact | Repo | Public registry.terraform.io |
 |----------|------|------------------------------|
-| Provider `aisia-foundation/aisia` | `6.12.70` | ⚠️ non mesuré (provider: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>) |
-| Module `terraform-aisia-cluster` (`cluster/aisia`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-aisia-swarm` (`swarm/aisia`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-aws-aisia` (`aisia/aws`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-azure-aisia` (`aisia/azure`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-google-aisia` (`aisia/google`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-ovh-aisia` (`aisia/ovh`) | `6.12.70` | ⚠️ non mesuré (offline) |
-| Module `terraform-scaleway-aisia` (`aisia/scaleway`) | `6.12.70` | ⚠️ non mesuré (offline) |
+| Provider `aisia-foundation/aisia` | `6.12.71` | ⚠️ non mesuré (provider: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>) |
+| Module `terraform-aisia-cluster` (`cluster/aisia`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-aisia-swarm` (`swarm/aisia`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-aws-aisia` (`aisia/aws`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-azure-aisia` (`aisia/azure`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-google-aisia` (`aisia/google`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-ovh-aisia` (`aisia/ovh`) | `6.12.71` | ⚠️ non mesuré (offline) |
+| Module `terraform-scaleway-aisia` (`aisia/scaleway`) | `6.12.71` | ⚠️ non mesuré (offline) |
 
 HCP privé (`app.terraform.io/AISIA`) : non interrogé ici (token fondateur). Ne pas écrire « 100 % registry » si une ligne public est absente ou en écart.
 
