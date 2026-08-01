@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod live vérifiée** : **v6.12.73** (2026-07-26) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod live vérifiée** : **v6.12.75** (2026-08-01) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -26,9 +26,9 @@ exécute, la réponse sort traçable et gouvernée.
 | vs proxy LLM | AISIA |
 |--------------|-------|
 | 1 provider fixe | **88** providers déclarés |
-| Catalogue modèles | **866** catalogue · **115** locaux déclarés · **58** locaux actifs |
+| Catalogue modèles | **869** catalogue · **117** locaux déclarés · **59** locaux actifs |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — **v6.12.73** LIVE |
+| SaaS opaque | Déployable Swarm/K8s — **v6.12.75** LIVE |
 
 ## Authentification
 
@@ -81,7 +81,7 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : `6.12.73` cible la plateforme **v6.12.73**.
+Provider **couplé à AISIA** : `6.12.75` cible la plateforme **v6.12.75**.
 Utiliser `version = "~> 6.12"` dans `required_providers`.
 
 ## Example Usage
