@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod live vérifiée** : **v6.12.78** (2026-08-04) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod live vérifiée** : **v6.12.79** (2026-08-04) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
