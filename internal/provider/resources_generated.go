@@ -35,7 +35,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_config_snapshots", path: "/admin/config/snapshots", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_connectors_catalog_item", path: "/admin/connectors-catalog", updateVerb: "PUT", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
+		return &apiResource{name: "admin_connectors_catalog_item", path: "/admin/connectors-catalog", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_connectors_mcp_servers", path: "/admin/connectors/mcp/servers", updateVerb: "", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "server_id", TFType: "string", Required: true, Desc: "champ server_id"}, {Name: "url", TFType: "string", Required: true, Desc: "champ url"}, {Name: "headers", TFType: "string", Required: false, Desc: "champ headers"}, {Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}}}
@@ -68,7 +68,7 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
-		return &apiResource{name: "admin_groups", path: "/admin/groups", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: true, Desc: "champ name"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}}}
+		return &apiResource{name: "admin_groups", path: "/admin/groups", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "name", TFType: "string", Required: true, Desc: "champ name"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_hierarchy_nodes", path: "/admin/hierarchy/nodes", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
@@ -77,10 +77,19 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", updateVerb: "PUT", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
+		return &apiResource{name: "admin_integrations", path: "/admin/integrations", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "id", TFType: "string", Required: true, Desc: "champ id"}, {Name: "display_name", TFType: "string", Required: false, Desc: "champ display_name"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "connector_class", TFType: "string", Required: false, Desc: "champ connector_class"}, {Name: "base_url", TFType: "string", Required: false, Desc: "champ base_url"}, {Name: "api_version", TFType: "string", Required: false, Desc: "champ api_version"}, {Name: "connector_version", TFType: "string", Required: false, Desc: "champ connector_version"}, {Name: "enabled", TFType: "bool", Required: false, Desc: "champ enabled"}, {Name: "config", TFType: "string", Required: false, Desc: "champ config"}}}
+	},
+	func() resource.Resource {
 		return &apiResource{name: "admin_leads_item", path: "/admin/leads", updateVerb: "PUT", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_learning_finetune_runs", path: "/admin/learning/finetune-runs", updateVerb: "", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "base_model", TFType: "string", Required: true, Desc: "champ base_model"}, {Name: "dataset", TFType: "string", Required: true, Desc: "champ dataset"}, {Name: "epochs", TFType: "int", Required: false, Desc: "champ epochs"}, {Name: "lr", TFType: "float", Required: false, Desc: "champ lr"}, {Name: "notes", TFType: "string", Required: false, Desc: "champ notes"}}}
+	},
+	func() resource.Resource {
+		return &apiResource{name: "admin_maintenance_tasks", path: "/admin/maintenance/tasks", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "task_id", TFType: "string", Required: true, Desc: "champ task_id"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "schedule", TFType: "string", Required: false, Desc: "champ schedule"}, {Name: "interval_seconds", TFType: "int", Required: false, Desc: "champ interval_seconds"}, {Name: "enabled", TFType: "bool", Required: false, Desc: "champ enabled"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "config", TFType: "string", Required: false, Desc: "champ config"}}}
+	},
+	func() resource.Resource {
+		return &apiResource{name: "admin_mcp_servers", path: "/admin/mcp-servers", updateVerb: "", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "server_id", TFType: "string", Required: true, Desc: "champ server_id"}, {Name: "url", TFType: "string", Required: true, Desc: "champ url"}, {Name: "headers", TFType: "string", Required: false, Desc: "champ headers"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_oidc_providers", path: "/admin/oidc-providers", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "provider_id", TFType: "string", Required: false, Desc: "champ provider_id"}, {Name: "enabled", TFType: "bool", Required: false, Desc: "champ enabled"}, {Name: "config", TFType: "string", Required: false, Desc: "champ config"}}}
@@ -95,6 +104,9 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "admin_provider_pricing_item", path: "/admin/provider-pricing", updateVerb: "PUT", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
 	},
 	func() resource.Resource {
+		return &apiResource{name: "admin_seo_app_credentials_item", path: "/admin/seo/app-credentials", updateVerb: "PUT", canDelete: false, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
+	},
+	func() resource.Resource {
 		return &apiResource{name: "admin_seo_feeds", path: "/admin/seo/feeds", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "id", TFType: "string", Required: false, Desc: "champ id"}, {Name: "category", TFType: "string", Required: false, Desc: "champ category"}, {Name: "url", TFType: "string", Required: false, Desc: "champ url"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}}}
 	},
 	func() resource.Resource {
@@ -102,6 +114,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &apiResource{name: "admin_token_quotas", path: "/admin/token-quotas", updateVerb: "PUT", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API)."}
+	},
+	func() resource.Resource {
+		return &apiResource{name: "admin_vault", path: "/admin/vault", updateVerb: "", canDelete: true, desc: "Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "secret_name", TFType: "string", Required: true, Desc: "champ secret_name"}, {Name: "value", TFType: "string", Required: true, Desc: "champ value"}, {Name: "org_id", TFType: "string", Required: false, Desc: "champ org_id"}}}
 	},
 	func() resource.Resource {
 		return &apiResource{name: "org_agents", path: "/org/agents", updateVerb: "PUT", canDelete: true, desc: "Endpoint API AISIA — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "allowed_tools", TFType: "list", Required: false, Desc: "champ allowed_tools"}, {Name: "description", TFType: "string", Required: false, Desc: "champ description"}, {Name: "max_steps", TFType: "int", Required: false, Desc: "champ max_steps"}, {Name: "max_tokens", TFType: "int", Required: false, Desc: "champ max_tokens"}, {Name: "model", TFType: "string", Required: false, Desc: "champ model"}, {Name: "model_id", TFType: "string", Required: false, Desc: "champ model_id"}, {Name: "name", TFType: "string", Required: false, Desc: "champ name"}, {Name: "schedule_interval_s", TFType: "int", Required: false, Desc: "champ schedule_interval_s"}, {Name: "system_prompt", TFType: "string", Required: false, Desc: "champ system_prompt"}, {Name: "temperature", TFType: "float", Required: false, Desc: "champ temperature"}}}
@@ -332,6 +347,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_connectors_catalog_import_openapi_action", path: "/admin/connectors-catalog/import-openapi", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/connectors-catalog/import-openapi` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_connectors_catalog_service_id_metadata_mutation", path: "", pathTemplate: "/admin/connectors-catalog/{service_id}/metadata", method: "PUT", readPath: "/admin/connectors-catalog", desc: "Mutation admin PUT `/admin/connectors-catalog/{service_id}/metadata` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_connectors_mcp_servers_server_id_call_action", path: "", pathTemplate: "/admin/connectors/mcp/servers/{server_id}/call", method: "POST", readPath: "/admin/connectors/manifests", desc: "Mutation admin POST `/admin/connectors/mcp/servers/{server_id}/call` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
@@ -443,6 +461,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_healthcheck_run_action", path: "/admin/healthcheck/run", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/healthcheck/run` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_integrations_integration_id_enable_action", path: "", pathTemplate: "/admin/integrations/{integration_id}/enable", method: "POST", readPath: "/admin/integrations/status", desc: "Mutation admin POST `/admin/integrations/{integration_id}/enable` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_integrations_integration_id_test_action", path: "", pathTemplate: "/admin/integrations/{integration_id}/test", method: "POST", readPath: "/admin/integrations/status", desc: "Mutation admin POST `/admin/integrations/{integration_id}/test` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
@@ -552,6 +573,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_organizations_org_id_suspend_mutation", path: "", pathTemplate: "/admin/organizations/{org_id}/suspend", method: "PUT", readPath: "/admin/organizations/", desc: "Mutation admin PUT `/admin/organizations/{org_id}/suspend` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_orgs_org_id_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}", method: "PUT", readPath: "/admin/orgs", desc: "Mutation admin PUT `/admin/orgs/{org_id}` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_orgs_org_id_api_keys_action", path: "", pathTemplate: "/admin/orgs/{org_id}/api-keys", method: "POST", readPath: "/admin/orgs", desc: "Mutation admin POST `/admin/orgs/{org_id}/api-keys` (idempotent via Terraform, GOV-01)."}
@@ -668,10 +692,16 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_seo_comments_comment_id_approve_reply_action", path: "", pathTemplate: "/admin/seo/comments/{comment_id}/approve-reply", method: "POST", readPath: "/admin/seo/feeds", desc: "Mutation admin POST `/admin/seo/comments/{comment_id}/approve-reply` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_seo_linkedin_force_publish_action", path: "/admin/seo/linkedin/force-publish", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/seo/linkedin/force-publish` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_seo_posts_post_id_approve_action", path: "", pathTemplate: "/admin/seo/posts/{post_id}/approve", method: "POST", readPath: "/admin/seo/feeds", desc: "Mutation admin POST `/admin/seo/posts/{post_id}/approve` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_seo_posts_post_id_reject_action", path: "", pathTemplate: "/admin/seo/posts/{post_id}/reject", method: "POST", readPath: "/admin/seo/feeds", desc: "Mutation admin POST `/admin/seo/posts/{post_id}/reject` (idempotent via Terraform, GOV-01)."}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_seo_scheduler_action", path: "/admin/seo/scheduler", pathTemplate: "", method: "POST", readPath: "/admin/seo/scheduler", desc: "Mutation admin POST `/admin/seo/scheduler` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_sessions_bulk_revoke_action", path: "/admin/sessions/bulk-revoke", pathTemplate: "", method: "POST", readPath: "/admin/sessions/bulk-revoke", desc: "Mutation admin POST `/admin/sessions/bulk-revoke` (idempotent via Terraform, GOV-01)."}
@@ -728,9 +758,6 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_users_user_id_unlock_action", path: "", pathTemplate: "/admin/users/{user_id}/unlock", method: "POST", readPath: "/admin/users", desc: "Mutation admin POST `/admin/users/{user_id}/unlock` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_vault_action", path: "/admin/vault", pathTemplate: "", method: "POST", readPath: "/admin/vault", desc: "Mutation admin POST `/admin/vault` (idempotent via Terraform, GOV-01)."}
-	},
-	func() resource.Resource {
 		return &actionApiResource{name: "admin_webhook_alert_action", path: "/admin/webhook/alert", pathTemplate: "", method: "POST", readPath: "", desc: "Mutation admin POST `/admin/webhook/alert` (idempotent via Terraform, GOV-01)."}
 	},
 	func() resource.Resource {
@@ -741,14 +768,5 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_webhooks_webhook_id_test_action", path: "", pathTemplate: "/admin/webhooks/{webhook_id}/test", method: "POST", readPath: "/admin/webhooks", desc: "Mutation admin POST `/admin/webhooks/{webhook_id}/test` (idempotent via Terraform, GOV-01)."}
-	},
-	func() resource.Resource {
-		return &actionApiResource{name: "admin_webhooks_wh_id_mutation", path: "", pathTemplate: "/admin/webhooks/{wh_id}", method: "DELETE", readPath: "/admin/webhooks", desc: "Mutation admin DELETE `/admin/webhooks/{wh_id}` (idempotent via Terraform, GOV-01)."}
-	},
-	func() resource.Resource {
-		return &actionApiResource{name: "admin_webhooks_wid_mutation", path: "", pathTemplate: "/admin/webhooks/{wid}", method: "DELETE", readPath: "/admin/webhooks", desc: "Mutation admin DELETE `/admin/webhooks/{wid}` (idempotent via Terraform, GOV-01)."}
-	},
-	func() resource.Resource {
-		return &actionApiResource{name: "admin_webhooks_wid_test_action", path: "", pathTemplate: "/admin/webhooks/{wid}/test", method: "POST", readPath: "/admin/webhooks", desc: "Mutation admin POST `/admin/webhooks/{wid}/test` (idempotent via Terraform, GOV-01)."}
 	},
 }

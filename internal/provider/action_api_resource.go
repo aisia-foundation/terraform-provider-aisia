@@ -27,9 +27,9 @@ type actionApiResource struct {
 }
 
 var (
-	_ resource.Resource              = &actionApiResource{}
-	_ resource.ResourceWithConfigure = &actionApiResource{}
-	_tplVar                        = regexp.MustCompile(`\{([a-zA-Z0-9_]+)\}`)
+	_       resource.Resource              = &actionApiResource{}
+	_       resource.ResourceWithConfigure = &actionApiResource{}
+	_tplVar                                = regexp.MustCompile(`\{([a-zA-Z0-9_]+)\}`)
 )
 
 type actionApiResourceModel struct {

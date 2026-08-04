@@ -2,6 +2,24 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.12.78] — 2026-08-04
+
+### Changed
+- Alignement de version sur AISIA v6.12.78 (versioning couplé, docs/index.md +
+  guides/getting-started.md + README régénérés). Rattrape aussi le saut `v6.12.77`
+  (VERSION bumpé sans entrée CHANGELOG par le commit `ad31e4ac8`, jamais publié).
+  Corrige aussi la contrainte de version obsolète `~> 6.9` dans `examples/provider/
+  provider.tf` et `examples/complete/main.tf` (→ `~> 6.12`, alignée sur README/docs).
+  Provider inchangé fonctionnellement (resources/data sources stables) — préparation
+  publication, pas de build/signature ici.
+
+## [6.12.76] — 2026-08-02
+
+### Changed
+- Alignement de version sur AISIA v6.12.76 (versioning couplé, docs/index.md +
+  guides/getting-started.md + README régénérés). Provider inchangé fonctionnellement
+  (resources/data sources stables) — préparation publication, pas de build/signature ici.
+
 ## [6.9.63] — 2026-06-30
 
 ### Changed
