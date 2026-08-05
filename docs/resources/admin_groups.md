@@ -39,7 +39,6 @@ output "entity_id" {
 ### Optional
 
 - `description` (String) champ description
-- `org_id` (String) champ org_id
 
 ### Read-Only
 
