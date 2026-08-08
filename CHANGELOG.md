@@ -2,6 +2,29 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.12.81] — 2026-08-05
+
+### Changed
+- Alignement de version sur AISIA v6.12.81 (versioning couplé). Déjà publié publiquement
+  sur registry.terraform.io (vérifié : `aisia-foundation/aisia` v6.12.81 disponible,
+  installable via `~> 6.12`). Provider inchangé fonctionnellement. ⚠️ Contrairement aux
+  modules `terraform-registry/*`, ce provider ne porte pas de variable `image_tag` — le
+  couplage de version ne pose donc pas le même risque de « tag d'image inexistant » que
+  celui corrigé cette session sur les modules per-cloud.
+
+## [6.12.80] — 2026-08-05
+
+### Changed
+- Alignement de version sur AISIA v6.12.80 (versioning couplé, release AISIA LIVE certifiée
+  DEPLOY-REPORT all-green). Entrée rétroactive (bump réel non documenté au moment du commit
+  `38058f47f`). Provider inchangé fonctionnellement.
+
+## [6.12.79] — 2026-08-04
+
+### Changed
+- Alignement de version sur AISIA v6.12.79 (versioning couplé). Entrée rétroactive (bump
+  réel non documenté au moment du commit `0ac97ec9d`). Provider inchangé fonctionnellement.
+
 ## [6.12.78] — 2026-08-04
 
 ### Changed
