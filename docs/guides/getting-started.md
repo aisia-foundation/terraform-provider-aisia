@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-DOCS-ENRICH:09_publications -->
-> **Version LIVE** : **v6.12.84** (2026-08-09) — guide synchronisé avec le provider et les modules registry.
+> **Version LIVE** : **v6.12.84** (2026-08-10) — guide synchronisé avec le provider et les modules registry.
 
 # Guide d'implémentation Terraform AISIA
 
