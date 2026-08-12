@@ -20,14 +20,16 @@ type aisiaProvider struct {
 
 // providerData est injecté dans chaque resource/data source (Configure).
 type providerData struct {
-	endpoint string
-	token    string
-	http     *http.Client
+	endpoint  string
+	token     string
+	scimToken string
+	http      *http.Client
 }
 
 type aisiaProviderModel struct {
-	Endpoint types.String `tfsdk:"endpoint"`
-	Token    types.String `tfsdk:"token"`
+	Endpoint  types.String `tfsdk:"endpoint"`
+	Token     types.String `tfsdk:"token"`
+	SCIMToken types.String `tfsdk:"scim_token"`
 }
 
 func New(version string) func() provider.Provider {
@@ -54,6 +56,11 @@ func (p *aisiaProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp
 				Optional:            true,
 				Sensitive:           true,
 			},
+			"scim_token": schema.StringAttribute{
+				MarkdownDescription: "Jeton SCIM AISIA distinct utilisé exclusivement pour `/scim/*`. Préférez l'env `AISIA_SCIM_TOKEN` (avec compatibilité `SCIM_BEARER_TOKEN`). Sensible.",
+				Optional:            true,
+				Sensitive:           true,
+			},
 		},
 	}
 }
@@ -77,18 +84,26 @@ func (p *aisiaProvider) Configure(ctx context.Context, req provider.ConfigureReq
 	if !cfg.Token.IsNull() && cfg.Token.ValueString() != "" {
 		token = cfg.Token.ValueString()
 	}
-	if token == "" {
+	scimToken := os.Getenv("AISIA_SCIM_TOKEN")
+	if scimToken == "" {
+		scimToken = os.Getenv("SCIM_BEARER_TOKEN")
+	}
+	if !cfg.SCIMToken.IsNull() && !cfg.SCIMToken.IsUnknown() && cfg.SCIMToken.ValueString() != "" {
+		scimToken = cfg.SCIMToken.ValueString()
+	}
+	if token == "" && scimToken == "" {
 		resp.Diagnostics.AddError(
 			"Jeton AISIA manquant",
-			"Renseignez l'attribut `token` ou la variable d'environnement `AISIA_TOKEN`.",
+			"Renseignez `token`/`AISIA_TOKEN` pour l'API AISIA ou `scim_token`/`AISIA_SCIM_TOKEN` pour un usage SCIM exclusif.",
 		)
 		return
 	}
 
 	data := &providerData{
-		endpoint: endpoint,
-		token:    token,
-		http:     &http.Client{Timeout: 30 * time.Second},
+		endpoint:  endpoint,
+		token:     token,
+		scimToken: scimToken,
+		http:      &http.Client{Timeout: 30 * time.Second},
 	}
 	resp.ResourceData = data
 	resp.DataSourceData = data

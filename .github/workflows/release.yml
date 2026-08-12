@@ -1,6 +1,8 @@
 name: provider-release
 # Build + signe GPG + GitHub Release PUIS enregistre la version sur le registry HCP
-# privé via l'API (provider privé ≠ modules : pas de VCS auto-ingest). Repo public → Actions gratuit.
+# privé via l'API (provider privé ≠ modules : pas de VCS auto-ingest).
+# Aucun runner GitHub-hosted : la publication nominale reste locale et ce workflow
+# de secours utilise exclusivement le runner de release AISIA auto-hébergé.
 on:
   push:
     tags: ['v*']
@@ -8,7 +10,7 @@ permissions:
   contents: write
 jobs:
   goreleaser:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, ARM64, aisia-release]
     timeout-minutes: 30
     defaults: { run: { working-directory: . } }
     steps:

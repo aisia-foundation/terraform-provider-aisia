@@ -3,7 +3,9 @@ package provider
 import (
 	"context"
 	"fmt"
+	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -12,8 +14,9 @@ import (
 )
 
 var (
-	_ resource.Resource              = &resellerResource{}
-	_ resource.ResourceWithConfigure = &resellerResource{}
+	_ resource.Resource                = &resellerResource{}
+	_ resource.ResourceWithConfigure   = &resellerResource{}
+	_ resource.ResourceWithImportState = &resellerResource{}
 )
 
 func NewResellerResource() resource.Resource { return &resellerResource{} }
@@ -60,11 +63,13 @@ func (r *resellerResource) Schema(_ context.Context, _ resource.SchemaRequest, r
 			},
 			"name": schema.StringAttribute{
 				MarkdownDescription: "Nom du revendeur.",
-				Required:            true,
+				Optional:            true,
+				Computed:            true,
 			},
 			"contact_email": schema.StringAttribute{
 				MarkdownDescription: "Email de contact du revendeur.",
-				Required:            true,
+				Optional:            true,
+				Computed:            true,
 			},
 			"rev_share_pct": schema.Float64Attribute{
 				MarkdownDescription: "Part de revenu reversée au revendeur, en pourcentage (défaut 25).",
@@ -113,6 +118,12 @@ func (r *resellerResource) Create(ctx context.Context, req resource.CreateReques
 	if resp.Diagnostics.HasError() {
 		return
 	}
+	if plan.Name.IsNull() || plan.Name.IsUnknown() || strings.TrimSpace(plan.Name.ValueString()) == "" || plan.ContactEmail.IsNull() || plan.ContactEmail.IsUnknown() || strings.TrimSpace(plan.ContactEmail.ValueString()) == "" {
+		resp.Diagnostics.AddError("Revendeur incomplet", "`name` et `contact_email` sont requis lors de la création.")
+		return
+	}
+	statusConfigured := !plan.Status.IsNull() && !plan.Status.IsUnknown()
+	desiredStatus := plan.Status.ValueString()
 	payload := resellerAPI{Name: plan.Name.ValueString(), ContactEmail: plan.ContactEmail.ValueString()}
 	if !plan.RevSharePct.IsNull() && !plan.RevSharePct.IsUnknown() {
 		v := plan.RevSharePct.ValueFloat64()
@@ -127,17 +138,50 @@ func (r *resellerResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 	applyReseller(&plan, out)
+	if plan.ID.IsNull() || plan.ID.IsUnknown() || plan.ID.ValueString() == "" {
+		resp.Diagnostics.AddError("Création revendeur sans identifiant", "POST /admin/resellers n'a retourné aucun id exploitable.")
+		return
+	}
 	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	if statusConfigured {
+		var updateOut resellerAPI
+		if _, err := r.data.apiDo(ctx, "PUT", "/admin/resellers/"+apiPathSegment(plan.ID.ValueString()), map[string]any{"status": desiredStatus}, &updateOut); err != nil {
+			resp.Diagnostics.AddError("Statut revendeur après création échoué", err.Error())
+			return
+		}
+		applyReseller(&plan, updateOut)
+		if updateOut.Status == "" {
+			plan.Status = types.StringValue(desiredStatus)
+		}
+		resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	}
 }
 
-// Read est un no-op : l'API AISIA n'expose pas de GET /admin/resellers/{id}
-// (seulement la collection). L'état Terraform est conservé tel quel.
 func (r *resellerResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var state resellerModel
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
+	var out any
+	if _, err := r.data.apiDo(ctx, "GET", "/admin/resellers", nil, &out); err != nil {
+		resp.Diagnostics.AddError("Lecture revendeurs échouée", err.Error())
+		return
+	}
+	item, found := collectionItem(out, "resellers", state.ID.ValueString(), "id", "reseller_id")
+	if !found {
+		resp.State.RemoveResource(ctx)
+		return
+	}
+	var current resellerAPI
+	if err := decodeAPIObject(item, &current); err != nil {
+		resp.Diagnostics.AddError("Réponse revendeur invalide", err.Error())
+		return
+	}
+	applyReseller(&state, current)
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
 
@@ -149,22 +193,49 @@ func (r *resellerResource) Update(ctx context.Context, req resource.UpdateReques
 		return
 	}
 	plan.ID = state.ID
-	payload := resellerAPI{Name: plan.Name.ValueString(), ContactEmail: plan.ContactEmail.ValueString()}
-	if !plan.RevSharePct.IsNull() && !plan.RevSharePct.IsUnknown() {
-		v := plan.RevSharePct.ValueFloat64()
-		payload.RevSharePct = &v
+	if plan.Name.IsNull() || plan.Name.IsUnknown() {
+		plan.Name = state.Name
 	}
-	payload.Domain = knownStr(plan.Domain)
-	payload.BrandingConfigID = knownStr(plan.BrandingConfigID)
-	payload.Status = knownStr(plan.Status)
-	payload.Notes = knownStr(plan.Notes)
+	if plan.ContactEmail.IsNull() || plan.ContactEmail.IsUnknown() {
+		plan.ContactEmail = state.ContactEmail
+	}
+	if plan.RevSharePct.IsNull() || plan.RevSharePct.IsUnknown() {
+		plan.RevSharePct = state.RevSharePct
+	}
+	if plan.Domain.IsNull() || plan.Domain.IsUnknown() {
+		plan.Domain = state.Domain
+	}
+	if plan.BrandingConfigID.IsNull() || plan.BrandingConfigID.IsUnknown() {
+		plan.BrandingConfigID = state.BrandingConfigID
+	}
+	if plan.Status.IsNull() || plan.Status.IsUnknown() {
+		plan.Status = state.Status
+	}
+	if plan.Notes.IsNull() || plan.Notes.IsUnknown() {
+		plan.Notes = state.Notes
+	}
+	payload := map[string]any{
+		"name": plan.Name.ValueString(), "contact_email": plan.ContactEmail.ValueString(),
+		"rev_share_pct": plan.RevSharePct.ValueFloat64(), "domain": plan.Domain.ValueString(),
+		"branding_config_id": plan.BrandingConfigID.ValueString(), "status": plan.Status.ValueString(),
+		"notes": plan.Notes.ValueString(),
+	}
 	var out resellerAPI
-	if _, err := r.data.apiDo(ctx, "PUT", "/admin/resellers/"+plan.ID.ValueString(), payload, &out); err != nil {
+	if _, err := r.data.apiDo(ctx, "PUT", "/admin/resellers/"+apiPathSegment(plan.ID.ValueString()), payload, &out); err != nil {
 		resp.Diagnostics.AddError("Mise à jour revendeur échouée", err.Error())
 		return
 	}
 	applyReseller(&plan, out)
 	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+}
+
+func (r *resellerResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	identifier := strings.TrimSpace(req.ID)
+	if identifier == "" {
+		resp.Diagnostics.AddError("Identifiant d'import vide", "Fournissez l'identifiant exact du revendeur AISIA.")
+		return
+	}
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), types.StringValue(identifier))...)
 }
 
 func (r *resellerResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
@@ -173,7 +244,7 @@ func (r *resellerResource) Delete(ctx context.Context, req resource.DeleteReques
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	if _, err := r.data.apiDo(ctx, "DELETE", "/admin/resellers/"+state.ID.ValueString(), nil, nil); err != nil {
+	if _, err := r.data.apiDo(ctx, "DELETE", "/admin/resellers/"+apiPathSegment(state.ID.ValueString()), nil, nil); err != nil {
 		resp.Diagnostics.AddError("Suppression revendeur échouée", err.Error())
 	}
 }
@@ -200,4 +271,7 @@ func applyReseller(m *resellerModel, api resellerAPI) {
 	m.BrandingConfigID = coalesceStr(api.BrandingConfigID, m.BrandingConfigID)
 	m.Status = coalesceStr(api.Status, m.Status)
 	m.Notes = coalesceStr(api.Notes, m.Notes)
+	if m.Status.ValueString() == "" {
+		m.Status = types.StringValue("active")
+	}
 }

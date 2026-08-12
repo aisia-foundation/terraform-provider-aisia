@@ -2,9 +2,10 @@ package provider
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
+	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -13,8 +14,9 @@ import (
 )
 
 var (
-	_ resource.Resource              = &localModelResource{}
-	_ resource.ResourceWithConfigure = &localModelResource{}
+	_ resource.Resource                = &localModelResource{}
+	_ resource.ResourceWithConfigure   = &localModelResource{}
+	_ resource.ResourceWithImportState = &localModelResource{}
 )
 
 func NewLocalModelResource() resource.Resource { return &localModelResource{} }
@@ -45,7 +47,9 @@ func (r *localModelResource) Schema(_ context.Context, _ resource.SchemaRequest,
 			},
 			"config_json": schema.StringAttribute{
 				MarkdownDescription: "Définition complète du modèle en JSON (ex. `{\"runtime\":\"ollama\",\"model_name\":\"llama3.3:70b\",\"priority\":120,\"status\":\"active\"}`).",
-				Required:            true,
+				Optional:            true,
+				Computed:            true,
+				Sensitive:           true,
 			},
 			"display_name": schema.StringAttribute{MarkdownDescription: "Nom affiché (dérivé).", Computed: true},
 			"status":       schema.StringAttribute{MarkdownDescription: "Statut (active/inactive).", Computed: true},
@@ -67,9 +71,9 @@ func (r *localModelResource) Configure(_ context.Context, req resource.Configure
 
 // write parse config_json, force le model_id et POST (upsert) vers l'API.
 func (r *localModelResource) write(ctx context.Context, plan *localModelModel) error {
-	def := map[string]any{}
-	if err := json.Unmarshal([]byte(plan.ConfigJSON.ValueString()), &def); err != nil {
-		return fmt.Errorf("config_json invalide (JSON): %w", err)
+	def, err := decodeConfigJSONObject(plan.ConfigJSON, "config_json")
+	if err != nil {
+		return err
 	}
 	def["model_id"] = plan.ModelID.ValueString()
 	var out map[string]any
@@ -85,6 +89,38 @@ func (r *localModelResource) write(ctx context.Context, plan *localModelModel) e
 	return nil
 }
 
+func applyLocalModelComputed(state *localModelModel, out map[string]any) {
+	display := asString(out, "display_name", "name")
+	if display == "" {
+		display = state.ModelID.ValueString()
+	}
+	state.DisplayName = types.StringValue(display)
+	status := asString(out, "status")
+	if status == "" {
+		if enabled, ok := out["enabled"].(bool); ok && !enabled {
+			status = "inactive"
+		} else {
+			status = "active"
+		}
+	}
+	state.Status = types.StringValue(status)
+}
+
+func (r *localModelResource) refresh(ctx context.Context, state *localModelModel) (int, error) {
+	var out map[string]any
+	code, err := r.data.apiDo(ctx, "GET", "/admin/local-models/"+apiPathSegment(state.ModelID.ValueString()), nil, &out)
+	if err != nil {
+		return code, err
+	}
+	reconciled, reconcileErr := reconcileConfigJSON(state.ConfigJSON, out, "model_id")
+	if reconcileErr != nil {
+		return code, reconcileErr
+	}
+	state.ConfigJSON = reconciled
+	applyLocalModelComputed(state, out)
+	return code, nil
+}
+
 func (r *localModelResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var plan localModelModel
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
@@ -96,6 +132,14 @@ func (r *localModelResource) Create(ctx context.Context, req resource.CreateRequ
 		return
 	}
 	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	if _, err := r.refresh(ctx, &plan); err != nil {
+		resp.Diagnostics.AddError("Relecture modèle local après création échouée", err.Error())
+		return
+	}
+	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
 }
 
 func (r *localModelResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
@@ -104,8 +148,7 @@ func (r *localModelResource) Read(ctx context.Context, req resource.ReadRequest,
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	var out map[string]any
-	code, err := r.data.apiDo(ctx, "GET", "/admin/local-models/"+state.ModelID.ValueString(), nil, &out)
+	code, err := r.refresh(ctx, &state)
 	if code == 404 {
 		resp.State.RemoveResource(ctx)
 		return
@@ -114,24 +157,44 @@ func (r *localModelResource) Read(ctx context.Context, req resource.ReadRequest,
 		resp.Diagnostics.AddError("Lecture modèle local échouée", err.Error())
 		return
 	}
-	state.DisplayName = types.StringValue(asString(out, "display_name", "name"))
-	if s := asString(out, "status"); s != "" {
-		state.Status = types.StringValue(s)
-	}
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
 
 func (r *localModelResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var plan localModelModel
+	var plan, state localModelModel
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	if err := r.write(ctx, &plan); err != nil { // POST = upsert
+	plan.ModelID = state.ModelID
+	if plan.ConfigJSON.IsNull() || plan.ConfigJSON.IsUnknown() {
+		plan.ConfigJSON = state.ConfigJSON
+	}
+	// POST est explicitement un upsert identifié par model_id : il met à jour
+	// l'objet existant sans créer de doublon, contrairement à un remplacement TF.
+	if err := r.write(ctx, &plan); err != nil {
 		resp.Diagnostics.AddError("Mise à jour modèle local échouée", err.Error())
 		return
 	}
 	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	if _, err := r.refresh(ctx, &plan); err != nil {
+		resp.Diagnostics.AddError("Relecture modèle local après mise à jour échouée", err.Error())
+		return
+	}
+	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+}
+
+func (r *localModelResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	identifier := strings.TrimSpace(req.ID)
+	if identifier == "" {
+		resp.Diagnostics.AddError("Identifiant d'import vide", "Fournissez l'identifiant exact du modèle local AISIA.")
+		return
+	}
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("model_id"), types.StringValue(identifier))...)
 }
 
 func (r *localModelResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
@@ -140,7 +203,7 @@ func (r *localModelResource) Delete(ctx context.Context, req resource.DeleteRequ
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	if _, err := r.data.apiDo(ctx, "DELETE", "/admin/local-models/"+state.ModelID.ValueString(), nil, nil); err != nil {
+	if _, err := r.data.apiDo(ctx, "DELETE", "/admin/local-models/"+apiPathSegment(state.ModelID.ValueString()), nil, nil); err != nil {
 		resp.Diagnostics.AddError("Suppression modèle local échouée", err.Error())
 	}
 }

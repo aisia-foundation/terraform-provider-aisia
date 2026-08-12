@@ -3,13 +3,13 @@
 page_title: "aisia_admin_sessions_bulk_revoke_action Resource - aisia"
 subcategory: ""
 description: |-
-  Mutation admin POST /admin/sessions/bulk-revoke (idempotent via Terraform, GOV-01).
+  Endpoint d'administration (Bearer requis) — mutation POST exacte /admin/sessions/bulk-revoke (resource action Terraform).
   Endpoint : /admin/sessions/bulk-revokeDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_sessions_bulk_revoke_action (Resource)
 
-Mutation admin POST `/admin/sessions/bulk-revoke` (idempotent via Terraform, GOV-01).
+Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/bulk-revoke` (resource action Terraform).
 
 - **Endpoint** : `/admin/sessions/bulk-revoke`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
@@ -35,12 +35,12 @@ output "result" {
 
 ### Required
 
-- `body` (String) Corps JSON (ex. `jsonencode({...})`). Clés requises si pathTemplate contient {placeholders}.
+- `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 
 ### Read-Only
 
 - `id` (String) Identifiant fixe de la mutation.
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

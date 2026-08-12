@@ -3,15 +3,15 @@
 page_title: "aisia_admin_ollama_models Data Source - aisia"
 subcategory: ""
 description: |-
-  Endpoint d'administration (Bearer requis) — lecture GET de /admin/ollama/models. Lecture seule (GET). Utilisez jsondecode(...json) pour exploiter les détails.
-  Endpoint : /admin/ollama/modelsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
+  Endpoint d'administration (Bearer requis) — lecture GET de /admin/ollama-models. Lecture seule (GET). Utilisez jsondecode(...json) pour exploiter les détails.
+  Endpoint : /admin/ollama-modelsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_ollama_models (Data Source)
 
-Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ollama/models`. Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.
+Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ollama-models`. Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.
 
-- **Endpoint** : `/admin/ollama/models`
+- **Endpoint** : `/admin/ollama-models`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
 - **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
 

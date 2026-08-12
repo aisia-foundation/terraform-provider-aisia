@@ -3,13 +3,13 @@
 page_title: "aisia_admin_organizations_org_id_suspend_mutation Resource - aisia"
 subcategory: ""
 description: |-
-  Mutation admin PUT /admin/organizations/{org_id}/suspend (idempotent via Terraform, GOV-01).
+  Endpoint d'administration (Bearer requis) — mutation PUT exacte /admin/organizations/{org_id}/suspend (resource action Terraform).
   Endpoint : /admin/organizations/{org_id}/suspendDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_organizations_org_id_suspend_mutation (Resource)
 
-Mutation admin PUT `/admin/organizations/{org_id}/suspend` (idempotent via Terraform, GOV-01).
+Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/organizations/{org_id}/suspend` (resource action Terraform).
 
 - **Endpoint** : `/admin/organizations/{org_id}/suspend`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
@@ -35,12 +35,12 @@ output "result" {
 
 ### Required
 
-- `body` (String) Corps JSON (ex. `jsonencode({...})`). Clés requises si pathTemplate contient {placeholders}.
+- `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 
 ### Read-Only
 
 - `id` (String) Identifiant fixe de la mutation.
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

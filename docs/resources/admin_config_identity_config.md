@@ -35,7 +35,7 @@ resource "aisia_admin_config_identity_config" "main" {
 ### Read-Only
 
 - `id` (String) Identifiant fixe (singleton).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

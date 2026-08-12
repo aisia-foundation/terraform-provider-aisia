@@ -3,13 +3,13 @@
 page_title: "aisia_admin_blog_posts Resource - aisia"
 subcategory: ""
 description: |-
-  Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
+  Endpoint d'administration (Bearer requis) — mutation POST exacte /admin/blog/posts (resource action Terraform).
   Endpoint : /admin/blog/postsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_blog_posts (Resource)
 
-Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
+Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/blog/posts` (resource action Terraform).
 
 - **Endpoint** : `/admin/blog/posts`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
@@ -34,6 +34,7 @@ output "entity_id" {
 
 ### Optional
 
+- `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 - `content_md` (String) champ content_md
 - `excerpt` (String) champ excerpt
 - `slug` (String) champ slug
@@ -42,8 +43,8 @@ output "entity_id" {
 
 ### Read-Only
 
-- `id` (String) Identifiant de l'entité (retourné par l'API).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `id` (String) Identifiant fixe de la mutation.
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

@@ -27,10 +27,18 @@ func (d *organizationDataSource) Schema(_ context.Context, _ datasource.SchemaRe
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "Lit une organisation AISIA existante par son `id`.",
 		Attributes: map[string]schema.Attribute{
-			"id":            schema.StringAttribute{MarkdownDescription: "ID de l'organisation.", Required: true},
-			"name":          schema.StringAttribute{MarkdownDescription: "Nom.", Computed: true},
-			"slug":          schema.StringAttribute{MarkdownDescription: "Slug.", Computed: true},
-			"contract_type": schema.StringAttribute{MarkdownDescription: "Type de contrat.", Computed: true},
+			"id":               schema.StringAttribute{MarkdownDescription: "ID de l'organisation.", Required: true},
+			"name":             schema.StringAttribute{MarkdownDescription: "Nom.", Computed: true},
+			"slug":             schema.StringAttribute{MarkdownDescription: "Slug.", Computed: true},
+			"plan":             schema.StringAttribute{MarkdownDescription: "Plan.", Computed: true},
+			"contract_type":    schema.StringAttribute{MarkdownDescription: "Type de contrat.", Computed: true},
+			"description":      schema.StringAttribute{MarkdownDescription: "Description.", Computed: true},
+			"max_users":        schema.Int64Attribute{MarkdownDescription: "Quota utilisateurs.", Computed: true},
+			"max_requests_day": schema.Int64Attribute{MarkdownDescription: "Quota requêtes/jour.", Computed: true},
+			"max_tokens_day":   schema.Int64Attribute{MarkdownDescription: "Quota tokens/jour.", Computed: true},
+			"support_tier":     schema.StringAttribute{MarkdownDescription: "Niveau de support.", Computed: true},
+			"deploy_channel":   schema.StringAttribute{MarkdownDescription: "Canal de déploiement.", Computed: true},
+			"status":           schema.StringAttribute{MarkdownDescription: "Statut.", Computed: true},
 		},
 	}
 }
@@ -54,7 +62,7 @@ func (d *organizationDataSource) Read(ctx context.Context, req datasource.ReadRe
 		return
 	}
 	var out orgAPI
-	if _, err := d.data.apiDo(ctx, "GET", "/admin/organizations/"+cfg.ID.ValueString(), nil, &out); err != nil {
+	if _, err := d.data.apiDo(ctx, "GET", "/admin/organizations/"+apiPathSegment(cfg.ID.ValueString()), nil, &out); err != nil {
 		resp.Diagnostics.AddError("Lecture organisation échouée", err.Error())
 		return
 	}

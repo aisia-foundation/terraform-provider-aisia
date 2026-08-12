@@ -4,14 +4,14 @@ page_title: "aisia_admin_groups Resource - aisia"
 subcategory: ""
 description: |-
   Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
-  Endpoint : /admin/groupsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
+  Endpoint : /admin/groups/Documentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_groups (Resource)
 
 Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
 
-- **Endpoint** : `/admin/groups`
+- **Endpoint** : `/admin/groups/`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
 - **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
 
@@ -39,11 +39,12 @@ output "entity_id" {
 ### Optional
 
 - `description` (String) champ description
+- `org_id` (String) champ org_id
 
 ### Read-Only
 
 - `id` (String) Identifiant de l'entité (retourné par l'API).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

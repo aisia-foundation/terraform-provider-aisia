@@ -30,12 +30,12 @@ resource "aisia_admin_config_email_config" "main" {
 
 ### Required
 
-- `body` (String) Corps JSON (payload PUT/PATCH).
+- `body` (String, Sensitive) Corps JSON (payload PUT/PATCH).
 
 ### Read-Only
 
 - `id` (String) Identifiant fixe (singleton).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String, Sensitive) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

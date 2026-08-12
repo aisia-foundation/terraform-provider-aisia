@@ -3,13 +3,13 @@
 page_title: "aisia_admin_connectors_mcp_servers Resource - aisia"
 subcategory: ""
 description: |-
-  Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
+  Endpoint d'administration (Bearer requis) — mutation POST exacte /admin/connectors/mcp/servers (resource action Terraform).
   Endpoint : /admin/connectors/mcp/serversDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_connectors_mcp_servers (Resource)
 
-Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
+Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/connectors/mcp/servers` (resource action Terraform).
 
 - **Endpoint** : `/admin/connectors/mcp/servers`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
@@ -39,13 +39,14 @@ output "entity_id" {
 
 ### Optional
 
-- `headers` (String) champ headers
+- `body` (String, Sensitive) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
+- `headers` (String, Sensitive) champ headers
 - `org_id` (String) champ org_id
 
 ### Read-Only
 
-- `id` (String) Identifiant de l'entité (retourné par l'API).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `id` (String) Identifiant fixe de la mutation.
+- `json` (String, Sensitive) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

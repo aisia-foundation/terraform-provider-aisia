@@ -3,15 +3,15 @@
 page_title: "aisia_admin_verticals Data Source - aisia"
 subcategory: ""
 description: |-
-  Endpoint d'administration (Bearer requis) — lecture GET de /admin/verticals/. Lecture seule (GET). Utilisez jsondecode(...json) pour exploiter les détails.
-  Endpoint : /admin/verticals/Documentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
+  Endpoint d'administration (Bearer requis) — lecture GET de /admin/verticals. Lecture seule (GET). Utilisez jsondecode(...json) pour exploiter les détails.
+  Endpoint : /admin/verticalsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_verticals (Data Source)
 
-Endpoint d'administration (Bearer requis) — lecture GET de `/admin/verticals/`. Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.
+Endpoint d'administration (Bearer requis) — lecture GET de `/admin/verticals`. Lecture seule (GET). Utilisez `jsondecode(...json)` pour exploiter les détails.
 
-- **Endpoint** : `/admin/verticals/`
+- **Endpoint** : `/admin/verticals`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
 - **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
 

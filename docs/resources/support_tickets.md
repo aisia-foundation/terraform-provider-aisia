@@ -3,15 +3,15 @@
 page_title: "aisia_support_tickets Resource - aisia"
 subcategory: ""
 description: |-
-  Endpoint API AISIA — entité CRUD (create/read/update/delete via API).
-  Endpoint : /support/ticketsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
+  Endpoint API AISIA — mutation POST exacte /support/tickets/ (resource action Terraform).
+  Endpoint : /support/tickets/Documentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_support_tickets (Resource)
 
-Endpoint API AISIA — entité CRUD (create/read/update/delete via API).
+Endpoint API AISIA — mutation POST exacte `/support/tickets/` (resource action Terraform).
 
-- **Endpoint** : `/support/tickets`
+- **Endpoint** : `/support/tickets/`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
 - **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
 
@@ -39,13 +39,14 @@ output "entity_id" {
 
 ### Optional
 
+- `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 - `category` (String) champ category
 - `priority` (String) champ priority
 
 ### Read-Only
 
-- `id` (String) Identifiant de l'entité (retourné par l'API).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `id` (String) Identifiant fixe de la mutation.
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

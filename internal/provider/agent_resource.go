@@ -2,10 +2,10 @@ package provider
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
@@ -15,8 +15,9 @@ import (
 )
 
 var (
-	_ resource.Resource              = &agentResource{}
-	_ resource.ResourceWithConfigure = &agentResource{}
+	_ resource.Resource                = &agentResource{}
+	_ resource.ResourceWithConfigure   = &agentResource{}
+	_ resource.ResourceWithImportState = &agentResource{}
 )
 
 func NewAgentResource() resource.Resource { return &agentResource{} }
@@ -83,7 +84,7 @@ func normalizeAgentCode(code string) string {
 
 func (r *agentResource) readAgent(ctx context.Context, code string) (map[string]any, int, error) {
 	var out map[string]any
-	path := "/admin/agents/" + code
+	path := "/admin/agents/" + apiPathSegment(code)
 	status, err := r.data.apiDo(ctx, "GET", path, nil, &out)
 	return out, status, err
 }
@@ -91,7 +92,7 @@ func (r *agentResource) readAgent(ctx context.Context, code string) (map[string]
 func (r *agentResource) toggle(ctx context.Context, code string, enabled bool) (map[string]any, error) {
 	body := map[string]any{"enabled": enabled}
 	var out map[string]any
-	path := "/admin/agents/" + code + "/toggle"
+	path := "/admin/agents/" + apiPathSegment(code) + "/toggle"
 	if _, err := r.data.apiDo(ctx, "POST", path, body, &out); err != nil {
 		return nil, err
 	}
@@ -136,9 +137,9 @@ func (r *agentResource) apply(ctx context.Context, plan *agentModel) error {
 			return err
 		}
 	}
-	raw, _ := json.Marshal(info)
+	raw := marshalStateJSON(info, nil)
 	plan.Enabled = types.BoolValue(agentEnabledFromStatus(info))
-	plan.JSON = types.StringValue(string(raw))
+	plan.JSON = types.StringValue(raw)
 	return nil
 }
 
@@ -171,9 +172,9 @@ func (r *agentResource) Read(ctx context.Context, req resource.ReadRequest, resp
 		resp.Diagnostics.AddError("Lecture agent échouée", err.Error())
 		return
 	}
-	raw, _ := json.Marshal(info)
+	raw := marshalStateJSON(info, nil)
 	state.Enabled = types.BoolValue(agentEnabledFromStatus(info))
-	state.JSON = types.StringValue(string(raw))
+	state.JSON = types.StringValue(raw)
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
 
@@ -202,4 +203,13 @@ func (r *agentResource) Delete(ctx context.Context, req resource.DeleteRequest, 
 	if _, err := r.toggle(ctx, code, false); err != nil {
 		resp.Diagnostics.AddError("Désactivation agent échouée", err.Error())
 	}
+}
+
+func (r *agentResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	code := strings.TrimSpace(req.ID)
+	if code == "" {
+		resp.Diagnostics.AddError("Code d'import vide", "Fournissez le code exact de l'agent AISIA.")
+		return
+	}
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("code"), types.StringValue(code))...)
 }

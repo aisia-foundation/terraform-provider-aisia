@@ -83,7 +83,7 @@ func (d *catalogDataSource) Read(ctx context.Context, _ datasource.ReadRequest, 
 		resp.Diagnostics.AddError("Lecture catalogue échouée", err.Error())
 		return
 	}
-	raw, _ := json.Marshal(out)
+	raw := marshalStateJSON(out, nil)
 	items := extractList(out, d.listKey)
 	ids := make([]string, 0, len(items))
 	for _, it := range items {
@@ -94,7 +94,7 @@ func (d *catalogDataSource) Read(ctx context.Context, _ datasource.ReadRequest, 
 	idList, diags := types.ListValueFrom(ctx, types.StringType, ids)
 	resp.Diagnostics.Append(diags...)
 	state := catalogModel{
-		JSON:  types.StringValue(string(raw)),
+		JSON:  types.StringValue(raw),
 		Count: types.Int64Value(int64(len(items))),
 		IDs:   idList,
 	}
@@ -115,4 +115,25 @@ func extractList(out any, listKey string) []any {
 		}
 	}
 	return nil
+}
+
+func collectionItem(out any, listKey, identifier string, idKeys ...string) (map[string]any, bool) {
+	for _, item := range extractList(out, listKey) {
+		object, ok := item.(map[string]any)
+		if !ok {
+			continue
+		}
+		if asString(object, idKeys...) == identifier {
+			return object, true
+		}
+	}
+	return nil, false
+}
+
+func decodeAPIObject(object map[string]any, target any) error {
+	raw, err := json.Marshal(object)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(raw, target)
 }

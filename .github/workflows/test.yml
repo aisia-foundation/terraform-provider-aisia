@@ -7,7 +7,9 @@ permissions:
   contents: read
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Politique AISIA : aucun runner GitHub-hosted, même dans le dépôt provider
+    # publié séparément. Le label aisia-ci cible le runner organisationnel géré.
+    runs-on: [self-hosted, Linux, ARM64, aisia-ci]
     timeout-minutes: 15
     defaults: { run: { working-directory: . } }
     steps:

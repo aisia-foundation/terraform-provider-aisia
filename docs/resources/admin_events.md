@@ -4,14 +4,14 @@ page_title: "aisia_admin_events Resource - aisia"
 subcategory: ""
 description: |-
   Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
-  Endpoint : /admin/eventsDocumentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
+  Endpoint : /admin/events/Documentation produit : aisia.fr/docs https://aisia.fr/docsRéférence API OpenAPI : api.aisia.fr/docs https://api.aisia.fr/docs
 ---
 
 # aisia_admin_events (Resource)
 
 Endpoint d'administration (Bearer requis) — entité CRUD (create/read/update/delete via API).
 
-- **Endpoint** : `/admin/events`
+- **Endpoint** : `/admin/events/`
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
 - **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
 
@@ -50,7 +50,7 @@ output "entity_id" {
 ### Read-Only
 
 - `id` (String) Identifiant de l'entité (retourné par l'API).
-- `json` (String) Dernière réponse brute de l'API (JSON).
+- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA
