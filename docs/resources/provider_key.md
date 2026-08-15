@@ -32,17 +32,21 @@ variable "openai_key" {
 
 ### Required
 
-- `key_value` (String, Sensitive) Valeur de la clé API (sensible, write-only — non relue depuis l'API qui la masque).
 - `org_id` (String) ID de l'organisation propriétaire de la clé.
 - `provider_id` (String) ID du provider (ex. `openai`, `cohere`, `groq`).
 
 ### Optional
 
 - `account_email` (String) Email du compte SaaS propriétaire de la clé (traçabilité).
+- `key_value` (String, Sensitive) Valeur de la clé API (sensible, write-only — non relue depuis l'API qui la masque).
+- `owner` (String) Propriétaire métier de la clé.
+- `rotation_days` (Number) Période de rotation (défaut API 90 jours).
 
 ### Read-Only
 
+- `expires_at` (String) Échéance calculée de la clé.
 - `id` (String) Identifiant composite `org_id/provider_id`.
+- `key_masked` (String) Représentation masquée renvoyée par l'API.
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

@@ -8,8 +8,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
@@ -32,18 +32,18 @@ type apiKeyResource struct {
 // Immuable : tout changement => recréation. La valeur brute n'est renvoyée QU'UNE
 // fois à la création (stockée en sortie sensible `key`).
 type apiKeyModel struct {
-	ID        types.String `tfsdk:"id"`
-	OrgID     types.String `tfsdk:"org_id"`
-	Name      types.String `tfsdk:"name"`
-	Scopes    types.List   `tfsdk:"scopes"`
-	RateRPM   types.Int64  `tfsdk:"rate_limit_rpm"`
-	RateRPD   types.Int64  `tfsdk:"rate_limit_rpd"`
-	RateTPM   types.Int64  `tfsdk:"rate_limit_tpm"`
-	MaxBudget types.Float64 `tfsdk:"max_budget_eur"`
-	AllowedModels types.List `tfsdk:"allowed_models"`
-	ExpiresAt types.String `tfsdk:"expires_at"`
-	Key       types.String `tfsdk:"key"`
-	KeyPrefix types.String `tfsdk:"key_prefix"`
+	ID            types.String  `tfsdk:"id"`
+	OrgID         types.String  `tfsdk:"org_id"`
+	Name          types.String  `tfsdk:"name"`
+	Scopes        types.List    `tfsdk:"scopes"`
+	RateRPM       types.Int64   `tfsdk:"rate_limit_rpm"`
+	RateRPD       types.Int64   `tfsdk:"rate_limit_rpd"`
+	RateTPM       types.Int64   `tfsdk:"rate_limit_tpm"`
+	MaxBudget     types.Float64 `tfsdk:"max_budget_eur"`
+	AllowedModels types.List    `tfsdk:"allowed_models"`
+	ExpiresAt     types.String  `tfsdk:"expires_at"`
+	Key           types.String  `tfsdk:"key"`
+	KeyPrefix     types.String  `tfsdk:"key_prefix"`
 }
 
 func (r *apiKeyResource) Metadata(_ context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -64,7 +64,7 @@ func (r *apiKeyResource) Schema(_ context.Context, _ resource.SchemaRequest, res
 			"rate_limit_tpm": schema.Int64Attribute{MarkdownDescription: "Limite tokens/minute.", Optional: true, Computed: true, PlanModifiers: []planmodifier.Int64{int64planmodifier.RequiresReplace()}},
 			"max_budget_eur": schema.Float64Attribute{MarkdownDescription: "Budget maximal en euros.", Optional: true, Computed: true, PlanModifiers: []planmodifier.Float64{float64planmodifier.RequiresReplace()}},
 			"allowed_models": schema.ListAttribute{MarkdownDescription: "Modèles autorisés pour cette clé.", ElementType: types.StringType, Optional: true, Computed: true, PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()}},
-			"expires_at": schema.StringAttribute{MarkdownDescription: "Date d'expiration optionnelle.", Optional: true, Computed: true, PlanModifiers: rr},
+			"expires_at":     schema.StringAttribute{MarkdownDescription: "Date d'expiration optionnelle.", Optional: true, Computed: true, PlanModifiers: rr},
 			"key":            schema.StringAttribute{MarkdownDescription: "Valeur brute (one-shot, sensible).", Computed: true, Sensitive: true},
 			"key_prefix":     schema.StringAttribute{MarkdownDescription: "Préfixe public de la clé.", Computed: true},
 		},

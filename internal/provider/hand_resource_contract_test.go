@@ -46,7 +46,7 @@ func TestUserResourceUsesExactCreateResponseAndCollectionRead(t *testing.T) {
 			if _, leaked := body["password"]; leaked {
 				t.Errorf("unsupported password leaked into OpenAPI body: %#v", body)
 			}
-			_, _ = w.Write([]byte(`{"user_id":"u/42","email":"alice@example.test","role":"org_user","temp_password":"one-shot-password"}`))
+			_, _ = w.Write([]byte(`{"user_id":"u/42","email":"alice+canonical@example.test","role":"org_user","org_id":"org/create","active":true,"user_type":"investor","temp_password":"one-shot-password"}`))
 		case request.Method == http.MethodGet && request.URL.Path == "/admin/users":
 			_, _ = w.Write([]byte(`{"users":[{"id":"u/42","email":"alice@example.test","display_name":"Alice","role":"org_admin","org_id":"org/1"}]}`))
 		case request.Method == http.MethodPut && request.URL.EscapedPath() == "/admin/users/u%2F42":
@@ -79,7 +79,12 @@ func TestUserResourceUsesExactCreateResponseAndCollectionRead(t *testing.T) {
 	if created.ID.ValueString() != "u/42" || created.GeneratedPassword.ValueString() != "one-shot-password" {
 		t.Fatalf("exact response contract lost: %#v", created)
 	}
-	if created.DisplayName.ValueString() != "alice" || created.Role.ValueString() != "org_user" {
+	if created.Email.ValueString() != "alice+canonical@example.test" ||
+		created.DisplayName.ValueString() != "alice" ||
+		created.Role.ValueString() != "org_user" ||
+		created.OrgID.ValueString() != "org/create" ||
+		!created.Active.ValueBool() ||
+		created.UserType.ValueString() != "investor" {
 		t.Fatalf("server defaults not made known after create: %#v", created)
 	}
 
@@ -128,6 +133,43 @@ func TestUserResourceUsesExactCreateResponseAndCollectionRead(t *testing.T) {
 	}
 	if updated.ID.ValueString() != "u/42" || updated.GeneratedPassword.ValueString() != "one-shot-password" || updated.Role.IsUnknown() {
 		t.Fatalf("user update lost id/one-shot/computed state: %#v", updated)
+	}
+}
+
+func TestUserCreatePersistsRemoteIDWhenOneShotSecretIsMissing(t *testing.T) {
+	postCount := 0
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, request *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		if request.Method != http.MethodPost || request.URL.Path != "/admin/users" {
+			http.NotFound(w, request)
+			return
+		}
+		postCount++
+		_, _ = w.Write([]byte(`{"user_id":"u/without-secret","email":"alice@example.test","role":"org_user"}`))
+	}))
+	defer server.Close()
+
+	user := userResource{data: &providerData{endpoint: server.URL, token: "test", http: server.Client()}}
+	var schemaResponse resource.SchemaResponse
+	user.Schema(t.Context(), resource.SchemaRequest{}, &schemaResponse)
+	createResponse := resource.CreateResponse{State: tfsdk.State{Schema: schemaResponse.Schema}}
+	user.Create(
+		t.Context(),
+		resource.CreateRequest{Plan: userPlanForTest(t, schemaResponse)},
+		&createResponse,
+	)
+	if !createResponse.Diagnostics.HasError() {
+		t.Fatal("missing one-shot secret must be surfaced as an error")
+	}
+	if postCount != 1 {
+		t.Fatalf("user mutation was replayed: POST count=%d", postCount)
+	}
+	var created userModel
+	if diagnostics := createResponse.State.Get(t.Context(), &created); diagnostics.HasError() {
+		t.Fatalf("cannot decode recoverable user state: %v", diagnostics)
+	}
+	if created.ID.ValueString() != "u/without-secret" || !created.GeneratedPassword.IsNull() {
+		t.Fatalf("remote ID was not preserved fail-closed: %#v", created)
 	}
 }
 

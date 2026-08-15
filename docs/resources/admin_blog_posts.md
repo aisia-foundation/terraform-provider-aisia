@@ -37,6 +37,7 @@ output "entity_id" {
 - `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 - `content_md` (String) champ content_md
 - `excerpt` (String) champ excerpt
+- `request_id` (String) champ id
 - `slug` (String) champ slug
 - `tags` (List of String) champ tags
 - `title` (String) champ title

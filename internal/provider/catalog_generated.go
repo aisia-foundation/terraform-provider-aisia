@@ -422,6 +422,45 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_models", path: "/admin/models", listKey: "admin_models", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/models`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack", path: "/admin/multicloud/pack", listKey: "admin_multicloud_pack", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_blockers", path: "/admin/multicloud/pack/blockers", listKey: "admin_multicloud_pack_blockers", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/blockers`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_budget", path: "/admin/multicloud/pack/budget", listKey: "admin_multicloud_pack_budget", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/budget`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_costs", path: "/admin/multicloud/pack/costs", listKey: "admin_multicloud_pack_costs", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/costs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_coverage", path: "/admin/multicloud/pack/coverage", listKey: "admin_multicloud_pack_coverage", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/coverage`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_demands", path: "/admin/multicloud/pack/demands", listKey: "admin_multicloud_pack_demands", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/demands`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_engines", path: "/admin/multicloud/pack/engines", listKey: "admin_multicloud_pack_engines", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/engines`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_expected_complete", path: "/admin/multicloud/pack/expected-complete", listKey: "admin_multicloud_pack_expected_complete", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/expected-complete`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_onboarding", path: "/admin/multicloud/pack/onboarding", listKey: "admin_multicloud_pack_onboarding", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/onboarding`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_placement", path: "/admin/multicloud/pack/placement", listKey: "admin_multicloud_pack_placement", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/placement`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_plan", path: "/admin/multicloud/pack/plan", listKey: "admin_multicloud_pack_plan", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/plan`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_quotas", path: "/admin/multicloud/pack/quotas", listKey: "admin_multicloud_pack_quotas", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/quotas`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_sizing", path: "/admin/multicloud/pack/sizing", listKey: "admin_multicloud_pack_sizing", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/sizing`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_multitenant_subdomains", path: "/admin/multitenant/subdomains", listKey: "admin_multitenant_subdomains", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multitenant/subdomains`."}
 	},
 	func() datasource.DataSource {
@@ -677,6 +716,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_integrations", path: "/org/integrations", listKey: "org_integrations", desc: "Endpoint API AISIA — lecture GET de `/org/integrations`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_invitations", path: "/org/invitations", listKey: "org_invitations", desc: "Endpoint API AISIA — lecture GET de `/org/invitations`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_invoices", path: "/org/invoices", listKey: "org_invoices", desc: "Endpoint API AISIA — lecture GET de `/org/invoices`."}
 	},
 	func() datasource.DataSource {
@@ -693,6 +735,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_oidc_config", path: "/org/oidc-config", listKey: "org_oidc_config", desc: "Endpoint API AISIA — lecture GET de `/org/oidc-config`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_policies", path: "/org/policies", listKey: "org_policies", desc: "Endpoint API AISIA — lecture GET de `/org/policies`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_quotas", path: "/org/quotas", listKey: "org_quotas", desc: "Endpoint API AISIA — lecture GET de `/org/quotas`."}

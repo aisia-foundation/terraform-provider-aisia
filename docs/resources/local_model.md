@@ -49,8 +49,11 @@ output "gpu_model_status" {
 
 ### Required
 
-- `config_json` (String) Définition complète du modèle en JSON (ex. `{"runtime":"ollama","model_name":"llama3.3:70b","priority":120,"status":"active"}`).
 - `model_id` (String) Identifiant du modèle local (immuable).
+
+### Optional
+
+- `config_json` (String, Sensitive) Définition complète du modèle en JSON (ex. `{"runtime":"ollama","model_name":"llama3.3:70b","priority":120,"status":"active"}`).
 
 ### Read-Only
 

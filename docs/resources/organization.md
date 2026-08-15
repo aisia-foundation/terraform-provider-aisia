@@ -3,12 +3,12 @@
 page_title: "aisia_organization Resource - aisia"
 subcategory: ""
 description: |-
-  Une organisation AISIA (tenant). Gérée via l'API admin AISIA.
+  Une organisation AISIA (tenant), avec son plan, ses quotas et ses canaux d'exploitation. Gérée via le CRUD admin exact.
 ---
 
 # aisia_organization (Resource)
 
-Une organisation AISIA (tenant). Gérée via l'API admin AISIA.
+Une organisation AISIA (tenant), avec son plan, ses quotas et ses canaux d'exploitation. Gérée via le CRUD admin exact.
 
 ## Example Usage
 
@@ -29,12 +29,20 @@ resource "aisia_organization" "acme" {
 
 ### Optional
 
-- `contract_type` (String) Type de contrat : saas | baas | paas (défaut saas).
-- `slug` (String) Slug (sous-domaine) de l'organisation.
+- `contract_type` (String) Type de contrat (défaut API `saas`).
+- `deploy_channel` (String) Canal de déploiement (champ de mise à jour OrgUpdate).
+- `description` (String) Description métier de l'organisation.
+- `max_requests_day` (Number) Quota maximal de requêtes par jour (défaut API 1000).
+- `max_tokens_day` (Number) Quota maximal de tokens par jour (défaut API 1000000).
+- `max_users` (Number) Quota maximal d'utilisateurs (défaut API 5).
+- `plan` (String) Plan AISIA (défaut API `b2c_free`).
+- `slug` (String) Slug 3–64 caractères. S'il est omis, le provider en dérive un du nom selon le contrat backend.
+- `support_tier` (String) Niveau de support (champ de mise à jour OrgUpdate).
 
 ### Read-Only
 
 - `id` (String) Identifiant de l'organisation (généré par AISIA).
+- `status` (String) Statut distant observé de l'organisation.
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

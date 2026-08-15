@@ -159,11 +159,23 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 		return
 	}
 	plan.ID = types.StringValue(out.ID)
+	if out.Email != "" {
+		plan.Email = types.StringValue(out.Email)
+	}
 	if out.DisplayName != "" {
 		plan.DisplayName = types.StringValue(out.DisplayName)
 	}
 	if out.Role != "" {
 		plan.Role = types.StringValue(out.Role)
+	}
+	if out.OrgID != "" {
+		plan.OrgID = types.StringValue(out.OrgID)
+	}
+	if !activeConfigured && out.Active != nil {
+		plan.Active = types.BoolValue(*out.Active)
+	}
+	if !userTypeConfigured && out.UserType != "" {
+		plan.UserType = types.StringValue(out.UserType)
 	}
 	// Mot de passe auto-généré renvoyé une seule fois. Résoudre toutes les
 	// valeurs Computed avant le premier State.Set, même lors d'une réponse partielle.
@@ -202,11 +214,11 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 			return
 		}
 	}
-	if err := r.refresh(ctx, &plan); err != nil {
-		resp.Diagnostics.AddError("Relecture utilisateur après création échouée", err.Error())
-		return
-	}
-	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	// La réponse de création contient le secret one-shot et les valeurs exactes
+	// acceptées par le serveur. Ne pas effectuer ici une seconde lecture de la
+	// collection : une dérive concurrente pourrait écraser ces valeurs avant que
+	// Terraform ne les persiste. Le prochain Read réconciliera normalement le
+	// state avec GET /admin/users.
 }
 
 func boolFromAPI(object map[string]any, key string) (bool, bool) {

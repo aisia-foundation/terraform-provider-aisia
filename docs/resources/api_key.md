@@ -31,13 +31,17 @@ output "acme_ci_key" {
 
 ### Required
 
-- `name` (String) Nom de la clé.
 - `org_id` (String) Org propriétaire.
 
 ### Optional
 
+- `allowed_models` (List of String) Modèles autorisés pour cette clé.
+- `expires_at` (String) Date d'expiration optionnelle.
+- `max_budget_eur` (Number) Budget maximal en euros.
+- `name` (String) Nom de la clé.
 - `rate_limit_rpd` (Number) Limite req/jour.
 - `rate_limit_rpm` (Number) Limite req/min.
+- `rate_limit_tpm` (Number) Limite tokens/minute.
 - `scopes` (List of String) Scopes (défaut ["invoke"]).
 
 ### Read-Only

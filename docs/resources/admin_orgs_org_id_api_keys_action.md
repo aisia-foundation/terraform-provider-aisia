@@ -35,12 +35,13 @@ output "result" {
 
 ### Required
 
-- `body` (String) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
+- `body` (String, Sensitive) Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body.
 
 ### Read-Only
 
 - `id` (String) Identifiant fixe de la mutation.
-- `json` (String) Dernière réponse de l'API (JSON, champs sensibles expurgés).
+- `json` (String, Sensitive) Dernière réponse de l'API (JSON, champs sensibles expurgés).
+- `key` (String, Sensitive) Sortie one-shot de l'API, conservée séparément de `json` expurgé.
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

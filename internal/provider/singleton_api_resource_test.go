@@ -151,3 +151,40 @@ func TestSingletonRejectsUnknownPUTFieldBeforeHTTP(t *testing.T) {
 		t.Fatal("singleton must reject fields outside exact PUT schema")
 	}
 }
+
+func TestGeneratedMulticloudPlanReconcilesNestedPlanObject(t *testing.T) {
+	var plan *singletonApiResource
+	for _, factory := range generatedResources {
+		candidate, ok := factory().(*singletonApiResource)
+		if ok && candidate.path == "/admin/multicloud/pack/plan" {
+			plan = candidate
+			break
+		}
+	}
+	if plan == nil {
+		t.Fatal("generated multicloud plan singleton not found")
+	}
+	if plan.responseObjectKey != "plan" {
+		t.Fatalf("multicloud response must be read from nested plan object: %q", plan.responseObjectKey)
+	}
+
+	current := types.StringValue(`{"aws":"S","gcp":"M"}`)
+	observed := map[string]any{
+		"plan":   map[string]any{"aws": "L", "gcp": "M", "azure": "S"},
+		"clouds": []any{"aws", "gcp", "azure"},
+	}
+	reconciled, err := plan.reconcileBody(current, observed)
+	if err != nil {
+		t.Fatalf("cannot reconcile nested multicloud plan: %v", err)
+	}
+	var body map[string]any
+	if err := json.Unmarshal([]byte(reconciled.ValueString()), &body); err != nil {
+		t.Fatalf("invalid reconciled multicloud body: %v", err)
+	}
+	if body["aws"] != "L" || body["gcp"] != "M" {
+		t.Fatalf("nested multicloud drift was not reconciled: %#v", body)
+	}
+	if _, leaked := body["azure"]; leaked {
+		t.Fatalf("unconfigured cloud entered the desired subset: %#v", body)
+	}
+}

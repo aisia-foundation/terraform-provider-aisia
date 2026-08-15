@@ -34,8 +34,16 @@ output "org_name" {
 ### Read-Only
 
 - `contract_type` (String) Type de contrat.
+- `deploy_channel` (String) Canal de déploiement.
+- `description` (String) Description.
+- `max_requests_day` (Number) Quota requêtes/jour.
+- `max_tokens_day` (Number) Quota tokens/jour.
+- `max_users` (Number) Quota utilisateurs.
 - `name` (String) Nom.
+- `plan` (String) Plan.
 - `slug` (String) Slug.
+- `status` (String) Statut.
+- `support_tier` (String) Niveau de support.
 
 <!-- TF-DOCS-ENRICH:09_publications -->
 ## Documentation AISIA

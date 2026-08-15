@@ -47,7 +47,9 @@ resource "aisia_webhook" "org_audit" {
 
 ### Optional
 
-- `secret` (String, Sensitive) Secret partagé pour signer les livraisons (HMAC). Sensible.
+- `active` (Boolean) Webhook actif (champ UPDATE).
+- `org_id` (String) Organisation propriétaire (create-only).
+- `secret` (String, Sensitive) Secret partagé pour signer les livraisons (HMAC). S'il est omis, le provider en génère un et le conserve comme sortie sensible.
 
 ### Read-Only
 

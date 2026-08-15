@@ -44,6 +44,7 @@ output "entity_id" {
 - `duration_min` (Number) champ duration_min
 - `host_email` (String) champ host_email
 - `max_attendees` (Number) champ max_attendees
+- `recording_url` (String) champ recording_url
 - `registration_url` (String) champ registration_url
 - `status` (String) champ status
 

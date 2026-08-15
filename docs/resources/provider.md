@@ -29,8 +29,11 @@ output "entity_id" {
 
 ### Required
 
-- `config_json` (String) Définition complète du provider en JSON (ex. `{"adapter_name":"openai","model":"gpt-4o","status":"active"}`).
 - `id` (String) Identifiant du provider (immuable).
+
+### Optional
+
+- `config_json` (String, Sensitive) Définition complète du provider en JSON (ex. `{"adapter_name":"openai","model":"gpt-4o","status":"active"}`).
 
 ### Read-Only
 

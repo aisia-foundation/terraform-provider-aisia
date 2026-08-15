@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod LIVE PARTIAL** : **v6.12.88** (2026-08-11) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.12.89** (2026-08-14) · **code cible v6.12.90** (tagué, registry public encore v6.12.89) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -28,7 +28,7 @@ exécute, la réponse sort traçable et gouvernée.
 | 1 provider fixe | **88** providers déclarés |
 | Catalogue modèles | **867** catalogue · **123** locaux déclarés · **58** locaux actifs |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — **v6.12.88** LIVE |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.12.89** LIVE · code **v6.12.90** |
 
 ## Authentification
 
@@ -81,7 +81,7 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : `6.12.88` cible la plateforme **v6.12.88**.
+Provider **couplé à AISIA** : `6.12.89` cible la plateforme **v6.12.89**.
 Utiliser `version = "~> 6.12"` dans `required_providers`.
 
 ## Example Usage
@@ -113,4 +113,5 @@ variable "aisia_token" {
 ### Optional
 
 - `endpoint` (String) URL de base de l'API AISIA (défaut `https://api.aisia.fr`, ou env `AISIA_ENDPOINT`).
+- `scim_token` (String, Sensitive) Jeton SCIM AISIA distinct utilisé exclusivement pour `/scim/*`. Préférez l'env `AISIA_SCIM_TOKEN` (avec compatibilité `SCIM_BEARER_TOKEN`). Sensible.
 - `token` (String, Sensitive) Jeton admin AISIA (Bearer). Préférez l'env `AISIA_TOKEN`. Sensible.

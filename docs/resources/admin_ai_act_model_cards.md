@@ -40,6 +40,7 @@ output "entity_id" {
 - `evaluation_data` (String) champ evaluation_data
 - `intended_use` (String) champ intended_use
 - `known_limitations` (String) champ known_limitations
+- `last_reviewed_at` (String) champ last_reviewed_at
 - `model_name` (String) champ model_name
 - `org_id` (String) champ org_id
 - `out_of_scope_use` (String) champ out_of_scope_use
