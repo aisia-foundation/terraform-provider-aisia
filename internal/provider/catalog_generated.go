@@ -374,6 +374,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_learning_proposals", path: "/admin/learning/proposals", listKey: "admin_learning_proposals", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/proposals`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_learning_public_sources", path: "/admin/learning/public-sources", listKey: "admin_learning_public_sources", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/public-sources`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_learning_status", path: "/admin/learning/status", listKey: "admin_learning_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/status`."}
 	},
 	func() datasource.DataSource {

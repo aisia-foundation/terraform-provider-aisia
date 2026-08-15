@@ -563,6 +563,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_learning_proposals_proposal_id_apply_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/apply", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/apply` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_learning_public_sources_harvest_action", path: "/admin/learning/public-sources/harvest", pathTemplate: "", method: "POST", readPath: "/admin/learning/public-sources", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/public-sources/harvest` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_learning_run_action", path: "/admin/learning/run", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
