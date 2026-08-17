@@ -128,6 +128,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_billing", path: "/admin/billing", listKey: "admin_billing", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/billing`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_billing_b2c_tier_limits", path: "/admin/billing/b2c-tier-limits", listKey: "admin_billing_b2c_tier_limits", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/billing/b2c-tier-limits`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_billing_baas_tiers", path: "/admin/billing/baas-tiers", listKey: "admin_billing_baas_tiers", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/billing/baas-tiers`."}
 	},
 	func() datasource.DataSource {

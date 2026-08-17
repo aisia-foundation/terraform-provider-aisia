@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-DOCS-ENRICH:09_publications -->
-> **Runtime LIVE** : **v6.12.91** (2026-08-16) · **code monorepo v6.12.92** (tagué ; provider public @ v6.12.91 — module Google public 🔒 VCS UI).
+> **Runtime LIVE** : **v6.12.92** (2026-08-16) · **code monorepo v6.12.92** (tagué ; provider public @ v6.12.92 — module Google public 🔒 VCS UI).
 
 # Guide d'implémentation Terraform AISIA
 
@@ -55,7 +55,7 @@ module "aisia" {
   source  = "aisia-foundation/cluster/aisia"
   version = "~> 1.0"
 
-  image_tag          = "v6.12.91"
+  image_tag          = "v6.12.92"
   domain             = "client.example.com"
   tier               = "saas"
   enable_autoscaling = true
@@ -104,7 +104,7 @@ module "aisia_gcp" {
 
   project_id  = var.gcp_project
   region      = "europe-west9"
-  image_tag   = "v6.12.91"
+  image_tag   = "v6.12.92"
   domain      = "aisia.client.example.com"
   runtime_kind = "k8s"
 }
@@ -113,7 +113,7 @@ module "aisia_gcp" {
 ## Bonnes pratiques
 
 1. **Secrets** : `AISIA_TOKEN` en variable d'environnement, jamais en clair dans le state.
-2. **Version couplée** : provider `~> 6.12` aligné sur la plateforme **v6.12.91**.
+2. **Version couplée** : provider `~> 6.12` aligné sur la plateforme **v6.12.92**.
 3. **Data sources catalogue** : toujours `jsondecode(...json)` — schéma API évolutif.
 4. **Resources générées** : préférer `body = jsonencode({...})` si attributs typés absents.
 
