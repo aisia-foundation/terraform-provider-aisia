@@ -2,6 +2,24 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.12.94] — 2026-08-18
+
+### Added
+- Surface admin : `GET /admin/auto-test`, `POST /admin/auto-test` (job Redis 202),
+  `GET /admin/auto-test/jobs/{job_id}`, `POST /admin/connectors/mcp/servers/{id}/probe`.
+- Alias GOV-01 : `ai-act`, `b2b`, `backup`, `blog`, `cluster`, `dr`, `egress`,
+  `i18n`, `orgs` → pages dédiées existantes.
+
+### Changed
+- `POST /admin/autonomy/reload` répond 202 (demande persistée, replicas_acked=unknown)
+  au lieu d'un 501 ou d'un faux succès replica unique.
+- Restore backups : `request_id` persisté ; pas d'exécution automatique cluster.
+
+### Notes
+- Cette entrée documente le contrat OpenAPI/HEAD. Elle ne republie pas le
+  provider sur registry.terraform.io et n'exécute aucun `terraform apply`.
+- Module Google public : toujours 🔒 VCS UI.
+
 ## [6.12.81] — 2026-08-05
 
 ### Changed
