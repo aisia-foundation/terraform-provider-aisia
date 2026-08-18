@@ -83,7 +83,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_agents_reload_custom_action", path: "/admin/agents/reload-custom", pathTemplate: "", method: "POST", readPath: "/admin/agents", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agents/reload-custom` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_agents_code_trigger_action", path: "", pathTemplate: "/admin/agents/{code}/trigger", method: "POST", readPath: "/admin/agents", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agents/{code}/trigger` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_agents_code_trigger_action", path: "", pathTemplate: "/admin/agents/{code}/trigger", method: "POST", readPath: "/admin/agents", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agents/{code}/trigger` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_ai_act_annexe_iii_classifications_action", path: "/admin/ai-act/annexe-iii-classifications", pathTemplate: "", method: "POST", readPath: "/admin/ai-act/annexe-iii-classifications", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/ai-act/annexe-iii-classifications` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"annexe_iii_area", "classification_reason", "org_id", "use_case_description", "use_case_id"}}
@@ -134,22 +134,22 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_ai_rules_reset_action", path: "/admin/ai-rules/reset", pathTemplate: "", method: "POST", readPath: "/admin/ai-rules", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/ai-rules/reset` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_alerts", path: "/admin/alerts", pathTemplate: "", method: "POST", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/alerts` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_alerts", path: "/admin/alerts", pathTemplate: "", method: "POST", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/alerts` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_alerts_alert_id_ack_action", path: "", pathTemplate: "/admin/alerts/{alert_id}/ack", method: "POST", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/alerts/{alert_id}/ack` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_alerts_alert_id_ack_action", path: "", pathTemplate: "/admin/alerts/{alert_id}/ack", method: "POST", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/alerts/{alert_id}/ack` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_alerts_item_id_mutation", path: "", pathTemplate: "/admin/alerts/{item_id}", method: "DELETE", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/alerts/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_alerts_item_id_put_mutation", path: "", pathTemplate: "/admin/alerts/{item_id}", method: "PUT", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/alerts/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_alerts_item_id_put_mutation", path: "", pathTemplate: "/admin/alerts/{item_id}", method: "PUT", readPath: "/admin/alerts", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/alerts/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_analytics_action", path: "/admin/analytics", pathTemplate: "", method: "POST", readPath: "/admin/analytics", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/analytics` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_analytics_action", path: "/admin/analytics", pathTemplate: "", method: "POST", readPath: "/admin/analytics", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/analytics` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_api_keys_rotation_action", path: "/admin/api-keys/rotation", pathTemplate: "", method: "POST", readPath: "/admin/api-keys/rotation", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/api-keys/rotation` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_api_keys_rotation_action", path: "/admin/api-keys/rotation", pathTemplate: "", method: "POST", readPath: "/admin/api-keys/rotation", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/api-keys/rotation` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_api_keys_validate_all_action", path: "/admin/api-keys/validate-all", pathTemplate: "", method: "POST", readPath: "/admin/api-keys", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/api-keys/validate-all` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -194,13 +194,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_bot_blacklist_reset_action", path: "/admin/bot/blacklist/reset", pathTemplate: "", method: "POST", readPath: "/admin/bot/blacklist", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/bot/blacklist/reset` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"provider_id"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_bot_conversations", path: "/admin/bot/conversations", pathTemplate: "", method: "POST", readPath: "/admin/bot/conversations", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/bot/conversations` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_bot_conversations", path: "/admin/bot/conversations", pathTemplate: "", method: "POST", readPath: "/admin/bot/conversations", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/bot/conversations` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_bot_conversations_item_id_mutation", path: "", pathTemplate: "/admin/bot/conversations/{item_id}", method: "DELETE", readPath: "/admin/bot/conversations", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/bot/conversations/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_bot_conversations_item_id_put_mutation", path: "", pathTemplate: "/admin/bot/conversations/{item_id}", method: "PUT", readPath: "/admin/bot/conversations", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/bot/conversations/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_bot_conversations_item_id_put_mutation", path: "", pathTemplate: "/admin/bot/conversations/{item_id}", method: "PUT", readPath: "/admin/bot/conversations", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/bot/conversations/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_bot_credential_rotation_candidate_id_dismiss_action", path: "", pathTemplate: "/admin/bot/credential-rotation/{candidate_id}/dismiss", method: "POST", readPath: "/admin/bot/credential-rotation", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/bot/credential-rotation/{candidate_id}/dismiss` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"days"}}
@@ -269,7 +269,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_cluster_scale_action", path: "/admin/cluster/scale", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/cluster/scale` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"replicas", "service"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_compliance_action", path: "/admin/compliance", pathTemplate: "", method: "POST", readPath: "/admin/compliance", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/compliance` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_compliance_action", path: "/admin/compliance", pathTemplate: "", method: "POST", readPath: "/admin/compliance", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/compliance` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_config_email_action", path: "/admin/config/email", pathTemplate: "", method: "POST", readPath: "/admin/config/email", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/config/email` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"from_email", "from_name", "smtp_host", "smtp_password", "smtp_port", "smtp_user", "use_tls"}, sensitiveFields: []string{"smtp_password"}}
@@ -290,13 +290,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_config_import_action", path: "/admin/config/import", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/config/import` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"groups", "guardrails"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_config_snapshots", path: "/admin/config/snapshots", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/config/snapshots` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_config_snapshots", path: "/admin/config/snapshots", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/config/snapshots` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_config_snapshots_item_id_mutation", path: "", pathTemplate: "/admin/config/snapshots/{item_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/config/snapshots/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_config_snapshots_item_id_put_mutation", path: "", pathTemplate: "/admin/config/snapshots/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/config/snapshots/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_config_snapshots_item_id_put_mutation", path: "", pathTemplate: "/admin/config/snapshots/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/config/snapshots/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_connectors_catalog_import_openapi_action", path: "/admin/connectors-catalog/import-openapi", pathTemplate: "", method: "POST", readPath: "/admin/connectors-catalog", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/connectors-catalog/import-openapi` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"service_id", "spec"}}
@@ -321,6 +321,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_connectors_mcp_servers_server_id_call_action", path: "", pathTemplate: "/admin/connectors/mcp/servers/{server_id}/call", method: "POST", readPath: "/admin/connectors/mcp/servers", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/connectors/mcp/servers/{server_id}/call` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "org_id", Required: false}}, bodyFields: []string{"arguments", "tool_name"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_connectors_mcp_servers_server_id_probe_action", path: "", pathTemplate: "/admin/connectors/mcp/servers/{server_id}/probe", method: "POST", readPath: "/admin/connectors/mcp/servers", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/connectors/mcp/servers/{server_id}/probe` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "org_id", Required: false}}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_connectors_schema_mapping_apply_action", path: "/admin/connectors/schema-mapping/apply", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/connectors/schema-mapping/apply` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"mapping_spec", "record", "records"}}
@@ -383,13 +386,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_datasets_dataset_id_reingest_action", path: "", pathTemplate: "/admin/datasets/{dataset_id}/reingest", method: "POST", readPath: "/admin/datasets", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/datasets/{dataset_id}/reingest` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_db_migrations", path: "/admin/db/migrations", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/db/migrations` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_db_migrations", path: "/admin/db/migrations", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/db/migrations` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_db_migrations_item_id_mutation", path: "", pathTemplate: "/admin/db/migrations/{item_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/db/migrations/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_db_migrations_item_id_put_mutation", path: "", pathTemplate: "/admin/db/migrations/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/db/migrations/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_db_migrations_item_id_put_mutation", path: "", pathTemplate: "/admin/db/migrations/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/db/migrations/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_deploy_worker_run_once_action", path: "/admin/deploy/worker/run-once", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/deploy/worker/run-once` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -401,13 +404,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_discovery_runs_action", path: "/admin/discovery/runs", pathTemplate: "", method: "POST", readPath: "/admin/discovery/runs", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/discovery/runs` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_discovery_scans", path: "/admin/discovery/scans", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/discovery/scans` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_discovery_scans", path: "/admin/discovery/scans", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/discovery/scans` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_discovery_scans_item_id_mutation", path: "", pathTemplate: "/admin/discovery/scans/{item_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/discovery/scans/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_discovery_scans_item_id_put_mutation", path: "", pathTemplate: "/admin/discovery/scans/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/discovery/scans/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_discovery_scans_item_id_put_mutation", path: "", pathTemplate: "/admin/discovery/scans/{item_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/discovery/scans/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_dns_records", path: "/admin/dns/records", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/dns/records` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"field_type", "force_acme_subdomain", "sub_domain", "target", "ttl"}, typedAttrs: []apiAttr{{Name: "field_type", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ field_type"}, {Name: "force_acme_subdomain", TFType: "bool", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ force_acme_subdomain"}, {Name: "sub_domain", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ sub_domain"}, {Name: "target", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ target"}, {Name: "ttl", TFType: "int", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ ttl"}}}
@@ -419,7 +422,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_dr_drill_action", path: "/admin/dr/drill", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/dr/drill` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "type", Required: true}}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_dr_drills", path: "/admin/dr/drills", pathTemplate: "", method: "POST", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/dr/drills` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_dr_drills", path: "/admin/dr/drills", pathTemplate: "", method: "POST", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/dr/drills` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_dr_drills_run_action", path: "/admin/dr/drills/run", pathTemplate: "", method: "POST", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/dr/drills/run` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"dry_run", "notes", "scenario"}}
@@ -428,43 +431,43 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_dr_drills_item_id_mutation", path: "", pathTemplate: "/admin/dr/drills/{item_id}", method: "DELETE", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/dr/drills/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_dr_drills_item_id_put_mutation", path: "", pathTemplate: "/admin/dr/drills/{item_id}", method: "PUT", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/dr/drills/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_dr_drills_item_id_put_mutation", path: "", pathTemplate: "/admin/dr/drills/{item_id}", method: "PUT", readPath: "/admin/dr/drills", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/dr/drills/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_egress_test_action", path: "/admin/egress/test", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/egress/test` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_egress_test_action", path: "/admin/egress/test", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/egress/test` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_email_templates", path: "/admin/email-templates", pathTemplate: "", method: "POST", readPath: "/admin/email-templates", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/email-templates` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_email_templates", path: "/admin/email-templates", pathTemplate: "", method: "POST", readPath: "/admin/email-templates", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/email-templates` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_email_templates_item_id_mutation", path: "", pathTemplate: "/admin/email-templates/{item_id}", method: "DELETE", readPath: "/admin/email-templates", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/email-templates/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_email_templates_item_id_put_mutation", path: "", pathTemplate: "/admin/email-templates/{item_id}", method: "PUT", readPath: "/admin/email-templates", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/email-templates/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_email_templates_item_id_put_mutation", path: "", pathTemplate: "/admin/email-templates/{item_id}", method: "PUT", readPath: "/admin/email-templates", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/email-templates/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_events_event_id_registrations_mark_attended_action", path: "", pathTemplate: "/admin/events/{event_id}/registrations/mark-attended", method: "POST", readPath: "/admin/events/", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/events/{event_id}/registrations/mark-attended` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"email"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_feature_flags", path: "/admin/feature-flags", pathTemplate: "", method: "POST", readPath: "/admin/feature-flags", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/feature-flags` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_feature_flags", path: "/admin/feature-flags", pathTemplate: "", method: "POST", readPath: "/admin/feature-flags", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/feature-flags` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_feature_flags_item_id_mutation", path: "", pathTemplate: "/admin/feature-flags/{item_id}", method: "DELETE", readPath: "/admin/feature-flags", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/feature-flags/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_feature_flags_item_id_put_mutation", path: "", pathTemplate: "/admin/feature-flags/{item_id}", method: "PUT", readPath: "/admin/feature-flags", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/feature-flags/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_feature_flags_item_id_put_mutation", path: "", pathTemplate: "/admin/feature-flags/{item_id}", method: "PUT", readPath: "/admin/feature-flags", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/feature-flags/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_finetune_action", path: "/admin/finetune", pathTemplate: "", method: "POST", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finetune` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"base_model", "dataset", "epochs"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_finetune_jobs", path: "/admin/finetune/jobs", pathTemplate: "", method: "POST", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finetune/jobs` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_finetune_jobs", path: "/admin/finetune/jobs", pathTemplate: "", method: "POST", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finetune/jobs` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_finetune_jobs_item_id_mutation", path: "", pathTemplate: "/admin/finetune/jobs/{item_id}", method: "DELETE", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/finetune/jobs/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_finetune_jobs_item_id_put_mutation", path: "", pathTemplate: "/admin/finetune/jobs/{item_id}", method: "PUT", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/finetune/jobs/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_finetune_jobs_item_id_put_mutation", path: "", pathTemplate: "/admin/finetune/jobs/{item_id}", method: "PUT", readPath: "/admin/finetune", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/finetune/jobs/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_delete_action", path: "/admin/gdpr/delete", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/delete` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "user_id", Required: true}}, bodyFields: []string{"confirm_user_id"}}
@@ -473,7 +476,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_gdpr_export_action", path: "/admin/gdpr/export", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/export` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "user_id", Required: true}}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_requests_delete_action", path: "/admin/gdpr/requests/delete", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests/delete` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "reason", "user_email"}}
@@ -485,7 +488,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_gdpr_requests_item_id_mutation", path: "", pathTemplate: "/admin/gdpr/requests/{item_id}", method: "DELETE", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/gdpr/requests/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_gdpr_requests_item_id_put_mutation", path: "", pathTemplate: "/admin/gdpr/requests/{item_id}", method: "PUT", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/gdpr/requests/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_gdpr_requests_item_id_put_mutation", path: "", pathTemplate: "/admin/gdpr/requests/{item_id}", method: "PUT", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/gdpr/requests/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_groups_group_id_members_action", path: "", pathTemplate: "/admin/groups/{group_id}/members", method: "POST", readPath: "/admin/groups/", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/groups/{group_id}/members` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"user_id"}}
@@ -512,22 +515,22 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_healthcheck_run_action", path: "/admin/healthcheck/run", pathTemplate: "", method: "POST", readPath: "/admin/healthcheck", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/healthcheck/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_hierarchy_nodes", path: "/admin/hierarchy/nodes", pathTemplate: "", method: "POST", readPath: "/admin/hierarchy", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/hierarchy/nodes` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_hierarchy_nodes", path: "/admin/hierarchy/nodes", pathTemplate: "", method: "POST", readPath: "/admin/hierarchy", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/hierarchy/nodes` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_hierarchy_nodes_item_id_mutation", path: "", pathTemplate: "/admin/hierarchy/nodes/{item_id}", method: "DELETE", readPath: "/admin/hierarchy", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/hierarchy/nodes/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_hierarchy_nodes_item_id_put_mutation", path: "", pathTemplate: "/admin/hierarchy/nodes/{item_id}", method: "PUT", readPath: "/admin/hierarchy", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/hierarchy/nodes/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_hierarchy_nodes_item_id_put_mutation", path: "", pathTemplate: "/admin/hierarchy/nodes/{item_id}", method: "PUT", readPath: "/admin/hierarchy", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/hierarchy/nodes/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", pathTemplate: "", method: "POST", readPath: "/admin/i18n/locales", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/i18n/locales` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_i18n_locales", path: "/admin/i18n/locales", pathTemplate: "", method: "POST", readPath: "/admin/i18n/locales", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/i18n/locales` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_i18n_locales_item_id_mutation", path: "", pathTemplate: "/admin/i18n/locales/{item_id}", method: "DELETE", readPath: "/admin/i18n/locales", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/i18n/locales/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_i18n_locales_lang_mutation", path: "", pathTemplate: "/admin/i18n/locales/{lang}", method: "PUT", readPath: "/admin/i18n/locales", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/i18n/locales/{lang}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_i18n_locales_lang_mutation", path: "", pathTemplate: "/admin/i18n/locales/{lang}", method: "PUT", readPath: "/admin/i18n/locales", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/i18n/locales/{lang}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_integrations", path: "/admin/integrations", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/integrations` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"api_version", "base_url", "category", "config", "connector_class", "connector_version", "display_name", "enabled", "id"}, typedAttrs: []apiAttr{{Name: "api_version", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ api_version"}, {Name: "base_url", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ base_url"}, {Name: "category", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ category"}, {Name: "config", TFType: "string", Required: false, Sensitive: true, JSONEncoded: true, Desc: "champ config"}, {Name: "connector_class", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ connector_class"}, {Name: "connector_version", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ connector_version"}, {Name: "display_name", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ display_name"}, {Name: "enabled", TFType: "bool", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ enabled"}, {Name: "request_id", TFType: "string", WireName: "id", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ id"}}, sensitiveFields: []string{"config"}}
@@ -581,7 +584,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_learning_run_action", path: "/admin/learning/run", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_licenses_action", path: "/admin/licenses", pathTemplate: "", method: "POST", readPath: "/admin/licenses", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/licenses` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_licenses_action", path: "/admin/licenses", pathTemplate: "", method: "POST", readPath: "/admin/licenses", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/licenses` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_linkedin_disconnect_mutation", path: "/admin/linkedin/disconnect", pathTemplate: "", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/linkedin/disconnect` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -638,7 +641,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_multitenant_org_domains_org_id_verify_action", path: "", pathTemplate: "/admin/multitenant/org-domains/{org_id}/verify", method: "POST", readPath: "/admin/multitenant/org-domains", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/multitenant/org-domains/{org_id}/verify` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_network_action", path: "/admin/network", pathTemplate: "", method: "POST", readPath: "/admin/network", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/network` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_network_action", path: "/admin/network", pathTemplate: "", method: "POST", readPath: "/admin/network", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/network` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_oidc_providers", path: "/admin/oidc-providers", pathTemplate: "", method: "POST", readPath: "/admin/oidc-providers", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/oidc-providers` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true, bodyFields: []string{"config", "enabled", "provider_id"}, typedAttrs: []apiAttr{{Name: "config", TFType: "string", Required: false, Sensitive: true, JSONEncoded: true, Desc: "champ config"}, {Name: "enabled", TFType: "bool", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ enabled"}, {Name: "provider_id", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ provider_id"}}, sensitiveFields: []string{"config"}}
@@ -737,7 +740,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_orgs_org_id_config_bundles_bundle_id_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/config/bundles/{bundle_id}", method: "DELETE", readPath: "/admin/orgs", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/orgs/{org_id}/config/bundles/{bundle_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_orgs_org_id_config_bundles_bundle_id_assign_action", path: "", pathTemplate: "/admin/orgs/{org_id}/config/bundles/{bundle_id}/assign", method: "POST", readPath: "/admin/orgs", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/orgs/{org_id}/config/bundles/{bundle_id}/assign` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_orgs_org_id_config_bundles_bundle_id_assign_action", path: "", pathTemplate: "/admin/orgs/{org_id}/config/bundles/{bundle_id}/assign", method: "POST", readPath: "/admin/orgs", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/orgs/{org_id}/config/bundles/{bundle_id}/assign` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_orgs_org_id_config_llm_access_mutation", path: "", pathTemplate: "/admin/orgs/{org_id}/config/llm-access", method: "PUT", readPath: "/admin/orgs", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/orgs/{org_id}/config/llm-access` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"allowed", "model", "priority", "provider", "scope_type", "scope_value"}}
@@ -848,10 +851,10 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_qdrant_bootstrap_action", path: "/admin/qdrant/bootstrap", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/qdrant/bootstrap` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_rate_limits_action", path: "/admin/rate-limits", pathTemplate: "", method: "POST", readPath: "/admin/rate-limits", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/rate-limits` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_rate_limits_action", path: "/admin/rate-limits", pathTemplate: "", method: "POST", readPath: "/admin/rate-limits", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/rate-limits` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_rbac_action", path: "/admin/rbac", pathTemplate: "", method: "POST", readPath: "/admin/rbac", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/rbac` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_rbac_action", path: "/admin/rbac", pathTemplate: "", method: "POST", readPath: "/admin/rbac", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/rbac` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_resellers_reseller_id_mutation", path: "", pathTemplate: "/admin/resellers/{reseller_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/resellers/{reseller_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -860,7 +863,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_resellers_reseller_id_put_mutation", path: "", pathTemplate: "/admin/resellers/{reseller_id}", method: "PUT", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/resellers/{reseller_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"branding_config_id", "contact_email", "domain", "name", "notes", "rev_share_pct", "status"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_scheduled_backups_action", path: "/admin/scheduled-backups", pathTemplate: "", method: "POST", readPath: "/admin/scheduled-backups", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/scheduled-backups` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_scheduled_backups_action", path: "/admin/scheduled-backups", pathTemplate: "", method: "POST", readPath: "/admin/scheduled-backups", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/scheduled-backups` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_self_repair_action", path: "/admin/self-repair", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/self-repair` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -881,7 +884,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_seo_feeds_feed_id_put_mutation", path: "", pathTemplate: "/admin/seo/feeds/{feed_id}", method: "PUT", readPath: "/admin/seo/feeds", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/seo/feeds/{feed_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"category", "enabled", "name"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_seo_linkedin_force_publish_action", path: "/admin/seo/linkedin/force-publish", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/linkedin/force-publish` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_seo_linkedin_force_publish_action", path: "/admin/seo/linkedin/force-publish", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/linkedin/force-publish` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_seo_posts_post_id_approve_action", path: "", pathTemplate: "/admin/seo/posts/{post_id}/approve", method: "POST", readPath: "/admin/seo/posts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/posts/{post_id}/approve` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -890,7 +893,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_seo_posts_post_id_reject_action", path: "", pathTemplate: "/admin/seo/posts/{post_id}/reject", method: "POST", readPath: "/admin/seo/posts", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/posts/{post_id}/reject` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"reason"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_seo_scheduler_action", path: "/admin/seo/scheduler", pathTemplate: "", method: "POST", readPath: "/admin/seo/scheduler", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/scheduler` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_seo_scheduler_action", path: "/admin/seo/scheduler", pathTemplate: "", method: "POST", readPath: "/admin/seo/scheduler", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/scheduler` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_sessions_bulk_revoke_action", path: "/admin/sessions/bulk-revoke", pathTemplate: "", method: "POST", readPath: "/admin/sessions/bulk-revoke", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/bulk-revoke` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "exclude_session_ids", "session_ids", "user_email"}}
@@ -905,13 +908,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_tests_suite_run_action", path: "", pathTemplate: "/admin/tests/{suite}/run", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/tests/{suite}/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_token_quotas", path: "/admin/token-quotas", pathTemplate: "", method: "POST", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/token-quotas` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_token_quotas", path: "/admin/token-quotas", pathTemplate: "", method: "POST", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/token-quotas` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_token_quotas_item_id_mutation", path: "", pathTemplate: "/admin/token-quotas/{item_id}", method: "DELETE", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/token-quotas/{item_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_token_quotas_item_id_put_mutation", path: "", pathTemplate: "/admin/token-quotas/{item_id}", method: "PUT", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/token-quotas/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_token_quotas_item_id_put_mutation", path: "", pathTemplate: "/admin/token-quotas/{item_id}", method: "PUT", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/token-quotas/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_users_user_id_mutation", path: "", pathTemplate: "/admin/users/{user_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/users/{user_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -968,7 +971,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_webhook_alert_action", path: "/admin/webhook/alert", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/webhook/alert` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"alerts", "status"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_webhooks_resend_action", path: "/admin/webhooks/resend", pathTemplate: "", method: "POST", readPath: "/admin/webhooks/resend", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/webhooks/resend` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "admin_webhooks_resend_action", path: "/admin/webhooks/resend", pathTemplate: "", method: "POST", readPath: "/admin/webhooks/resend", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/webhooks/resend` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_webhooks_webhook_id_mutation", path: "", pathTemplate: "/admin/webhooks/{webhook_id}", method: "DELETE", readPath: "/admin/webhooks", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/webhooks/{webhook_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -1076,13 +1079,13 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "v1_analytics_conversion_action", path: "/v1/analytics/conversion", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/analytics/conversion` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"analytics_consent", "error_code", "event_name", "form_name", "surface", "target"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_compare_action", path: "/v1/compare", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/compare` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_compare_action", path: "/v1/compare", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/compare` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_compare_llms_action", path: "/v1/compare-llms", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/compare-llms` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_compare_llms_action", path: "/v1/compare-llms", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/compare-llms` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_comparer_llms_action", path: "/v1/comparer-llms", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/comparer-llms` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_comparer_llms_action", path: "/v1/comparer-llms", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/comparer-llms` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_conversations_mutation", path: "/v1/conversations", pathTemplate: "", method: "DELETE", readPath: "/v1/conversations", desc: "Endpoint public API v1 — mutation DELETE exacte `/v1/conversations` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -1097,7 +1100,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "v1_conversations_item", path: "", pathTemplate: "/v1/conversations/{conv_id}", method: "PATCH", readPath: "/v1/conversations", desc: "Endpoint public API v1 — mutation PATCH exacte `/v1/conversations/{conv_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_debate", path: "/v1/debate", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/debate` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_debate", path: "/v1/debate", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/debate` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_debate_debate_id_stop_action", path: "", pathTemplate: "/v1/debate/{debate_id}/stop", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/debate/{debate_id}/stop` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
@@ -1106,25 +1109,25 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "v1_diagnostic_lead_action", path: "/v1/diagnostic/lead", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/diagnostic/lead` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"consent", "email", "org", "score", "tier", "weakest_axis"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_embeddings_action", path: "/v1/embeddings", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/embeddings` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_embeddings_action", path: "/v1/embeddings", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/embeddings` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_mcp_action", path: "/v1/mcp", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/mcp` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_media_audio_action", path: "/v1/media/audio", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/audio` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_media_audio_action", path: "/v1/media/audio", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/audio` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_media_image_action", path: "/v1/media/image", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/image` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_media_image_action", path: "/v1/media/image", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/image` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_media_video_action", path: "/v1/media/video", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/video` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_media_video_action", path: "/v1/media/video", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/media/video` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_messages_message_id_feedback_action", path: "", pathTemplate: "/v1/messages/{message_id}/feedback", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/messages/{message_id}/feedback` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"comment", "model", "provider_id", "rating"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "v1_rerank_action", path: "/v1/rerank", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/rerank` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+		return &actionApiResource{name: "v1_rerank_action", path: "/v1/rerank", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/rerank` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_runs", path: "/v1/runs", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/runs` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"concurrency", "iterations", "name", "prompts", "providers", "timeout_s"}, typedAttrs: []apiAttr{{Name: "concurrency", TFType: "int", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ concurrency"}, {Name: "iterations", TFType: "int", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ iterations"}, {Name: "name", TFType: "string", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ name"}, {Name: "prompts", TFType: "list", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ prompts"}, {Name: "providers", TFType: "list", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ providers"}, {Name: "timeout_s", TFType: "int", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ timeout_s"}}}

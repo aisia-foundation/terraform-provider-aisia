@@ -11,6 +11,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_activity_log", path: "/admin/activity-log", listKey: "admin_activity_log", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/activity-log`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agent_protocol", path: "/admin/agent-protocol", listKey: "admin_agent_protocol", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent-protocol`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_agent_email_stats", path: "/admin/agent/email/stats", listKey: "admin_agent_email_stats", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/stats`."}
 	},
 	func() datasource.DataSource {
@@ -87,6 +90,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_ops_summary", path: "/admin/ai-ops/summary", listKey: "admin_ai_ops_summary", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-ops/summary`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_quality_corpus", path: "/admin/ai-quality/corpus", listKey: "admin_ai_quality_corpus", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-quality/corpus`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_rules", path: "/admin/ai-rules", listKey: "admin_ai_rules", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-rules`."}
@@ -212,6 +218,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_compliance", path: "/admin/compliance", listKey: "admin_compliance", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/compliance`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_compliance_articles", path: "/admin/compliance-articles", listKey: "admin_compliance_articles", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/compliance-articles`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_config_email", path: "/admin/config/email", listKey: "admin_config_email", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/config/email`."}
 	},
 	func() datasource.DataSource {
@@ -233,6 +242,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_connectors_catalog_ecosystem", path: "/admin/connectors-catalog/ecosystem", listKey: "admin_connectors_catalog_ecosystem", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors-catalog/ecosystem`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_connectors_catalog_extension_status", path: "/admin/connectors-catalog/extension-status", listKey: "admin_connectors_catalog_extension_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors-catalog/extension-status`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_connectors_catalog_unified", path: "/admin/connectors-catalog/unified", listKey: "admin_connectors_catalog_unified", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/connectors-catalog/unified`."}
 	},
 	func() datasource.DataSource {
@@ -248,6 +260,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_contracts", path: "/admin/contracts", listKey: "admin_contracts", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/contracts`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_conversion_funnel", path: "/admin/conversion-funnel", listKey: "admin_conversion_funnel", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/conversion-funnel`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_cost_dashboard", path: "/admin/cost-dashboard", listKey: "admin_cost_dashboard", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/cost-dashboard`."}
 	},
 	func() datasource.DataSource {
@@ -261,6 +276,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_crews_runs", path: "/admin/crews/runs", listKey: "admin_crews_runs", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/crews/runs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_customer_success", path: "/admin/customer-success", listKey: "admin_customer_success", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/customer-success`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_database_info", path: "/admin/database/info", listKey: "admin_database_info", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/database/info`."}
@@ -308,6 +326,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_finetune", path: "/admin/finetune", listKey: "admin_finetune", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/finetune`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_finops_reconciliation", path: "/admin/finops-reconciliation", listKey: "admin_finops_reconciliation", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/finops-reconciliation`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_finops_cost_by_org", path: "/admin/finops/cost-by-org", listKey: "admin_finops_cost_by_org", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/finops/cost-by-org`."}
 	},
 	func() datasource.DataSource {
@@ -329,7 +350,13 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_golden_path", path: "/admin/golden-path", listKey: "admin_golden_path", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/golden-path`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_gov01_leftovers", path: "/admin/gov01-leftovers", listKey: "admin_gov01_leftovers", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/gov01-leftovers`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_grafana_proxy", path: "/admin/grafana-proxy", listKey: "admin_grafana_proxy", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana-proxy`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_grafana_session", path: "/admin/grafana-session", listKey: "admin_grafana_session", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana-session`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_grafana_dashboards", path: "/admin/grafana/dashboards", listKey: "admin_grafana_dashboards", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana/dashboards`."}
@@ -347,7 +374,13 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_hierarchy", path: "/admin/hierarchy", listKey: "admin_hierarchy", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/hierarchy`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_i18n_coverage", path: "/admin/i18n-coverage", listKey: "admin_i18n_coverage", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/i18n-coverage`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_i18n_locales", path: "/admin/i18n/locales", listKey: "admin_i18n_locales", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/i18n/locales`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_iam_surfaces", path: "/admin/iam-surfaces", listKey: "admin_iam_surfaces", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/iam-surfaces`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_integrations_custom", path: "/admin/integrations/custom", listKey: "admin_integrations_custom", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/integrations/custom`."}
@@ -389,6 +422,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_learning_summary", path: "/admin/learning/summary", listKey: "admin_learning_summary", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/summary`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_legal_readiness", path: "/admin/legal-readiness", listKey: "admin_legal_readiness", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/legal-readiness`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_licenses", path: "/admin/licenses", listKey: "admin_licenses", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/licenses`."}
 	},
 	func() datasource.DataSource {
@@ -408,6 +444,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_maintenance_tasks_custom", path: "/admin/maintenance/tasks/custom", listKey: "admin_maintenance_tasks_custom", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/maintenance/tasks/custom`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_market_proof", path: "/admin/market-proof", listKey: "admin_market_proof", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/market-proof`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_marketing_conversions", path: "/admin/marketing/conversions", listKey: "admin_marketing_conversions", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/marketing/conversions`."}
@@ -470,6 +509,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_multicloud_pack_sizing", path: "/admin/multicloud/pack/sizing", listKey: "admin_multicloud_pack_sizing", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/sizing`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multimodal", path: "/admin/multimodal", listKey: "admin_multimodal", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multimodal`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_multitenant_org_domains", path: "/admin/multitenant/org-domains", listKey: "admin_multitenant_org_domains", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multitenant/org-domains`."}
 	},
 	func() datasource.DataSource {
@@ -498,6 +540,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ops_services", path: "/admin/ops/services", listKey: "admin_ops_services", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ops/services`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_orchestration_modes", path: "/admin/orchestration-modes", listKey: "admin_orchestration_modes", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/orchestration-modes`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_organizations", path: "/admin/organizations/", listKey: "admin_organizations", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/organizations/`."}
@@ -554,6 +599,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_proxy_usage_users", path: "/admin/proxy-usage/users", listKey: "admin_proxy_usage_users", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/proxy-usage/users`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_qa_matrix", path: "/admin/qa-matrix", listKey: "admin_qa_matrix", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/qa-matrix`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_qdrant_collections", path: "/admin/qdrant/collections", listKey: "admin_qdrant_collections", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/qdrant/collections`."}
 	},
 	func() datasource.DataSource {
@@ -575,6 +623,15 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_redis_info", path: "/admin/redis/info", listKey: "admin_redis_info", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/redis/info`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_release_provenance", path: "/admin/release-provenance", listKey: "admin_release_provenance", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/release-provenance`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_repo_consistency", path: "/admin/repo-consistency", listKey: "admin_repo_consistency", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/repo-consistency`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_requirements", path: "/admin/requirements", listKey: "admin_requirements", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/requirements`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_resellers", path: "/admin/resellers", listKey: "admin_resellers", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/resellers`."}
 	},
 	func() datasource.DataSource {
@@ -587,6 +644,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_security", path: "/admin/security", listKey: "admin_security", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/security`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_security_surfaces", path: "/admin/security-surfaces", listKey: "admin_security_surfaces", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/security-surfaces`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_self_audit", path: "/admin/self-audit", listKey: "admin_self_audit", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/self-audit`."}
 	},
 	func() datasource.DataSource {
@@ -597,6 +657,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_seo_feeds", path: "/admin/seo/feeds", listKey: "admin_seo_feeds", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/feeds`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_seo_indexation_status", path: "/admin/seo/indexation-status", listKey: "admin_seo_indexation_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/indexation-status`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_seo_linkedin_company_status", path: "/admin/seo/linkedin/company-status", listKey: "admin_seo_linkedin_company_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/linkedin/company-status`."}
@@ -614,6 +677,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_seo_stats_global", path: "/admin/seo/stats/global", listKey: "admin_seo_stats_global", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/stats/global`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_seo_technical_status", path: "/admin/seo/technical-status", listKey: "admin_seo_technical_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/technical-status`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_service_inventory", path: "/admin/service-inventory", listKey: "admin_service_inventory", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/service-inventory`."}
 	},
 	func() datasource.DataSource {
@@ -626,13 +692,22 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_skills", path: "/admin/skills", listKey: "admin_skills", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/skills`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_skins", path: "/admin/skins", listKey: "admin_skins", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/skins`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_slo", path: "/admin/slo", listKey: "admin_slo", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/slo`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_sovereignty", path: "/admin/sovereignty", listKey: "admin_sovereignty", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/sovereignty`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_support", path: "/admin/support", listKey: "admin_support", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/support`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_swarm_services", path: "/admin/swarm/services", listKey: "admin_swarm_services", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/swarm/services`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_tenancy_modes", path: "/admin/tenancy-modes", listKey: "admin_tenancy_modes", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/tenancy-modes`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_tests_history", path: "/admin/tests/history", listKey: "admin_tests_history", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/tests/history`."}
@@ -642,6 +717,12 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_truth_ui", path: "/admin/truth/ui", listKey: "admin_truth_ui", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/truth/ui`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ui_coverage", path: "/admin/ui-coverage", listKey: "admin_ui_coverage", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ui-coverage`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_unit_economics", path: "/admin/unit-economics", listKey: "admin_unit_economics", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/unit-economics`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_usage", path: "/admin/usage/", listKey: "admin_usage", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/usage/`."}
@@ -761,6 +842,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_members", path: "/org/members", listKey: "org_members", desc: "Endpoint API AISIA — lecture GET de `/org/members`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_models", path: "/org/models", listKey: "org_models", desc: "Endpoint API AISIA — lecture GET de `/org/models`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_notifications", path: "/org/notifications", listKey: "org_notifications", desc: "Endpoint API AISIA — lecture GET de `/org/notifications`."}
 	},
 	func() datasource.DataSource {
@@ -773,7 +857,13 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_quotas", path: "/org/quotas", listKey: "org_quotas", desc: "Endpoint API AISIA — lecture GET de `/org/quotas`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_reports", path: "/org/reports", listKey: "org_reports", desc: "Endpoint API AISIA — lecture GET de `/org/reports`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_roles", path: "/org/roles", listKey: "org_roles", desc: "Endpoint API AISIA — lecture GET de `/org/roles`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_security", path: "/org/security", listKey: "org_security", desc: "Endpoint API AISIA — lecture GET de `/org/security`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_seo_networks", path: "/org/seo/networks", listKey: "org_seo_networks", desc: "Endpoint API AISIA — lecture GET de `/org/seo/networks`."}
@@ -789,6 +879,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_settings", path: "/org/settings", listKey: "org_settings", desc: "Endpoint API AISIA — lecture GET de `/org/settings`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_sources", path: "/org/sources", listKey: "org_sources", desc: "Endpoint API AISIA — lecture GET de `/org/sources`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_support_tickets", path: "/org/support/tickets", listKey: "org_support_tickets", desc: "Endpoint API AISIA — lecture GET de `/org/support/tickets`."}
@@ -828,6 +921,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_local_models", path: "/v1/local-models", listKey: "v1_local_models", desc: "Endpoint public API v1 — lecture GET de `/v1/local-models`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_me", path: "/v1/me", listKey: "v1_me", desc: "Endpoint public API v1 — lecture GET de `/v1/me`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_me_feedback", path: "/v1/me/feedback", listKey: "v1_me_feedback", desc: "Endpoint public API v1 — lecture GET de `/v1/me/feedback`."}
