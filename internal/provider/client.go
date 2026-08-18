@@ -45,6 +45,27 @@ func (d *providerData) apiDo(ctx context.Context, method, path string, body any,
 		return resp.StatusCode, fmt.Errorf("AISIA API %s %s → HTTP %d (réponse volontairement expurgée)", method, safeAPIPath(path), resp.StatusCode)
 	}
 	if out != nil && len(raw) > 0 {
+		ct := strings.ToLower(resp.Header.Get("Content-Type"))
+		looksXML := strings.Contains(ct, "xml") || bytes.HasPrefix(bytes.TrimSpace(raw), []byte("<"))
+		if looksXML {
+			wrapped := map[string]any{
+				"raw":          string(raw),
+				"content_type": "xml",
+				"path":         safeAPIPath(path),
+			}
+			if target, ok := out.(*any); ok {
+				*target = wrapped
+				return resp.StatusCode, nil
+			}
+			encoded, err := json.Marshal(wrapped)
+			if err != nil {
+				return resp.StatusCode, fmt.Errorf("AISIA API %s %s : wrap XML impossible (%T)", method, safeAPIPath(path), err)
+			}
+			if err := json.Unmarshal(encoded, out); err != nil {
+				return resp.StatusCode, fmt.Errorf("AISIA API %s %s : wrap XML non décodable (%T)", method, safeAPIPath(path), err)
+			}
+			return resp.StatusCode, nil
+		}
 		if err := json.Unmarshal(raw, out); err != nil {
 			return resp.StatusCode, fmt.Errorf("AISIA API %s %s : réponse JSON invalide (%T, contenu expurgé)", method, safeAPIPath(path), err)
 		}
