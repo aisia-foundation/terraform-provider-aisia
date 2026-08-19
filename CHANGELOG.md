@@ -2,6 +2,29 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.12.96] — 2026-08-18
+
+### Changed
+- Alignement de version sur AISIA v6.12.96 (versioning couplé). **Aucune nouvelle
+  ressource d'écriture Terraform** : la parité write reste épinglée à **9 hand-written
+  + 18 exclusions** (`tests/test_terraform_provider_contract_parity.py`, vérifié).
+- GPT-UPG-006 : `GET /admin/mcp/status` et alias `/admin/mcp-servers` restent les
+  mêmes chemins OpenAPI (extrait router, pas de nouvelle resource write). Module
+  Google public registry = 🔒 VCS UI fondateur.
+
+### Notes
+- Documente le contrat OpenAPI/HEAD ; ne republie pas sur registry.terraform.io et
+  n'exécute aucun `terraform apply`.
+
+## [6.12.95] — 2026-08-18
+
+### Changed
+- Alignement de version sur AISIA v6.12.95 (versioning couplé). Provider inchangé
+  fonctionnellement (parité write 9+18 stable).
+
+### Notes
+- Documente le contrat OpenAPI/HEAD ; pas de republication ni d'`apply`.
+
 ## [6.12.94] — 2026-08-18
 
 ### Added
