@@ -5,7 +5,7 @@
   Gate deploy: python3 scripts/release/deploy.py <ver> --mode docs
 -->
 
-> **Prod LIVE PARTIAL** : **v6.12.98** (2026-08-21) · **code cible v6.12.99** 🟡 (tagué ; images/rolling non faits — LIVE reste v6.12.98) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.12.100** (2026-08-21) · **code cible v6.13.1** 🟡 (tagué ; images/rolling non faits — LIVE reste v6.12.100) — chiffres : `project_facts.json` · régénéré par `09_publications.py`.
 
 # Terraform Provider AISIA
 
@@ -17,7 +17,7 @@ utilisateurs et clés API en **Infrastructure-as-Code** (`api.aisia.fr`).
 
 ## Cœur d'AISIA (identité produit)
 
-AISIA est le **chef d'orchestre IA local-first** : une requête entre, le meilleur modèle (local ou cloud) exécute, la réponse sort traçable et gouvernée.
+AISIA est le **chef d'orchestre IA local-first** en **SaaS, BaaS et PaaS** : une requête entre, le meilleur modèle (local ou cloud) exécute, la réponse sort traçable et gouvernée. Déploiement Terraform sur AWS, Azure, Google Cloud, OVH ou Scaleway — ou instance opérée.
 
 **Fonction première** : orchestrer chaque requête IA en **local-first** (Ollama sur cluster)
 puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
@@ -29,7 +29,7 @@ puis cloud si nécessaire — via `BanditRouter`, pas un simple reverse-proxy.
 | 1 provider fixe | **167** moteurs IA |
 | Catalogue modèles | **9563** modèles |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.12.98** · code **v6.12.99** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.12.100** · code **v6.13.1** |
 
 Documentation : [README racine](../../../README.md) ·
 [Product Identity](../../../specification/03-Project-State/Product-Identity-AISIA.md)
@@ -62,7 +62,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.12"
+      version = "~> 6.13"
     }
   }
 }
@@ -88,23 +88,23 @@ resource "aisia_organization" "acme" {
 
 ## Versioning
 
-Provider **couplé à AISIA** : tag monorepo **v6.12.99** (fichier `VERSION`) · PROD LIVE documentaire **v6.12.98**.
+Provider **couplé à AISIA** : tag monorepo **v6.13.1** (fichier `VERSION`) · PROD LIVE documentaire **v6.12.100**.
 
 <!-- TF-REGISTRY-STATUS -->
 ## Statut publication registry (honnête)
 
-> Mesuré à la régénération docs · **version code TF** **v6.12.99** (`VERSION` modules + provider) · PROD LIVE documentaire **v6.12.98**.
+> Mesuré à la régénération docs · **version code TF** **v6.13.1** (`VERSION` modules + provider) · PROD LIVE documentaire **v6.12.100**.
 
 | Artefact | Repo | Public registry.terraform.io |
 |----------|------|------------------------------|
-| Provider `aisia-foundation/aisia` | `6.12.99` | **6.12.96** ❌ écart |
-| Module `terraform-aisia-cluster` (`cluster/aisia`) | `6.12.99` | **6.12.97** ❌ écart |
-| Module `terraform-aisia-swarm` (`swarm/aisia`) | `6.12.99` | **6.12.97** ❌ écart |
-| Module `terraform-aws-aisia` (`aisia/aws`) | `6.12.99` | **6.12.97** ❌ écart |
-| Module `terraform-azure-aisia` (`aisia/azure`) | `6.12.99` | **6.12.97** ❌ écart |
-| Module `terraform-google-aisia` (`aisia/google`) | `6.12.99` | **absent public** ⚠️ |
-| Module `terraform-ovh-aisia` (`aisia/ovh`) | `6.12.99` | **6.12.97** ❌ écart |
-| Module `terraform-scaleway-aisia` (`aisia/scaleway`) | `6.12.99` | **6.12.97** ❌ écart |
+| Provider `aisia-foundation/aisia` | `6.13.1` | **6.12.96** ❌ écart |
+| Module `terraform-aisia-cluster` (`cluster/aisia`) | `6.13.1` | **6.12.99** ❌ écart |
+| Module `terraform-aisia-swarm` (`swarm/aisia`) | `6.13.1` | **6.12.99** ❌ écart |
+| Module `terraform-aws-aisia` (`aisia/aws`) | `6.13.1` | **6.12.99** ❌ écart |
+| Module `terraform-azure-aisia` (`aisia/azure`) | `6.13.1` | **6.12.99** ❌ écart |
+| Module `terraform-google-aisia` (`aisia/google`) | `6.13.1` | **absent public** ⚠️ |
+| Module `terraform-ovh-aisia` (`aisia/ovh`) | `6.13.1` | **6.12.99** ❌ écart |
+| Module `terraform-scaleway-aisia` (`aisia/scaleway`) | `6.13.1` | **6.12.99** ❌ écart |
 
 HCP privé (`app.terraform.io/AISIA`) : modules + provider publiés via `scripts/ops/publish_terraform.sh --apply` (mesuré hors ce tableau). Ne pas écrire « 100 % registry public » si Google public est absent.
 
