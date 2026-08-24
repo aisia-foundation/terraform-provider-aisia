@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod live vérifiée** : **v6.12.96** (2026-08-19) · **code cible v6.12.97** (tagué ; provider public @ v6.12.96 — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.13.10** (2026-08-25) · **code cible v6.13.10** (tagué ; provider public @ v6.13.10 — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -25,10 +25,10 @@ exécute, la réponse sort traçable et gouvernée.
 
 | vs proxy LLM | AISIA |
 |--------------|-------|
-| 1 provider fixe | **88** providers déclarés |
-| Catalogue modèles | **866** catalogue · **123** locaux déclarés · **58** locaux actifs |
+| 1 provider fixe | **167** providers déclarés |
+| Catalogue modèles | **9563** catalogue · **123** locaux déclarés · **58** locaux actifs |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.12.96** LIVE · code **v6.12.97** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.13.10** LIVE · code **v6.13.10** |
 
 ## Authentification
 
@@ -51,7 +51,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.12"
+      version = "~> 6.13"
     }
   }
 }
@@ -81,8 +81,8 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : `6.12.96` cible la plateforme **v6.12.96**.
-Utiliser `version = "~> 6.12"` dans `required_providers`.
+Provider **couplé à AISIA** : `6.13.10` cible la plateforme **v6.13.10**.
+Utiliser `version = "~> 6.13"` dans `required_providers`.
 
 ## Example Usage
 
@@ -91,7 +91,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.12"
+      version = "~> 6.13"
     }
   }
 }

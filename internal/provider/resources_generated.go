@@ -26,6 +26,9 @@ var generatedResources = []func() resource.Resource{
 		return &apiResource{name: "scim_v2_users", path: "/scim/v2/Users", itemPathTemplate: "/scim/v2/Users/{user_id}", idParam: "user_id", updateVerb: "PUT", canDelete: true, desc: "Endpoint API AISIA — entité CRUD (create/read/update/delete via API).", bodyFields: []string{"active", "displayName", "emails", "name", "schemas", "userName"}, createBodyRequiredFields: []string{"userName"}}
 	},
 	func() resource.Resource {
+		return &apiResource{name: "v1_conversations", path: "/v1/conversations", itemPathTemplate: "/v1/conversations/{conv_id}", idParam: "conv_id", updateVerb: "PATCH", canDelete: true, desc: "Endpoint public API v1 — entité CRUD (create/read/update/delete via API).", typedAttrs: []apiAttr{{Name: "title", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ title"}}, createFields: []string{"title"}}
+	},
+	func() resource.Resource {
 		return &singletonApiResource{name: "admin_ai_rules_config", path: "/admin/ai-rules", updateVerb: "PUT", desc: "Endpoint d'administration (Bearer requis) — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"rules"}, deepSubsetFields: []string{"rules"}}
 	},
 	func() resource.Resource {
@@ -57,6 +60,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &singletonApiResource{name: "org_oidc_config_config", path: "/org/oidc-config", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"client_id", "client_secret", "discovery_url", "domain", "email_domain", "enabled", "provider", "tenant_id"}, sensitiveFields: []string{"client_secret"}}
+	},
+	func() resource.Resource {
+		return &singletonApiResource{name: "org_security_policy_config", path: "/org/security-policy", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"allow_signup", "enforce_2fa", "ip_allowlist", "password_min_length", "session_ttl_minutes"}}
 	},
 	func() resource.Resource {
 		return &singletonApiResource{name: "org_settings_config", path: "/org/settings", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"name"}, responseObjectKey: "settings"}
@@ -971,6 +977,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_vault", path: "/admin/vault", pathTemplate: "", method: "POST", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/vault` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"org_id", "secret_name", "value"}, typedAttrs: []apiAttr{{Name: "org_id", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ org_id"}, {Name: "secret_name", TFType: "string", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ secret_name"}, {Name: "value", TFType: "string", Required: true, Sensitive: true, JSONEncoded: false, Desc: "champ value"}}, sensitiveFields: []string{"value"}}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_vault_ingest_runtime_action", path: "/admin/vault/ingest-runtime", pathTemplate: "", method: "POST", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/vault/ingest-runtime` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_vault_secret_name_mutation", path: "", pathTemplate: "/admin/vault/{secret_name}", method: "DELETE", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/vault/{secret_name}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "org_id", Required: false}}}
 	},
 	func() resource.Resource {
@@ -1046,10 +1055,19 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "org_knowledge_action", path: "/org/knowledge", pathTemplate: "", method: "POST", readPath: "/org/knowledge", desc: "Endpoint API AISIA — mutation POST exacte `/org/knowledge` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"source", "text", "url"}}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "org_members_user_id_mutation", path: "", pathTemplate: "/org/members/{user_id}", method: "DELETE", readPath: "/org/members", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/members/{user_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_members_item", path: "", pathTemplate: "/org/members/{user_id}", method: "PUT", readPath: "/org/members", desc: "Endpoint API AISIA — mutation PUT exacte `/org/members/{user_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"role"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "org_notifications_notif_id_read_action", path: "", pathTemplate: "/org/notifications/{notif_id}/read", method: "POST", readPath: "/org/notifications", desc: "Endpoint API AISIA — mutation POST exacte `/org/notifications/{notif_id}/read` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_seo_networks_network_mutation", path: "", pathTemplate: "/org/seo/networks/{network}", method: "DELETE", readPath: "/org/seo/networks", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/seo/networks/{network}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_sessions_sid_revoke_action", path: "", pathTemplate: "/org/sessions/{sid}/revoke", method: "POST", readPath: "/org/sessions", desc: "Endpoint API AISIA — mutation POST exacte `/org/sessions/{sid}/revoke` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_support_tickets", path: "/org/support/tickets", pathTemplate: "", method: "POST", readPath: "/org/support/tickets", desc: "Endpoint API AISIA — mutation POST exacte `/org/support/tickets` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"category", "description", "priority", "subject"}, typedAttrs: []apiAttr{{Name: "category", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ category"}, {Name: "description", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ description"}, {Name: "priority", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ priority"}, {Name: "subject", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ subject"}}}
@@ -1098,12 +1116,6 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_conversations_export_action", path: "/v1/conversations/export", pathTemplate: "", method: "POST", readPath: "/v1/conversations", desc: "Endpoint public API v1 — mutation POST exacte `/v1/conversations/export` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
-	},
-	func() resource.Resource {
-		return &actionApiResource{name: "v1_conversations_conv_id_mutation", path: "", pathTemplate: "/v1/conversations/{conv_id}", method: "DELETE", readPath: "/v1/conversations", desc: "Endpoint public API v1 — mutation DELETE exacte `/v1/conversations/{conv_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
-	},
-	func() resource.Resource {
-		return &actionApiResource{name: "v1_conversations_item", path: "", pathTemplate: "/v1/conversations/{conv_id}", method: "PATCH", readPath: "/v1/conversations", desc: "Endpoint public API v1 — mutation PATCH exacte `/v1/conversations/{conv_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "v1_debate", path: "/v1/debate", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/debate` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
