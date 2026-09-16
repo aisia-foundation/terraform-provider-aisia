@@ -158,9 +158,6 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_billing_stats", path: "/admin/billing/stats", listKey: "admin_billing_stats", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/billing/stats`."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_blog_articles", path: "/admin/blog/articles", listKey: "admin_blog_articles", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/blog/articles`."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_blog_posts", path: "/admin/blog/posts", listKey: "admin_blog_posts", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/blog/posts`."}
 	},
 	func() datasource.DataSource {
@@ -731,6 +728,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_swarm_services", path: "/admin/swarm/services", listKey: "admin_swarm_services", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/swarm/services`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_tariff_grid", path: "/admin/tariff-grid", listKey: "admin_tariff_grid", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/tariff-grid`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_tenancy_modes", path: "/admin/tenancy-modes", listKey: "admin_tenancy_modes", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/tenancy-modes`."}
 	},
 	func() datasource.DataSource {
@@ -776,9 +776,6 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_yousign_status", path: "/admin/yousign/status", listKey: "admin_yousign_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/yousign/status`."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "api_investor_docs_access", path: "/api/investor-docs/access", listKey: "api_investor_docs_access", desc: "Endpoint API AISIA — lecture GET de `/api/investor-docs/access`."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "api_plans", path: "/api/plans", listKey: "api_plans", desc: "Endpoint API AISIA — lecture GET de `/api/plans`."}
 	},
 	func() datasource.DataSource {
@@ -803,19 +800,16 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "auth_oidc_providers", path: "/auth/oidc/providers", listKey: "auth_oidc_providers", desc: "Endpoint API AISIA — lecture GET de `/auth/oidc/providers`."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "auth_saml_metadata", path: "/auth/saml/metadata", listKey: "auth_saml_metadata", desc: "Endpoint API AISIA — lecture GET de `/auth/saml/metadata`."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "auth_saml_status", path: "/auth/saml/status", listKey: "auth_saml_status", desc: "Endpoint API AISIA — lecture GET de `/auth/saml/status`."}
-	},
-	func() datasource.DataSource {
-		return &catalogDataSource{name: "auth_verify_email", path: "/auth/verify-email", listKey: "auth_verify_email", desc: "Endpoint API AISIA — lecture GET de `/auth/verify-email`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "billing_checkout_llm_catalog", path: "/billing/checkout/llm-catalog", listKey: "billing_checkout_llm_catalog", desc: "Endpoint API AISIA — lecture GET de `/billing/checkout/llm-catalog`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "billing_checkout_status", path: "/billing/checkout/status", listKey: "billing_checkout_status", desc: "Endpoint API AISIA — lecture GET de `/billing/checkout/status`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "blog", path: "/blog", listKey: "blog", desc: "Endpoint API AISIA — lecture GET de `/blog`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "events_upcoming", path: "/events/upcoming", listKey: "events_upcoming", desc: "Endpoint API AISIA — lecture GET de `/events/upcoming`."}
@@ -987,6 +981,18 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_status_incidents", path: "/v1/status/incidents", listKey: "v1_status_incidents", desc: "Endpoint public API v1 — lecture GET de `/v1/status/incidents`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_tariffs", path: "/v1/tariffs", listKey: "v1_tariffs", desc: "Endpoint public API v1 — lecture GET de `/v1/tariffs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_tariffs_engines", path: "/v1/tariffs/engines", listKey: "v1_tariffs_engines", desc: "Endpoint public API v1 — lecture GET de `/v1/tariffs/engines`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_tariffs_gateways", path: "/v1/tariffs/gateways", listKey: "v1_tariffs_gateways", desc: "Endpoint public API v1 — lecture GET de `/v1/tariffs/gateways`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_tariffs_models", path: "/v1/tariffs/models", listKey: "v1_tariffs_models", desc: "Endpoint public API v1 — lecture GET de `/v1/tariffs/models`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_trust_certifications", path: "/v1/trust/certifications", listKey: "v1_trust_certifications", desc: "Endpoint public API v1 — lecture GET de `/v1/trust/certifications`."}

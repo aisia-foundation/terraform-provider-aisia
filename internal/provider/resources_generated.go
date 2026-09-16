@@ -1103,6 +1103,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "v1_analytics_conversion_action", path: "/v1/analytics/conversion", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/analytics/conversion` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"analytics_consent", "error_code", "event_name", "form_name", "surface", "target"}}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "v1_audio_transcriptions_action", path: "/v1/audio/transcriptions", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/audio/transcriptions` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "v1_compare_action", path: "/v1/compare", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint public API v1 — mutation POST exacte `/v1/compare` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {

@@ -22,6 +22,7 @@ func TestGeneratedAPIResourcesHaveStrictRuntimeContract(t *testing.T) {
 		"admin_groups":             false,
 		"admin_skills":             false,
 		"scim_v2_users":            false,
+		"v1_conversations":         false,
 	}
 
 	count := 0
@@ -428,6 +429,21 @@ func TestOnlyDurableGeneratedTypesSupportImport(t *testing.T) {
 }
 
 func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *testing.T) {
+	expected := map[string]bool{
+		"admin_ai_rules_config":                false,
+		"admin_billing_b2c_tier_limits_config": false,
+		"admin_config_email_config":            false,
+		"admin_config_identity_config":         false,
+		"admin_config_saml_config":             false,
+		"admin_multicloud_pack_plan_config":    false,
+		"admin_routing_policy_config":          false,
+		"org_account_config":                   false,
+		"org_branding_config":                  false,
+		"org_budget_config":                    false,
+		"org_oidc_config_config":               false,
+		"org_security_policy_config":           false,
+		"org_settings_config":                  false,
+	}
 	count := 0
 	for _, factory := range generatedResources {
 		singleton, ok := factory().(*singletonApiResource)
@@ -435,6 +451,11 @@ func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *test
 			continue
 		}
 		count++
+		if _, wanted := expected[singleton.name]; !wanted {
+			t.Errorf("unexpected singleton %s", singleton.name)
+		} else {
+			expected[singleton.name] = true
+		}
 		var response resource.DeleteResponse
 		singleton.Delete(t.Context(), resource.DeleteRequest{}, &response)
 		if !response.Diagnostics.HasError() {
@@ -445,8 +466,13 @@ func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *test
 			t.Errorf("singleton %s delete diagnostic lacks explicit safe removal guidance: %v", singleton.name, response.Diagnostics)
 		}
 	}
-	if count != 11 {
-		t.Fatalf("expected 11 exact GET+PUT/PATCH singletons, got %d", count)
+	if count != len(expected) {
+		t.Fatalf("expected %d exact GET+PUT/PATCH singletons, got %d", len(expected), count)
+	}
+	for name, found := range expected {
+		if !found {
+			t.Errorf("singleton %s not generated", name)
+		}
 	}
 }
 

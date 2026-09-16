@@ -101,17 +101,37 @@ func (d *catalogDataSource) Read(ctx context.Context, _ datasource.ReadRequest, 
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
 
-// extractList retourne la liste d'items, qu'elle soit nue ([...]) ou enveloppée
-// ({"<listKey>": [...]} / {"data": [...]} / {"items": [...]}).
+// extractList retourne la liste d'items, qu'elle soit nue ([...]) ou enveloppée.
+// Les routes AISIA conservent leur nom métier dans l'enveloppe (plans, services,
+// roles, etc.) au lieu d'utiliser systématiquement data/items. La liste de clés
+// ci-dessous documente ce contrat et le fallback final couvre les nouveaux
+// endpoints sans devoir régénérer le provider pour chaque variation de JSON.
 func extractList(out any, listKey string) []any {
 	switch v := out.(type) {
 	case []any:
 		return v
 	case map[string]any:
-		for _, k := range []string{listKey, "data", "items", "results"} {
+		for _, k := range []string{
+			listKey, "data", "items", "results", "entries", "records", "rows",
+			"plans", "services", "tasks", "roles", "orgs", "organizations",
+			"investors", "ndas", "leads", "cycles", "proposals", "lines",
+			"servers", "panels", "backups", "pricing", "tiers", "reports",
+			"requests", "integrations", "providers", "models", "alerts",
+		} {
 			if l, ok := v[k].([]any); ok {
 				return l
 			}
+		}
+		var found []any
+		n := 0
+		for _, val := range v {
+			if l, ok := val.([]any); ok {
+				found = l
+				n++
+			}
+		}
+		if n == 1 {
+			return found
 		}
 	}
 	return nil
