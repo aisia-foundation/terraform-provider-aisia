@@ -359,15 +359,6 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_gov01_leftovers", path: "/admin/gov01-leftovers", listKey: "admin_gov01_leftovers", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/gov01-leftovers`."}
 	},
 	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_grafana_proxy", path: "/admin/grafana-proxy", listKey: "admin_grafana_proxy", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana-proxy`."}
-	},
-	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_grafana_session", path: "/admin/grafana-session", listKey: "admin_grafana_session", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana-session`."}
-	},
-	func() datasource.DataSource {
-		return &catalogDataSource{name: "admin_grafana_dashboards", path: "/admin/grafana/dashboards", listKey: "admin_grafana_dashboards", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/grafana/dashboards`."}
-	},
-	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_groups", path: "/admin/groups/", listKey: "admin_groups", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/groups/`."}
 	},
 	func() datasource.DataSource {
