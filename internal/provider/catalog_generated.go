@@ -803,6 +803,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "blog", path: "/blog", listKey: "blog", desc: "Endpoint API AISIA — lecture GET de `/blog`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "communications", path: "/communications", listKey: "communications", desc: "Endpoint API AISIA — lecture GET de `/communications`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "events_upcoming", path: "/events/upcoming", listKey: "events_upcoming", desc: "Endpoint API AISIA — lecture GET de `/events/upcoming`."}
 	},
 	func() datasource.DataSource {
@@ -863,6 +866,30 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_notifications", path: "/org/notifications", listKey: "org_notifications", desc: "Endpoint API AISIA — lecture GET de `/org/notifications`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability", path: "/org/observability", listKey: "org_observability", desc: "Endpoint API AISIA — lecture GET de `/org/observability`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_dashboards_quality", path: "/org/observability/dashboards/quality", listKey: "org_observability_dashboards_quality", desc: "Endpoint API AISIA — lecture GET de `/org/observability/dashboards/quality`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_eval_matrix", path: "/org/observability/eval/matrix", listKey: "org_observability_eval_matrix", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/matrix`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_eval_runs", path: "/org/observability/eval/runs", listKey: "org_observability_eval_runs", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/runs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_gpu", path: "/org/observability/gpu", listKey: "org_observability_gpu", desc: "Endpoint API AISIA — lecture GET de `/org/observability/gpu`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_logs", path: "/org/observability/logs", listKey: "org_observability_logs", desc: "Endpoint API AISIA — lecture GET de `/org/observability/logs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_metrics", path: "/org/observability/metrics", listKey: "org_observability_metrics", desc: "Endpoint API AISIA — lecture GET de `/org/observability/metrics`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_reports_summary", path: "/org/observability/reports/summary", listKey: "org_observability_reports_summary", desc: "Endpoint API AISIA — lecture GET de `/org/observability/reports/summary`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_oidc_config", path: "/org/oidc-config", listKey: "org_oidc_config", desc: "Endpoint API AISIA — lecture GET de `/org/oidc-config`."}
 	},
 	func() datasource.DataSource {
@@ -912,6 +939,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "privacy", path: "/privacy", listKey: "privacy", desc: "Endpoint API AISIA — lecture GET de `/privacy`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "readyz", path: "/readyz", listKey: "readyz", desc: "Endpoint API AISIA — lecture GET de `/readyz`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "scim_v2_groups", path: "/scim/v2/Groups", listKey: "scim_v2_groups", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/Groups`."}

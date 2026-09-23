@@ -482,6 +482,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_finops_invoice_matches_action", path: "/admin/finops/invoice-matches", pathTemplate: "", method: "POST", readPath: "/admin/finops/invoice-matches", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finops/invoice-matches` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_finops_margin_calculation_action", path: "/admin/finops/margin-calculation", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finops/margin-calculation` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"amortization_cost_eur", "budget_eur", "energy_cost_eur", "incident_cost_eur", "ops_cost_eur", "period", "provider_cost_eur", "sale_price_eur", "storage_cost_eur"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_delete_action", path: "/admin/gdpr/delete", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/delete` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "user_id", Required: true}}, bodyFields: []string{"confirm_user_id"}}
 	},
 	func() resource.Resource {
@@ -588,6 +591,18 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_learning_proposals_proposal_id_apply_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/apply", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/apply` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_learning_proposals_proposal_id_approve_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/approve", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/approve` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"note"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_learning_proposals_proposal_id_evaluate_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/evaluate", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/evaluate` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true, bodyFields: []string{"evaluation", "passed"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_learning_proposals_proposal_id_reject_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/reject", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/reject` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"reason"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_learning_proposals_proposal_id_rollback_action", path: "", pathTemplate: "/admin/learning/proposals/{proposal_id}/rollback", method: "POST", readPath: "/admin/learning/proposals", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/proposals/{proposal_id}/rollback` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_learning_public_sources_harvest_action", path: "/admin/learning/public-sources/harvest", pathTemplate: "", method: "POST", readPath: "/admin/learning/public-sources", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/learning/public-sources/harvest` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "lane", Required: false}}}
@@ -1025,7 +1040,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "org_deployments_dep_id_apply_action", path: "", pathTemplate: "/org/deployments/{dep_id}/apply", method: "POST", readPath: "/org/deployments", desc: "Endpoint API AISIA — mutation POST exacte `/org/deployments/{dep_id}/apply` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm_token"}, sensitiveFields: []string{"confirm_token"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "org_deployments_dep_id_destroy_action", path: "", pathTemplate: "/org/deployments/{dep_id}/destroy", method: "POST", readPath: "/org/deployments", desc: "Endpoint API AISIA — mutation POST exacte `/org/deployments/{dep_id}/destroy` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+		return &actionApiResource{name: "org_deployments_dep_id_destroy_action", path: "", pathTemplate: "/org/deployments/{dep_id}/destroy", method: "POST", readPath: "/org/deployments", desc: "Endpoint API AISIA — mutation POST exacte `/org/deployments/{dep_id}/destroy` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm_token"}, sensitiveFields: []string{"confirm_token"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_deployments_dep_id_plan_action", path: "", pathTemplate: "/org/deployments/{dep_id}/plan", method: "POST", readPath: "/org/deployments", desc: "Endpoint API AISIA — mutation POST exacte `/org/deployments/{dep_id}/plan` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, sensitiveFields: []string{"confirm_token"}, secretOutputs: []string{"confirm_token"}}
@@ -1062,6 +1077,21 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_notifications_notif_id_read_action", path: "", pathTemplate: "/org/notifications/{notif_id}/read", method: "POST", readPath: "/org/notifications", desc: "Endpoint API AISIA — mutation POST exacte `/org/notifications/{notif_id}/read` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_observability_calls_call_id_replay_action", path: "", pathTemplate: "/org/observability/calls/{call_id}/replay", method: "POST", readPath: "/org/observability", desc: "Endpoint API AISIA — mutation POST exacte `/org/observability/calls/{call_id}/replay` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"model", "prompt_override"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_observability_drift_action", path: "/org/observability/drift", pathTemplate: "", method: "POST", readPath: "/org/observability", desc: "Endpoint API AISIA — mutation POST exacte `/org/observability/drift` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"baseline", "collection", "current", "kind"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_observability_eval_compare_action", path: "/org/observability/eval/compare", pathTemplate: "", method: "POST", readPath: "/org/observability", desc: "Endpoint API AISIA — mutation POST exacte `/org/observability/eval/compare` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"left_id", "right_id"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_observability_eval_run_action", path: "/org/observability/eval/run", pathTemplate: "", method: "POST", readPath: "/org/observability", desc: "Endpoint API AISIA — mutation POST exacte `/org/observability/eval/run` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"model", "outputs", "prompt_version"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_observability_prompts_seal_action", path: "/org/observability/prompts/seal", pathTemplate: "", method: "POST", readPath: "/org/observability", desc: "Endpoint API AISIA — mutation POST exacte `/org/observability/prompts/seal` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"label", "template"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_seo_networks_network_mutation", path: "", pathTemplate: "/org/seo/networks/{network}", method: "DELETE", readPath: "/org/seo/networks", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/seo/networks/{network}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}

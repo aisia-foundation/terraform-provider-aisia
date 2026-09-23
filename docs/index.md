@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod LIVE PARTIAL** : **v6.13.15** (2026-09-17) · **code cible v6.13.15** (tagué ; provider public @ v6.13.15 — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.13.19** (2026-09-23) · **code cible v6.13.19** (worktree candidat non tagué ; provider public @ v6.13.19 — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -26,9 +26,9 @@ exécute, la réponse sort traçable et gouvernée.
 | vs proxy LLM | AISIA |
 |--------------|-------|
 | 1 provider fixe | **167** providers déclarés |
-| Catalogue modèles | **9568** catalogue · **132** locaux déclarés · **58** locaux actifs |
+| Catalogue modèles | **9568** catalogue · **132** locaux déclarés · **60** entrées avec `enabled: true` dans `local_models.yaml` (disponibilité runtime non mesurée) |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.13.15** LIVE · code **v6.13.15** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.13.19** LIVE · code **v6.13.19** |
 
 ## Authentification
 
@@ -81,7 +81,7 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : `6.13.15` cible la plateforme **v6.13.15**.
+Provider **couplé à AISIA** : `6.13.19` cible la plateforme **v6.13.19**.
 Utiliser `version = "~> 6.13"` dans `required_providers`.
 
 ## Example Usage
