@@ -46,8 +46,10 @@ output "result" {
 ## Documentation AISIA
 
 - **Documentation produit** : [aisia.fr/docs](https://aisia.fr/docs)
-- **Référence API OpenAPI** : [api.aisia.fr/docs](https://api.aisia.fr/docs)
-- **Guide d'implémentation Terraform** : [guides/getting-started](guides/getting-started.md)
+- **Référence API OpenAPI** : `ai-aisia-lab/openapi-snapshot.json` dans le dépôt —
+  `https://api.aisia.fr/docs` est **désactivé en production** (exposé seulement en dev ou avec
+  `EXPOSE_OPENAPI=1`), il répond 404.
+- **Guide d'implémentation Terraform** : [getting-started](../guides/getting-started.md)
 - **Provider registry** : [aisia-foundation/aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs)
 
 > Ressource `resource` : `aisia_admin_connectors_wizard_session_id_activate_action` — synchronisée avec l'OpenAPI AISIA.

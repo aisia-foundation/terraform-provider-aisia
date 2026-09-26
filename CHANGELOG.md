@@ -2,6 +2,22 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.14.1] — 2026-09-24
+
+### Régénération depuis l'OpenAPI et alignement de version
+
+Les versions **6.13.9 à 6.14.1** n'avaient pas d'entrée individuelle. Contrairement
+aux modules, le provider a bien changé sur cette plage : les sources générées
+depuis la spécification OpenAPI ont été régénérées — `catalog_generated.go`,
+`resources_generated.go`, `catalog_data_sources.go` et leurs tests de contrat.
+C'est le mécanisme prévu : la gate `terraform-provider-sync` régénère le
+provider à chaque évolution de l'API, de sorte qu'il ne puisse pas diverger.
+
+Aucune ressource écrite à la main n'a été modifiée sur cette plage.
+
+Le binaire 6.14.1 a été construit le 2026-09-24 par le runner auto-hébergé
+(`go build -ldflags "-X main.version=6.14.1"`), en matrice multi-plateforme.
+
 ## [6.13.8] — 2026-08-23
 
 ### Changed
@@ -238,3 +254,20 @@ Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 - Resource `aisia_provider_key` (clé provider par org, KEY-2, write-only, import `org_id/provider_id`).
 - Client HTTP Bearer, GoReleaser + signature GPG, CI (test + release), exemples, docs registry manifest.
 - Couplage de version automatisé via `scripts/bump_version.py`.
+
+## Relecture release 6.14.1
+
+Revue du 2026-09-24 pour la release dont le code et le runtime mesuré sont **6.14.1**. `/health` répond 6.14.1, la classe publique est `LIVE_PARTIAL`, `ceremony_complete` est faux. La dernière cérémonie all-green scellée reste **v6.13.10**. Cette relecture ne ferme pas la cérémonie.
+
+Document relu : Changelog — terraform-provider-aisia.
+
+Extrait conservé : Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
+
+Ce fichier garde son rôle d'origine. S'il décrit une campagne, un changelog ou un modèle daté, cette date reste valable. Seul l'état de production ci-dessus est celui du 2026-09-24.
+
+```mermaid
+flowchart LR
+  doc["Changelog — terraform-provider-aisia"] --> live["Runtime 6.14.1 PARTIAL"]
+  live --> ceremony["Cérémonie non close"]
+  ceremony --> last["Dernière all-green v6.13.10"]
+```

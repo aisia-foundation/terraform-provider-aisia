@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-DOCS-ENRICH:09_publications -->
-> **Runtime LIVE** : **v6.13.19** (2026-09-23) · **code monorepo v6.14.1** (worktree candidat non tagué ; provider public mesuré @ v6.13.15 — module Google public 🔒 VCS UI).
+> **Runtime LIVE** : **v6.14.1** (2026-09-26) · **code monorepo v6.14.2** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI).
 
 # Guide d'implémentation Terraform AISIA
 
@@ -18,7 +18,7 @@ Ce guide couvre le parcours complet : **déployer** la plateforme (modules) puis
 | Documentation produit | [aisia.fr/docs](https://aisia.fr/docs) |
 | Référence API OpenAPI | [api.aisia.fr/docs](https://api.aisia.fr/docs) |
 | Provider registry | [registry.terraform.io/.../aisia](https://registry.terraform.io/providers/aisia-foundation/aisia/latest/docs) |
-| Modules registry | [terraform-registry/README.md](../../../../terraform-registry/README.md) |
+| Modules registry | [terraform-registry/README.md](../../../terraform-registry/README.md) |
 
 ## Architecture IaC
 
@@ -46,7 +46,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.13"
+      version = "~> 6.14"
     }
   }
 }
@@ -55,7 +55,7 @@ module "aisia" {
   source  = "aisia-foundation/cluster/aisia"
   version = "~> 1.0"
 
-  image_tag          = "v6.14.1" # candidat monorepo ; publication du provider/image requise
+  image_tag          = "v6.14.1"
   domain             = "client.example.com"
   tier               = "saas"
   enable_autoscaling = true
@@ -104,7 +104,7 @@ module "aisia_gcp" {
 
   project_id  = var.gcp_project
   region      = "europe-west9"
-  image_tag   = "v6.14.1" # candidat monorepo ; publication du provider/image requise
+  image_tag   = "v6.14.1"
   domain      = "aisia.client.example.com"
   runtime_kind = "k8s"
 }
@@ -113,9 +113,7 @@ module "aisia_gcp" {
 ## Bonnes pratiques
 
 1. **Secrets** : `AISIA_TOKEN` en variable d'environnement, jamais en clair dans le state.
-2. **Version publiée** : le provider public `~> 6.13` correspond au dernier paquet
-   prouvé **6.13.19** ; le code candidat source et les exemples de déploiement visent
-   **v6.14.1** après publication/vérification du nouveau paquet.
+2. **Version couplée** : provider `~> 6.14` aligné sur la plateforme **v6.14.1**.
 3. **Data sources catalogue** : toujours `jsondecode(...json)` — schéma API évolutif.
 4. **Resources générées** : préférer `body = jsonencode({...})` si attributs typés absents.
 

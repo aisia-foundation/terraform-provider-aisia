@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod LIVE PARTIAL** : **v6.13.19** (2026-09-23) · **code cible v6.14.1** (worktree candidat non tagué ; provider public mesuré @ v6.13.15 — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.14.1** (2026-09-26) · **code cible v6.14.2** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -28,7 +28,7 @@ exécute, la réponse sort traçable et gouvernée.
 | 1 provider fixe | **167** providers déclarés |
 | Catalogue modèles | **9568** catalogue · **132** locaux déclarés · **60** entrées avec `enabled: true` dans `local_models.yaml` (disponibilité runtime non mesurée) |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.13.19** LIVE · code **v6.14.1** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.14.1** LIVE · code **v6.14.2** |
 
 ## Authentification
 
@@ -51,7 +51,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.13"
+      version = "~> 6.14"
     }
   }
 }
@@ -67,11 +67,11 @@ resource "aisia_organization" "acme" {
 
 | Ressource | Description |
 |-----------|-------------|
-| [`aisia_organization`](resources/organization) | Organisation (tenant) |
-| [`aisia_user`](resources/user) | Utilisateur + rôle org |
-| [`aisia_api_key`](resources/api_key) | Clé API programmatique |
-| [`aisia_provider_key`](resources/provider_key) | Clé provider LLM par org |
-| [`aisia_webhook`](resources/webhook) | Webhook sortant HMAC |
+| [`aisia_organization`](resources/organization.md) | Organisation (tenant) |
+| [`aisia_user`](resources/user.md) | Utilisateur + rôle org |
+| [`aisia_api_key`](resources/api_key.md) | Clé API programmatique |
+| [`aisia_provider_key`](resources/provider_key.md) | Clé provider LLM par org |
+| [`aisia_webhook`](resources/webhook.md) | Webhook sortant HMAC |
 
 > **181+ data sources** — un par endpoint GET catalogue API AISIA.
 
@@ -81,10 +81,8 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : le code source candidat est `6.14.1` et cible la
-plateforme **v6.14.1** ; le provider public actuellement mesuré reste `6.13.15`
-jusqu'à publication et vérification du nouveau paquet.
-Utiliser `version = "~> 6.13"` dans `required_providers`.
+Provider **couplé à AISIA** : `6.14.1` cible la plateforme **v6.14.1**.
+Utiliser `version = "~> 6.14"` dans `required_providers`.
 
 ## Example Usage
 
@@ -93,7 +91,7 @@ terraform {
   required_providers {
     aisia = {
       source  = "aisia-foundation/aisia"
-      version = "~> 6.13"
+      version = "~> 6.14"
     }
   }
 }
