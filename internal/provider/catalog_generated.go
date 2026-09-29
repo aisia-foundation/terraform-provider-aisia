@@ -125,6 +125,15 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_autonomy_status", path: "/admin/autonomy/status", listKey: "admin_autonomy_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/autonomy/status`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_aws_agentcore", path: "/admin/aws-agentcore", listKey: "admin_aws_agentcore", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/aws-agentcore`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_aws_agentcore_observability", path: "/admin/aws-agentcore/observability", listKey: "admin_aws_agentcore_observability", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/aws-agentcore/observability`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_aws_agentcore_operations", path: "/admin/aws-agentcore/operations", listKey: "admin_aws_agentcore_operations", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/aws-agentcore/operations`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_b2b_approval_queue", path: "/admin/b2b/approval/queue", listKey: "admin_b2b_approval_queue", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/b2b/approval/queue`."}
 	},
 	func() datasource.DataSource {
@@ -186,6 +195,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_campaigns", path: "/admin/campaigns/", listKey: "admin_campaigns", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/campaigns/`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_capabilities", path: "/admin/capabilities", listKey: "admin_capabilities", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/capabilities`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_catalog_sync_status", path: "/admin/catalog/sync/status", listKey: "admin_catalog_sync_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/catalog/sync/status`."}
