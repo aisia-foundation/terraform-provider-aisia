@@ -302,6 +302,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_datasets", path: "/admin/datasets", listKey: "admin_datasets", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/datasets`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_db_cratedb_native_model", path: "/admin/db/cratedb-native-model", listKey: "admin_db_cratedb_native_model", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/db/cratedb-native-model`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_db_ddl_status", path: "/admin/db/ddl-status", listKey: "admin_db_ddl_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/db/ddl-status`."}
 	},
 	func() datasource.DataSource {
