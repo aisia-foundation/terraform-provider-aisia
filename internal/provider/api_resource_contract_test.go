@@ -21,6 +21,7 @@ func TestGeneratedAPIResourcesHaveStrictRuntimeContract(t *testing.T) {
 		"admin_events":             false,
 		"admin_groups":             false,
 		"admin_skills":             false,
+		"scim_v2_groups":           false,
 		"scim_v2_users":            false,
 		"v1_conversations":         false,
 	}
@@ -430,19 +431,20 @@ func TestOnlyDurableGeneratedTypesSupportImport(t *testing.T) {
 
 func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *testing.T) {
 	expected := map[string]bool{
-		"admin_ai_rules_config":                false,
-		"admin_billing_b2c_tier_limits_config": false,
-		"admin_config_email_config":            false,
-		"admin_config_identity_config":         false,
-		"admin_config_saml_config":             false,
-		"admin_multicloud_pack_plan_config":    false,
-		"admin_routing_policy_config":          false,
-		"org_account_config":                   false,
-		"org_branding_config":                  false,
-		"org_budget_config":                    false,
-		"org_oidc_config_config":               false,
-		"org_security_policy_config":           false,
-		"org_settings_config":                  false,
+		"admin_ai_rules_config":                    false,
+		"admin_aws_agentcore_observability_config": false,
+		"admin_billing_b2c_tier_limits_config":     false,
+		"admin_config_email_config":                false,
+		"admin_config_identity_config":             false,
+		"admin_config_saml_config":                 false,
+		"admin_multicloud_pack_plan_config":        false,
+		"admin_routing_policy_config":              false,
+		"org_account_config":                       false,
+		"org_branding_config":                      false,
+		"org_budget_config":                        false,
+		"org_oidc_config_config":                   false,
+		"org_security_policy_config":               false,
+		"org_settings_config":                      false,
 	}
 	count := 0
 	for _, factory := range generatedResources {
