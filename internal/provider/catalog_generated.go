@@ -14,6 +14,18 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_agent_protocol", path: "/admin/agent-protocol", listKey: "admin_agent_protocol", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent-protocol`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agent_email_live", path: "/admin/agent/email/live", listKey: "admin_agent_email_live", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/live`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agent_email_live_message", path: "/admin/agent/email/live/message", listKey: "admin_agent_email_live_message", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/live/message`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agent_email_mailbox", path: "/admin/agent/email/mailbox", listKey: "admin_agent_email_mailbox", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/mailbox`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_agent_email_ovh", path: "/admin/agent/email/ovh", listKey: "admin_agent_email_ovh", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/ovh`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_agent_email_stats", path: "/admin/agent/email/stats", listKey: "admin_agent_email_stats", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent/email/stats`."}
 	},
 	func() datasource.DataSource {
@@ -435,6 +447,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_learning_public_sources", path: "/admin/learning/public-sources", listKey: "admin_learning_public_sources", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/public-sources`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_learning_sources", path: "/admin/learning/sources", listKey: "admin_learning_sources", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/sources`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_learning_status", path: "/admin/learning/status", listKey: "admin_learning_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/learning/status`."}
@@ -969,6 +984,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_capabilities", path: "/v1/capabilities", listKey: "v1_capabilities", desc: "Endpoint public API v1 — lecture GET de `/v1/capabilities`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_client_integrations", path: "/v1/client-integrations", listKey: "v1_client_integrations", desc: "Endpoint public API v1 — lecture GET de `/v1/client-integrations`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_conversations", path: "/v1/conversations", listKey: "v1_conversations", desc: "Endpoint public API v1 — lecture GET de `/v1/conversations`."}

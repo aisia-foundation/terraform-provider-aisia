@@ -77,7 +77,16 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_agent_cycle_run_action", path: "/admin/agent/cycle/run", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/cycle/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_agent_email_ovh_redirections_action", path: "/admin/agent/email/ovh/redirections", pathTemplate: "", method: "POST", readPath: "/admin/agent/email/ovh", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/email/ovh/redirections` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_agent_email_run_action", path: "/admin/agent/email/run", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/email/run` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_agent_email_send_action", path: "/admin/agent/email/send", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/email/send` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"address", "body", "subject", "to"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_agent_email_smtp_check_action", path: "/admin/agent/email/smtp-check", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/email/smtp-check` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "address", Required: false}}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_agent_orchestration_toggle_action", path: "/admin/agent/orchestration/toggle", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/agent/orchestration/toggle` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"agent_code", "enabled"}}
