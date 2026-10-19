@@ -179,6 +179,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_billing_stats", path: "/admin/billing/stats", listKey: "admin_billing_stats", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/billing/stats`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_blog_dates_audit", path: "/admin/blog/dates/audit", listKey: "admin_blog_dates_audit", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/blog/dates/audit`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_blog_posts", path: "/admin/blog/posts", listKey: "admin_blog_posts", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/blog/posts`."}
 	},
 	func() datasource.DataSource {
@@ -515,6 +518,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_multicloud_pack_budget", path: "/admin/multicloud/pack/budget", listKey: "admin_multicloud_pack_budget", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/budget`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_multicloud_pack_clusters", path: "/admin/multicloud/pack/clusters", listKey: "admin_multicloud_pack_clusters", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/clusters`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_multicloud_pack_costs", path: "/admin/multicloud/pack/costs", listKey: "admin_multicloud_pack_costs", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack/costs`."}
 	},
 	func() datasource.DataSource {
@@ -708,6 +714,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_seo_posts", path: "/admin/seo/posts", listKey: "admin_seo_posts", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/posts`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_seo_publication_status", path: "/admin/seo/publication-status", listKey: "admin_seo_publication_status", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/publication-status`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_seo_scheduler", path: "/admin/seo/scheduler", listKey: "admin_seo_scheduler", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/seo/scheduler`."}

@@ -437,6 +437,7 @@ func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *test
 		"admin_config_email_config":                false,
 		"admin_config_identity_config":             false,
 		"admin_config_saml_config":                 false,
+		"admin_multicloud_pack_clusters_config":    false,
 		"admin_multicloud_pack_plan_config":        false,
 		"admin_routing_policy_config":              false,
 		"org_account_config":                       false,
