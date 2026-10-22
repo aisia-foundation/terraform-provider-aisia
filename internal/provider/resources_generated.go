@@ -113,6 +113,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_ai_act_annexe_iii_classifications_action", path: "/admin/ai-act/annexe-iii-classifications", pathTemplate: "", method: "POST", readPath: "/admin/ai-act/annexe-iii-classifications", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/ai-act/annexe-iii-classifications` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"annexe_iii_area", "classification_reason", "org_id", "use_case_description", "use_case_id"}}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_ai_act_incidents_triage_action", path: "/admin/ai-act/incidents/triage", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/ai-act/incidents/triage` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"apply", "incident_ids"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_ai_act_model_cards_purge_stubs_action", path: "/admin/ai-act/model-cards/purge-stubs", pathTemplate: "", method: "POST", readPath: "/admin/ai-act/model-cards", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/ai-act/model-cards/purge-stubs` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "dry_run", Required: false}}}
 	},
 	func() resource.Resource {
@@ -534,6 +537,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_export_action", path: "/admin/gdpr/export", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/export` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "user_id", Required: true}}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_gdpr_exports_requeue_action", path: "/admin/gdpr/exports/requeue", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/exports/requeue` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"apply", "request_ids"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_requests", path: "/admin/gdpr/requests", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
@@ -968,7 +974,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_seo_scheduler_action", path: "/admin/seo/scheduler", pathTemplate: "", method: "POST", readPath: "/admin/seo/scheduler", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/seo/scheduler` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_sessions_bulk_revoke_action", path: "/admin/sessions/bulk-revoke", pathTemplate: "", method: "POST", readPath: "/admin/sessions/bulk-revoke", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/bulk-revoke` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "exclude_session_ids", "session_ids", "user_email"}}
+		return &actionApiResource{name: "admin_sessions_bulk_revoke_action", path: "/admin/sessions/bulk-revoke", pathTemplate: "", method: "POST", readPath: "/admin/sessions/bulk-revoke", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/bulk-revoke` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"all_tokens", "confirm", "exclude_session_ids", "session_ids", "user_email"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_sessions_sid_revoke_action", path: "", pathTemplate: "/admin/sessions/{sid}/revoke", method: "POST", readPath: "/admin/sessions", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/{sid}/revoke` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
