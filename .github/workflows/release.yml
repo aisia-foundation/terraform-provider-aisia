@@ -6,17 +6,26 @@ name: provider-release
 on:
   push:
     tags: ['v*']
+concurrency:
+  group: github-release-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
-  contents: write
+  contents: read
 jobs:
   goreleaser:
-    runs-on: [self-hosted, Linux, ARM64, aisia-release]
+    if: vars.AISIA_RELEASE_RUNNER_ENABLED == 'true'
+    permissions:
+      contents: write
+    runs-on: [self-hosted, Linux, X64, aisia-release]
     timeout-minutes: 30
     defaults: { run: { working-directory: . } }
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
-        with: { go-version: '1.22' }
+        with: { go-version: '1.26' }
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@e89d40939c28e39f97cf32126055eeae86ba74ec # v6
         id: gpg

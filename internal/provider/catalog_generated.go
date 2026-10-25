@@ -953,6 +953,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_seo_networks", path: "/org/seo/networks", listKey: "org_seo_networks", desc: "Endpoint API AISIA — lecture GET de `/org/seo/networks`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_seo_networks_google_business_locations", path: "/org/seo/networks/google_business/locations", listKey: "org_seo_networks_google_business_locations", desc: "Endpoint API AISIA — lecture GET de `/org/seo/networks/google_business/locations`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_seo_posts", path: "/org/seo/posts", listKey: "org_seo_posts", desc: "Endpoint API AISIA — lecture GET de `/org/seo/posts`."}
 	},
 	func() datasource.DataSource {
