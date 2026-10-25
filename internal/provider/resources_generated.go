@@ -416,7 +416,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_credentials_item", path: "", pathTemplate: "/admin/credentials/{provider}", method: "PUT", readPath: "/admin/credentials", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/credentials/{provider}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"api_key", "fields"}, sensitiveFields: []string{"api_key", "fields"}}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_crews_orphans_drain_action", path: "/admin/crews/orphans/drain", pathTemplate: "", method: "POST", readPath: "/admin/crews", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/crews/orphans/drain` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"crew_name", "decision", "dry_run", "max_drain"}}
+		return &actionApiResource{name: "admin_crews_orphans_drain_action", path: "/admin/crews/orphans/drain", pathTemplate: "", method: "POST", readPath: "/admin/crews", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/crews/orphans/drain` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "crew_name", "decision", "dry_run", "max_drain"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_crews_runs_run_id_approve_action", path: "", pathTemplate: "/admin/crews/runs/{run_id}/approve", method: "POST", readPath: "/admin/crews/runs", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/crews/runs/{run_id}/approve` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"decision", "step_index"}}
@@ -428,7 +428,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_database_migrations_name_apply_action", path: "", pathTemplate: "/admin/database/migrations/{name}/apply", method: "POST", readPath: "/admin/database/migrations", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/database/migrations/{name}/apply` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_datasets_cleanup_action", path: "/admin/datasets/cleanup", pathTemplate: "", method: "POST", readPath: "/admin/datasets", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/datasets/cleanup` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+		return &actionApiResource{name: "admin_datasets_cleanup_action", path: "/admin/datasets/cleanup", pathTemplate: "", method: "POST", readPath: "/admin/datasets", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/datasets/cleanup` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "dry_run"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_datasets_download_action", path: "/admin/datasets/download", pathTemplate: "", method: "POST", readPath: "/admin/datasets", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/datasets/download` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"dataset_id", "name", "source"}}
@@ -555,6 +555,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_requests_delete_action", path: "/admin/gdpr/requests/delete", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests/delete` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "reason", "user_email"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_gdpr_requests_delete_preview_action", path: "/admin/gdpr/requests/delete/preview", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests/delete/preview", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests/delete/preview` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"user_email"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_requests_export_action", path: "/admin/gdpr/requests/export", pathTemplate: "", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests/export` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"reason", "user_email"}}
@@ -953,6 +956,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_rbac_action", path: "/admin/rbac", pathTemplate: "", method: "POST", readPath: "/admin/rbac", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/rbac` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_registries_invalid_entries_purge_action", path: "/admin/registries/invalid-entries/purge", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/registries/invalid-entries/purge` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "dry_run", "ids"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_resellers_reseller_id_mutation", path: "", pathTemplate: "/admin/resellers/{reseller_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/resellers/{reseller_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
@@ -996,6 +1002,9 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_sessions_sid_revoke_action", path: "", pathTemplate: "/admin/sessions/{sid}/revoke", method: "POST", readPath: "/admin/sessions", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/sessions/{sid}/revoke` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_test_residues_purge_action", path: "/admin/test-residues/purge", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/test-residues/purge` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"confirm", "dry_run", "ids"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_tests_run_action", path: "/admin/tests/run", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/tests/run` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"profile", "spec_file"}}
@@ -1071,6 +1080,12 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_vault_secret_name_mutation", path: "", pathTemplate: "/admin/vault/{secret_name}", method: "DELETE", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/vault/{secret_name}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "org_id", Required: false}}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_vault_secret_name_reveal_action", path: "", pathTemplate: "/admin/vault/{secret_name}/reveal", method: "POST", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/vault/{secret_name}/reveal` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"confirmation_token", "mfa_code", "org_id"}, sensitiveFields: []string{"confirmation_token"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "admin_vault_secret_name_reveal_challenge_action", path: "", pathTemplate: "/admin/vault/{secret_name}/reveal/challenge", method: "POST", readPath: "/admin/vault", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/vault/{secret_name}/reveal/challenge` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"org_id"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_webhook_alert_action", path: "/admin/webhook/alert", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/webhook/alert` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"alerts", "status"}}

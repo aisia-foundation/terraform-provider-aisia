@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod LIVE PARTIAL** : **v6.14.19** (2026-10-25) · **code cible v6.14.20** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.14.19** (2026-10-25) · **code cible v6.14.21** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -28,7 +28,7 @@ exécute, la réponse sort traçable et gouvernée.
 | 1 provider fixe | **167** providers déclarés |
 | Catalogue modèles | **9568** catalogue · **168** locaux déclarés · **63** entrées avec `enabled: true` dans `local_models.yaml` (disponibilité runtime non mesurée) |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.14.19** LIVE · code **v6.14.20** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.14.19** LIVE · code **v6.14.21** |
 
 ## Authentification
 
