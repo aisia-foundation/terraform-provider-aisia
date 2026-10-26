@@ -6,8 +6,15 @@ name: provider-release
 on:
   push:
     tags: ['v*']
+  # 2026-10-26 : rejouer la release d'un tag déjà poussé (le workflow était sauté
+  # depuis la 6.14.20, voir runs-on). Le tag reste la seule source du binaire.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag à publier (vX.Y.Z), déjà présent sur le dépôt"
+        required: true
 concurrency:
-  group: github-release-${{ github.ref }}
+  group: github-release-${{ inputs.tag || github.ref }}
   cancel-in-progress: false
 
 permissions:
@@ -17,13 +24,19 @@ jobs:
     if: vars.AISIA_RELEASE_RUNNER_ENABLED == 'true'
     permissions:
       contents: write
-    runs-on: [self-hosted, Linux, X64, aisia-release]
+    # Runner de release réel : aisia-release-jetson (ARM64), en ligne, qui a signé
+    # 6.14.18 et 6.14.19. Le runner X64 « Swarm » prévu le 2026-10-23 n'a jamais
+    # été installé : depuis, chaque release du provider était sautée (fondateur,
+    # 2026-10-26 : revenir au Jetson). goreleaser compile toutes les cibles.
+    runs-on: [self-hosted, Linux, ARM64, aisia-release]
     timeout-minutes: 30
     defaults: { run: { working-directory: . } }
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+          ref: ${{ inputs.tag && format('refs/tags/{0}', inputs.tag) || github.ref }}
+          fetch-depth: 0
       - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
         with: { go-version: '1.26' }
       - name: Import GPG key
@@ -44,7 +57,9 @@ jobs:
         env:
           TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.gpg.outputs.fingerprint }}
+          INPUT_TAG: ${{ inputs.tag }}
         run: |
-          export VERSION="${GITHUB_REF_NAME#v}"   # vX.Y.Z -> X.Y.Z
+          TAG="${INPUT_TAG:-$GITHUB_REF_NAME}"
+          export VERSION="${TAG#v}"   # vX.Y.Z -> X.Y.Z
           chmod +x scripts/publish-hcp.sh
           ./scripts/publish-hcp.sh
