@@ -1190,6 +1190,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "org_seo_networks_network_mutation", path: "", pathTemplate: "/org/seo/networks/{network}", method: "DELETE", readPath: "/org/seo/networks", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/seo/networks/{network}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "org_seo_networks_network_scheduler_mutation", path: "", pathTemplate: "/org/seo/networks/{network}/scheduler", method: "PUT", readPath: "/org/seo/networks", desc: "Endpoint API AISIA — mutation PUT exacte `/org/seo/networks/{network}/scheduler` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"enabled"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "org_sessions_sid_revoke_action", path: "", pathTemplate: "/org/sessions/{sid}/revoke", method: "POST", readPath: "/org/sessions", desc: "Endpoint API AISIA — mutation POST exacte `/org/sessions/{sid}/revoke` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
