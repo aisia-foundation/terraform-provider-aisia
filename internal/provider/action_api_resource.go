@@ -1,10 +1,16 @@
 package provider
 
 import (
+	"bytes"
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"net/url"
+	"os"
 	"regexp"
 	"sort"
 	"strings"
@@ -34,6 +40,7 @@ type actionApiResource struct {
 	readPath                  string
 	desc                      string
 	hasJSONBody               bool
+	binaryContentType         string
 	bodyRequired              bool
 	allowAdditionalBodyFields bool
 	queryParams               []actionQueryParam
@@ -69,6 +76,9 @@ func (r *actionApiResource) actionDocPath() string {
 }
 
 func (r *actionApiResource) bodyDescription() string {
+	if r.binaryContentType != "" {
+		return "Objet JSON contenant uniquement les paramètres de chemin/query (ex. `jsonencode({contract_id = \"…\", filename = \"contrat.pdf\"})`). Ce JSON n'est pas envoyé comme corps HTTP ; source_file fournit le PDF brut."
+	}
 	description := "Corps JSON complémentaire (ex. `jsonencode({...})`). Les clés de chemin/query sont utilisées comme paramètres de transport et retirées du corps HTTP sauf si l'OpenAPI les déclare aussi dans le body."
 	required := make([]string, 0, len(r.queryParams))
 	for _, parameter := range r.queryParams {
@@ -141,7 +151,7 @@ func (r *actionApiResource) bodyInputRequired() bool {
 			}
 		}
 	}
-	return r.bodyRequired && len(r.typedAttrs) == 0
+	return r.binaryContentType == "" && r.bodyRequired && len(r.typedAttrs) == 0
 }
 
 func (r *actionApiResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -165,8 +175,27 @@ func (r *actionApiResource) Schema(_ context.Context, _ resource.SchemaRequest, 
 		Sensitive:           r.hasSensitiveAttrs(),
 		PlanModifiers:       []planmodifier.String{stringplanmodifier.RequiresReplace()},
 	}
+	if r.isContractCreation() {
+		attrs["idempotency_key"] = schema.StringAttribute{
+			MarkdownDescription: "Clé stable et unique de création (8–128 caractères parmi A–Z, a–z, 0–9, _, ., : et -, UUID recommandé). Conservez la même clé lors d'une reprise ; une nouvelle clé autorise une nouvelle création. Le serveur doit annoncer contracts-recovery-v1 avant tout POST. Ne pas utiliser timestamp() ou uuid() évalués à chaque plan.",
+			Required:            true,
+			PlanModifiers:       []planmodifier.String{stringplanmodifier.RequiresReplace()},
+		}
+	}
+	if r.binaryContentType != "" {
+		attrs["source_file"] = schema.StringAttribute{
+			MarkdownDescription: "Chemin local du PDF brut (10 Mio maximum). Seuls le chemin et l'empreinte sont conservés dans le state, jamais les octets du document.",
+			Required:            true, Sensitive: true,
+			PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+		}
+		attrs["source_sha256"] = schema.StringAttribute{
+			MarkdownDescription: "Empreinte SHA-256 attendue du fichier (ex. filesha256(...)). Toute modification impose un remplacement explicite ; un fichier divergent est refusé avant l'appel réseau.",
+			Required:            true,
+			PlanModifiers:       []planmodifier.String{stringplanmodifier.RequiresReplace()},
+		}
+	}
 	for _, attr := range r.typedAttrs {
-		if attr.Name == "id" || attr.Name == "json" || attr.Name == "body" {
+		if attr.Name == "id" || attr.Name == "json" || attr.Name == "body" || (r.isContractCreation() && attr.Name == "idempotency_key") || (r.binaryContentType != "" && (attr.Name == "source_file" || attr.Name == "source_sha256")) {
 			resp.Diagnostics.AddError(
 				"Attribut Terraform réservé",
 				fmt.Sprintf("Le champ OpenAPI %q de aisia_%s doit être exposé sous un alias Terraform non réservé.", attr.wireName(), r.name),
@@ -397,6 +426,64 @@ func (r *actionApiResource) resolveQuery(rawPath string, fields map[string]any) 
 	return parsed.String(), nil
 }
 
+const maxActionPDFBytes = 10 * 1024 * 1024
+
+func (r *actionApiResource) binaryBodyFromPlan(ctx context.Context, plan tfsdk.Plan, fields map[string]any, body any) ([]byte, diag.Diagnostics, error) {
+	var diagnostics diag.Diagnostics
+	if r.binaryContentType != "application/pdf" || r.hasJSONBody {
+		return nil, diagnostics, fmt.Errorf("contrat de transport binaire non supporté")
+	}
+	if _, ok := body.(map[string]any); !ok {
+		return nil, diagnostics, fmt.Errorf("body doit être un objet de paramètres de chemin/query pour le dépôt PDF")
+	}
+	allowed := map[string]bool{}
+	for _, match := range _tplVar.FindAllStringSubmatch(r.pathTemplate, -1) {
+		allowed[match[1]] = true
+	}
+	for _, parameter := range r.queryParams {
+		allowed[parameter.Name] = true
+	}
+	for key := range fields {
+		if !allowed[key] {
+			return nil, diagnostics, fmt.Errorf("body du dépôt PDF accepte uniquement les paramètres de chemin/query déclarés")
+		}
+	}
+	var source, expected types.String
+	diagnostics.Append(plan.GetAttribute(ctx, path.Root("source_file"), &source)...)
+	diagnostics.Append(plan.GetAttribute(ctx, path.Root("source_sha256"), &expected)...)
+	if diagnostics.HasError() {
+		return nil, diagnostics, nil
+	}
+	if source.IsUnknown() || source.IsNull() || strings.TrimSpace(source.ValueString()) == "" || expected.IsUnknown() || expected.IsNull() {
+		return nil, diagnostics, fmt.Errorf("source_file et source_sha256 connus sont requis avant le dépôt PDF")
+	}
+	want, err := hex.DecodeString(expected.ValueString())
+	if err != nil || len(want) != sha256.Size {
+		return nil, diagnostics, fmt.Errorf("source_sha256 doit être une empreinte SHA-256 hexadécimale")
+	}
+	info, err := os.Stat(source.ValueString())
+	if err != nil || !info.Mode().IsRegular() || info.Size() > maxActionPDFBytes {
+		return nil, diagnostics, fmt.Errorf("source_file doit être un fichier PDF régulier de 10 Mio maximum (chemin expurgé)")
+	}
+	file, err := os.Open(source.ValueString())
+	if err != nil {
+		return nil, diagnostics, fmt.Errorf("lecture du PDF local impossible (%T, chemin expurgé)", err)
+	}
+	defer file.Close()
+	data, err := io.ReadAll(io.LimitReader(file, maxActionPDFBytes+1))
+	if err != nil {
+		return nil, diagnostics, fmt.Errorf("lecture du PDF local échouée (%T, chemin expurgé)", err)
+	}
+	if len(data) > maxActionPDFBytes || !bytes.HasPrefix(data, []byte("%PDF-")) {
+		return nil, diagnostics, fmt.Errorf("source_file doit être un PDF de 10 Mio maximum")
+	}
+	actual := sha256.Sum256(data)
+	if !bytes.Equal(actual[:], want) {
+		return nil, diagnostics, fmt.Errorf("empreinte source_sha256 divergente ; relisez le fichier et le plan avant toute nouvelle action")
+	}
+	return data, diagnostics, nil
+}
+
 func (r *actionApiResource) runMutation(ctx context.Context, plan tfsdk.Plan) (string, map[string]string, diag.Diagnostics, bool, error) {
 	var diagnostics diag.Diagnostics
 	var rawBody types.String
@@ -449,7 +536,34 @@ func (r *actionApiResource) runMutation(ctx context.Context, plan tfsdk.Plan) (s
 		}
 	}
 	var out any
-	if _, err := r.data.apiDo(ctx, r.httpMethod(), requestPath, requestBody, &out); err != nil {
+	if r.isContractCreation() {
+		var key types.String
+		diagnostics.Append(plan.GetAttribute(ctx, path.Root("idempotency_key"), &key)...)
+		if diagnostics.HasError() {
+			return "", nil, diagnostics, false, nil
+		}
+		if key.IsNull() || key.IsUnknown() || !validContractCreationKey(key.ValueString()) {
+			return "", nil, diagnostics, false, fmt.Errorf("idempotency_key stable requise : 8–128 caractères parmi A–Z, a–z, 0–9, _, ., : et -")
+		}
+		if err := r.checkContractCreationProtocol(ctx, fields); err != nil {
+			return "", nil, diagnostics, false, err
+		}
+		_, err = r.data.apiDoWithKey(ctx, r.httpMethod(), requestPath, requestBody, key.ValueString(), &out)
+	} else if r.binaryContentType != "" {
+		binaryBody, binaryDiagnostics, binaryErr := r.binaryBodyFromPlan(ctx, plan, fields, body)
+		diagnostics.Append(binaryDiagnostics...)
+		if binaryErr != nil || diagnostics.HasError() {
+			return "", nil, diagnostics, false, binaryErr
+		}
+		_, err = r.data.apiDoBinary(ctx, r.httpMethod(), requestPath, binaryBody, r.binaryContentType, &out)
+	} else {
+		_, err = r.data.apiDo(ctx, r.httpMethod(), requestPath, requestBody, &out)
+	}
+	if err != nil {
+		var persisted *apiPersistedMutationError
+		if errors.As(err, &persisted) {
+			return marshalStateJSON(out, r.sensitiveAttrNames()), nil, diagnostics, true, err
+		}
 		return "", nil, diagnostics, false, err
 	}
 	jsonState := marshalStateJSON(out, r.sensitiveAttrNames())
@@ -474,9 +588,11 @@ func (r *actionApiResource) Create(ctx context.Context, req resource.CreateReque
 	jsonState, secretValues, diagnostics, mutationSucceeded, err := r.runMutation(ctx, req.Plan)
 	resp.Diagnostics.Append(diagnostics...)
 	if mutationSucceeded {
-		// Une réponse HTTP 2xx prouve l'effet distant. Persister immédiatement un
-		// state récupérable avant de valider les sorties one-shot empêche Terraform
-		// de rejouer aveuglément le POST si la réponse est incomplète.
+		// Une réponse HTTP 2xx ou une confirmation explicite persisted=true prouve
+		// l'effet distant. Conserver le state permet d'inspecter cet effet même
+		// si la validation échoue. Une erreur de Create peut néanmoins marquer
+		// la ressource tainted : un prochain apply peut rejouer le POST et exige
+		// une réconciliation préalable de l'état distant et du state Terraform.
 		resp.State.Raw = req.Plan.Raw
 		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), types.StringValue(r.actionID()))...)
 		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("json"), types.StringValue(jsonState))...)

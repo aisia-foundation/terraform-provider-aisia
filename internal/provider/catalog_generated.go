@@ -317,6 +317,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_datasets", path: "/admin/datasets", listKey: "admin_datasets", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/datasets`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_datasets_discovery", path: "/admin/datasets/discovery", listKey: "admin_datasets_discovery", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/datasets/discovery`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_db_cratedb_native_model", path: "/admin/db/cratedb-native-model", listKey: "admin_db_cratedb_native_model", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/db/cratedb-native-model`."}
 	},
 	func() datasource.DataSource {
@@ -432,6 +435,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_knowledge", path: "/admin/knowledge", listKey: "admin_knowledge", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/knowledge`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_knowledge_inventory", path: "/admin/knowledge/inventory", listKey: "admin_knowledge_inventory", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/knowledge/inventory`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_l1_l6_progress", path: "/admin/l1-l6-progress", listKey: "admin_l1_l6_progress", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/l1-l6-progress`."}
@@ -989,6 +995,15 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "scim_v2_groups", path: "/scim/v2/Groups", listKey: "scim_v2_groups", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/Groups`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "scim_v2_resourcetypes", path: "/scim/v2/ResourceTypes", listKey: "scim_v2_resourcetypes", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/ResourceTypes`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "scim_v2_schemas", path: "/scim/v2/Schemas", listKey: "scim_v2_schemas", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/Schemas`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "scim_v2_serviceproviderconfig", path: "/scim/v2/ServiceProviderConfig", listKey: "scim_v2_serviceproviderconfig", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/ServiceProviderConfig`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "scim_v2_users", path: "/scim/v2/Users", listKey: "scim_v2_users", desc: "Endpoint API AISIA — lecture GET de `/scim/v2/Users`."}
 	},
 	func() datasource.DataSource {
@@ -1011,6 +1026,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_info", path: "/v1/info", listKey: "v1_info", desc: "Endpoint public API v1 — lecture GET de `/v1/info`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "v1_knowledge_summary", path: "/v1/knowledge/summary", listKey: "v1_knowledge_summary", desc: "Endpoint public API v1 — lecture GET de `/v1/knowledge/summary`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "v1_local_models", path: "/v1/local-models", listKey: "v1_local_models", desc: "Endpoint public API v1 — lecture GET de `/v1/local-models`."}

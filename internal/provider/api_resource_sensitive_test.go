@@ -196,9 +196,11 @@ func TestSensitiveResponseIsRedactedBeforeStateJSON(t *testing.T) {
 
 func TestOneShotSecretsHaveDedicatedSensitiveOutputs(t *testing.T) {
 	expected := map[string]string{
-		"admin_orgs_org_id_api_keys_action":         "key",
-		"admin_orgs_org_id_invitations_action":      "accept_url",
-		"admin_organizations_org_id_licence_action": "licence_key",
+		"admin_orgs_org_id_api_keys_action":           "key",
+		"admin_orgs_org_id_invitations_action":        "accept_url",
+		"admin_orgs_org_id_scim_tokens_action":        "token",
+		"admin_orgs_org_id_scim_tokens_rotate_action": "token",
+		"admin_organizations_org_id_licence_action":   "licence_key",
 		"org_api_keys":                       "key",
 		"org_deployments_dep_id_plan_action": "confirm_token",
 	}
@@ -237,6 +239,64 @@ type oneShotActionPlan struct {
 	Body types.String `tfsdk:"body"`
 	JSON types.String `tfsdk:"json"`
 	Key  types.String `tfsdk:"key"`
+}
+
+type scimTokenActionPlan struct {
+	ID    types.String `tfsdk:"id"`
+	Body  types.String `tfsdk:"body"`
+	JSON  types.String `tfsdk:"json"`
+	Token types.String `tfsdk:"token"`
+}
+
+func TestGeneratedSCIMTokensRemainUsableAndRedacted(t *testing.T) {
+	for name, requestPath := range map[string]string{
+		"admin_orgs_org_id_scim_tokens_action":        "/admin/orgs/synthetic-org/scim/tokens",
+		"admin_orgs_org_id_scim_tokens_rotate_action": "/admin/orgs/synthetic-org/scim/tokens/rotate",
+	} {
+		t.Run(name, func(t *testing.T) {
+			var action *actionApiResource
+			for _, factory := range generatedResources {
+				if candidate, ok := factory().(*actionApiResource); ok && candidate.name == name {
+					action = candidate
+					break
+				}
+			}
+			if action == nil {
+				t.Fatal("generated SCIM action missing")
+			}
+			calls := 0
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+				calls++
+				if req.Method != "POST" || req.URL.Path != requestPath || req.Header.Get("Authorization") != "Bearer synthetic-admin" {
+					t.Error("SCIM mutation transport contract mismatch")
+				}
+				w.Header().Set("Content-Type", "application/json")
+				_, _ = w.Write([]byte(`{"org_id":"synthetic-org","token":"synthetic-scim-token","complete":true}`))
+			}))
+			defer server.Close()
+			action.data = &providerData{endpoint: server.URL, token: "synthetic-admin", http: server.Client()}
+			var response resource.SchemaResponse
+			action.Schema(t.Context(), resource.SchemaRequest{}, &response)
+			plan := tfsdk.Plan{Schema: response.Schema}
+			diagnostics := plan.Set(t.Context(), scimTokenActionPlan{
+				ID: types.StringUnknown(), Body: types.StringValue(`{"org_id":"synthetic-org"}`),
+				JSON: types.StringUnknown(), Token: types.StringUnknown(),
+			})
+			if diagnostics.HasError() {
+				t.Fatal("cannot build SCIM action plan")
+			}
+			jsonState, outputs, diagnostics, persisted, err := action.runMutation(t.Context(), plan)
+			if err != nil || diagnostics.HasError() || !persisted || calls != 1 {
+				t.Fatal("SCIM token creation did not complete exactly once")
+			}
+			if outputs["token"] != "synthetic-scim-token" {
+				t.Fatal("one-time SCIM token lost")
+			}
+			if strings.Contains(jsonState, "synthetic-scim-token") || !strings.Contains(jsonState, "[REDACTED]") {
+				t.Fatal("SCIM token was not redacted from generic JSON state")
+			}
+		})
+	}
 }
 
 func TestOneShotSecretIsUsableButAbsentFromJSON(t *testing.T) {

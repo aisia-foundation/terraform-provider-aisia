@@ -24,10 +24,10 @@ jobs:
     if: vars.AISIA_RELEASE_RUNNER_ENABLED == 'true'
     permissions:
       contents: write
-    # Runner de release réel : aisia-release-jetson (ARM64), en ligne, qui a signé
-    # 6.14.18 et 6.14.19. Le runner X64 « Swarm » prévu le 2026-10-23 n'a jamais
+    # Runner de release réel : label aisia-release (ARM64), en ligne, qui a signé
+    # 6.14.18 et 6.14.19. Le runner X64 prévu le 2026-10-23 n'a jamais
     # été installé : depuis, chaque release du provider était sautée (fondateur,
-    # 2026-10-26 : revenir au Jetson). goreleaser compile toutes les cibles.
+    # 2026-10-26 : revenir à ce runner ARM64). goreleaser compile toutes les cibles.
     runs-on: [self-hosted, Linux, ARM64, aisia-release]
     timeout-minutes: 30
     defaults: { run: { working-directory: . } }
