@@ -71,6 +71,9 @@ var generatedResources = []func() resource.Resource{
 		return &singletonApiResource{name: "org_oidc_config_config", path: "/org/oidc-config", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"client_id", "client_secret", "discovery_url", "domain", "email_domain", "enabled", "provider", "tenant_id"}, sensitiveFields: []string{"client_secret"}}
 	},
 	func() resource.Resource {
+		return &singletonApiResource{name: "org_saml_idp_initiated_config", path: "/org/saml-idp-initiated", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"enabled", "max_assertion_lifetime_s", "relay_state_allowlist"}}
+	},
+	func() resource.Resource {
 		return &singletonApiResource{name: "org_security_policy_config", path: "/org/security-policy", updateVerb: "PUT", desc: "Endpoint API AISIA — configuration singleton (GET+PUT/PATCH sur le même chemin).", bodyFields: []string{"allow_signup", "enforce_2fa", "ip_allowlist", "password_min_length", "session_ttl_minutes"}}
 	},
 	func() resource.Resource {
@@ -1200,6 +1203,12 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_knowledge_action", path: "/org/knowledge", pathTemplate: "", method: "POST", readPath: "/org/knowledge", desc: "Endpoint API AISIA — mutation POST exacte `/org/knowledge` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"source", "text", "url"}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_knowledge_documents_source_id_mutation", path: "", pathTemplate: "/org/knowledge/documents/{source_id}", method: "DELETE", readPath: "/org/knowledge", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/knowledge/documents/{source_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "org_knowledge_search_action", path: "/org/knowledge/search", pathTemplate: "", method: "POST", readPath: "/org/knowledge", desc: "Endpoint API AISIA — mutation POST exacte `/org/knowledge/search` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"query", "top_k"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "org_members_user_id_mutation", path: "", pathTemplate: "/org/members/{user_id}", method: "DELETE", readPath: "/org/members", desc: "Endpoint API AISIA — mutation DELETE exacte `/org/members/{user_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
