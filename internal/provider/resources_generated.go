@@ -1169,6 +1169,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "org_custom_domain_provision_action", path: "/org/custom-domain/provision", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint API AISIA — mutation POST exacte `/org/custom-domain/provision` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "org_custom_domain_revoke_action", path: "/org/custom-domain/revoke", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint API AISIA — mutation POST exacte `/org/custom-domain/revoke` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "org_deployments_action", path: "/org/deployments", pathTemplate: "", method: "POST", readPath: "/org/deployments", desc: "Endpoint API AISIA — mutation POST exacte `/org/deployments` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"profile", "provider", "region", "service_key", "target_type"}}
 	},
 	func() resource.Resource {
@@ -1269,6 +1272,12 @@ var generatedResources = []func() resource.Resource{
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "support_tickets", path: "/support/tickets/", pathTemplate: "", method: "POST", readPath: "/support/tickets/", desc: "Endpoint API AISIA — mutation POST exacte `/support/tickets/` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"category", "description", "priority", "subject"}, typedAttrs: []apiAttr{{Name: "category", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ category"}, {Name: "description", TFType: "string", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ description"}, {Name: "priority", TFType: "string", Required: false, Sensitive: false, JSONEncoded: false, Desc: "champ priority"}, {Name: "subject", TFType: "string", Required: true, Sensitive: false, JSONEncoded: false, Desc: "champ subject"}}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "support_tickets_ticket_id_attachments_action", path: "", pathTemplate: "/support/tickets/{ticket_id}/attachments", method: "POST", readPath: "/support/tickets/", desc: "Endpoint API AISIA — mutation POST exacte `/support/tickets/{ticket_id}/attachments` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "filename", Required: false}}}
+	},
+	func() resource.Resource {
+		return &actionApiResource{name: "support_tickets_ticket_id_escalate_action", path: "", pathTemplate: "/support/tickets/{ticket_id}/escalate", method: "POST", readPath: "/support/tickets/", desc: "Endpoint API AISIA — mutation POST exacte `/support/tickets/{ticket_id}/escalate` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"reason"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "support_tickets_ticket_id_messages_action", path: "", pathTemplate: "/support/tickets/{ticket_id}/messages", method: "POST", readPath: "/support/tickets/", desc: "Endpoint API AISIA — mutation POST exacte `/support/tickets/{ticket_id}/messages` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"content"}}

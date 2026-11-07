@@ -878,6 +878,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_budget", path: "/org/budget", listKey: "org_budget", desc: "Endpoint API AISIA — lecture GET de `/org/budget`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_custom_domain_verify", path: "/org/custom-domain/verify", listKey: "org_custom_domain_verify", desc: "Endpoint API AISIA — lecture GET de `/org/custom-domain/verify`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_deployable_services", path: "/org/deployable-services", listKey: "org_deployable_services", desc: "Endpoint API AISIA — lecture GET de `/org/deployable-services`."}
 	},
 	func() datasource.DataSource {

@@ -444,6 +444,7 @@ func TestGeneratedSingletonDeleteFailsClosedWithoutPretendingRemoteReset(t *test
 		"org_branding_config":                      false,
 		"org_budget_config":                        false,
 		"org_oidc_config_config":                   false,
+		"org_saml_idp_initiated_config":            false,
 		"org_security_policy_config":               false,
 		"org_settings_config":                      false,
 	}
