@@ -599,6 +599,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_gdpr_requests_item_id_put_mutation", path: "", pathTemplate: "/admin/gdpr/requests/{item_id}", method: "PUT", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/gdpr/requests/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_gdpr_requests_request_id_extend_action", path: "", pathTemplate: "/admin/gdpr/requests/{request_id}/extend", method: "POST", readPath: "/admin/gdpr/requests", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/requests/{request_id}/extend` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"reason"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_groups_group_id_members_action", path: "", pathTemplate: "/admin/groups/{group_id}/members", method: "POST", readPath: "/admin/groups/", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/groups/{group_id}/members` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"user_id"}}
 	},
 	func() resource.Resource {
