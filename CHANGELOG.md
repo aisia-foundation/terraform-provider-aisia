@@ -2,6 +2,21 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.14.35] — 2026-11-13
+
+### Alignement de version
+
+Version couplée à AISIA 6.14.35. Aucune note rédigée à la main pour cette version :
+les sources générées suivent l'OpenAPI (gate `terraform-provider-sync`) ; le détail
+est dans `git log` de `ai-aisia-lab/infra/terraform-provider-aisia/`.
+
+Les versions **6.14.2 à 6.14.34** n'ont pas d'entrée individuelle : aucune étape du
+train n'écrivait ce journal (GPT-UPG-008, écart `changelog_has_local_version=false`
+mesuré par `scripts/ops/terraform_public_parity.py` le 2026-11-10 puis le
+2026-11-13). Sur cette plage, 41 commits ont touché `internal/` (`git log
+--since=2026-09-24`). Depuis le 2026-11-13, `aisia.py bump` écrit l'entrée de
+chaque version.
+
 ## [6.14.1] — 2026-09-24
 
 ### Régénération depuis l'OpenAPI et alignement de version

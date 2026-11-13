@@ -443,6 +443,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_crews_name_run_action", path: "", pathTemplate: "/admin/crews/{name}/run", method: "POST", readPath: "/admin/crews", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/crews/{name}/run` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, bodyFields: []string{"payload"}}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_customer_success_lifecycle_events_action", path: "/admin/customer-success/lifecycle-events", pathTemplate: "", method: "POST", readPath: "/admin/customer-success", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/customer-success/lifecycle-events` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"event_type", "evidence_ref", "occurred_at", "org_id", "score"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_database_migrations_name_apply_action", path: "", pathTemplate: "/admin/database/migrations/{name}/apply", method: "POST", readPath: "/admin/database/migrations", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/database/migrations/{name}/apply` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {
@@ -569,7 +572,7 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_finops_invoice_matches_action", path: "/admin/finops/invoice-matches", pathTemplate: "", method: "POST", readPath: "/admin/finops/invoice-matches", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finops/invoice-matches` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
-		return &actionApiResource{name: "admin_finops_margin_calculation_action", path: "/admin/finops/margin-calculation", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finops/margin-calculation` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"amortization_cost_eur", "budget_eur", "energy_cost_eur", "incident_cost_eur", "ops_cost_eur", "period", "provider_cost_eur", "sale_price_eur", "sla_cost_eur", "storage_cost_eur", "support_cost_eur"}}
+		return &actionApiResource{name: "admin_finops_margin_calculation_action", path: "/admin/finops/margin-calculation", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/finops/margin-calculation` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"amortization_cost_eur", "budget_eur", "energy_cost_eur", "incident_cost_eur", "ops_cost_eur", "period", "provider_cost_eur", "request_count", "sale_price_eur", "sla_cost_eur", "storage_cost_eur", "support_cost_eur"}}
 	},
 	func() resource.Resource {
 		return &actionApiResource{name: "admin_gdpr_delete_action", path: "/admin/gdpr/delete", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/gdpr/delete` (resource action Terraform).", hasJSONBody: true, bodyRequired: false, allowAdditionalBodyFields: false, queryParams: []actionQueryParam{{Name: "user_id", Required: true}}, bodyFields: []string{"confirm_user_id"}}

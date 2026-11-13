@@ -644,6 +644,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_proxy_usage_calls", path: "/admin/proxy-usage/calls", listKey: "admin_proxy_usage_calls", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/proxy-usage/calls`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_proxy_usage_cost_reconciliation", path: "/admin/proxy-usage/cost-reconciliation", listKey: "admin_proxy_usage_cost_reconciliation", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/proxy-usage/cost-reconciliation`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_proxy_usage_hierarchy", path: "/admin/proxy-usage/hierarchy", listKey: "admin_proxy_usage_hierarchy", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/proxy-usage/hierarchy`."}
 	},
 	func() datasource.DataSource {
