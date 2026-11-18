@@ -2,6 +2,12 @@
 
 Versioning **couplé à AISIA** (la version du provider = la version d'AISIA).
 
+## [6.14.39] — 2026-11-18
+
+### Alignement de version
+
+Version couplée à AISIA 6.14.39, écrite par `aisia.py bump`. Aucune note rédigée à la main pour cette version : les sources générées suivent l'OpenAPI (gate `terraform-provider-sync`) ; le détail est dans `git log` de `ai-aisia-lab/infra/terraform-provider-aisia/`.
+
 ## [6.14.38] — 2026-11-17
 
 ### Alignement de version

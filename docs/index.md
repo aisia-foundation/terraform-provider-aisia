@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-REGISTRY-DOCS:09_publications -->
-> **Prod LIVE PARTIAL** : **v6.14.37** (2026-11-17) · **code cible v6.14.38** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
+> **Prod LIVE PARTIAL** : **v6.14.38** (2026-11-18) · **code cible v6.14.39** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI) — docs régénérées par `tfplugindocs` + `09_publications.py`.
 
 # Provider AISIA
 
@@ -28,7 +28,7 @@ exécute, la réponse sort traçable et gouvernée.
 | 1 provider fixe | **167** providers déclarés |
 | Catalogue modèles | **9568** catalogue · **167** locaux déclarés · **46** entrées avec `enabled: true` dans `local_models.yaml` (disponibilité runtime non mesurée) |
 | Stateless | Qdrant + audit AI Act + multi-tenant |
-| SaaS opaque | Déployable Swarm/K8s — runtime **v6.14.37** LIVE · code **v6.14.38** |
+| SaaS opaque | Déployable Swarm/K8s — runtime **v6.14.38** LIVE · code **v6.14.39** |
 
 ## Authentification
 
@@ -81,7 +81,7 @@ Parcours complet déployer + gérer : [guides/getting-started.md](guides/getting
 
 ## Versionnage
 
-Provider **couplé à AISIA** : `6.14.37` cible la plateforme **v6.14.37**.
+Provider **couplé à AISIA** : `6.14.38` cible la plateforme **v6.14.38**.
 Utiliser `version = "~> 6.14"` dans `required_providers`.
 
 ## Example Usage
