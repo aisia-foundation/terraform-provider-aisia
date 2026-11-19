@@ -5,7 +5,7 @@ description: |-
 ---
 
 <!-- TF-DOCS-ENRICH:09_publications -->
-> **Runtime LIVE PARTIAL** : **v6.14.38** (2026-11-18) · **code monorepo v6.14.39** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI).
+> **Runtime LIVE PARTIAL** : **v6.14.38** (2026-11-18) · **code monorepo v6.14.40** (worktree candidat non tagué ; provider public mesuré @ non vérifié — module Google public 🔒 VCS UI).
 
 # Guide d'implémentation Terraform AISIA
 
