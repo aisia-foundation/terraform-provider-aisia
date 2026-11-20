@@ -1073,6 +1073,9 @@ var generatedResources = []func() resource.Resource{
 		return &actionApiResource{name: "admin_token_quotas_item_id_put_mutation", path: "", pathTemplate: "/admin/token-quotas/{item_id}", method: "PUT", readPath: "/admin/token-quotas", desc: "Endpoint d'administration (Bearer requis) — mutation PUT exacte `/admin/token-quotas/{item_id}` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: true}
 	},
 	func() resource.Resource {
+		return &actionApiResource{name: "admin_users_restore_from_audit_action", path: "/admin/users/restore-from-audit", pathTemplate: "", method: "POST", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation POST exacte `/admin/users/restore-from-audit` (resource action Terraform).", hasJSONBody: true, bodyRequired: true, allowAdditionalBodyFields: false, bodyFields: []string{"apply", "confirm", "reveal", "user_id"}}
+	},
+	func() resource.Resource {
 		return &actionApiResource{name: "admin_users_user_id_mutation", path: "", pathTemplate: "/admin/users/{user_id}", method: "DELETE", readPath: "", desc: "Endpoint d'administration (Bearer requis) — mutation DELETE exacte `/admin/users/{user_id}` (resource action Terraform).", hasJSONBody: false, bodyRequired: false, allowAdditionalBodyFields: false}
 	},
 	func() resource.Resource {

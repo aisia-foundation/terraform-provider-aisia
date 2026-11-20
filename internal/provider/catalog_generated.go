@@ -797,6 +797,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_users", path: "/admin/users", listKey: "admin_users", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/users`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_users_orphan_signups", path: "/admin/users/orphan-signups", listKey: "admin_users_orphan_signups", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/users/orphan-signups`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_vault", path: "/admin/vault", listKey: "admin_vault", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/vault`."}
 	},
 	func() datasource.DataSource {
