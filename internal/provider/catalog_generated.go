@@ -77,6 +77,9 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_ai_act_v2_incidents", path: "/admin/ai-act/v2/incidents", listKey: "admin_ai_act_v2_incidents", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/incidents`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_ai_act_v2_incidents_backlog", path: "/admin/ai-act/v2/incidents/backlog", listKey: "admin_ai_act_v2_incidents_backlog", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/incidents/backlog`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_ai_act_v2_kill_switch", path: "/admin/ai-act/v2/kill-switch", listKey: "admin_ai_act_v2_kill_switch", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/ai-act/v2/kill-switch`."}
 	},
 	func() datasource.DataSource {
