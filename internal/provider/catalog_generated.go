@@ -11,6 +11,15 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "admin_activity_log", path: "/admin/activity-log", listKey: "admin_activity_log", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/activity-log`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_adversarial_owasp_coverage", path: "/admin/adversarial/owasp-coverage", listKey: "admin_adversarial_owasp_coverage", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/adversarial/owasp-coverage`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_adversarial_suites", path: "/admin/adversarial/suites", listKey: "admin_adversarial_suites", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/adversarial/suites`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_adversarial_test_orgs", path: "/admin/adversarial/test-orgs", listKey: "admin_adversarial_test_orgs", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/adversarial/test-orgs`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_agent_protocol", path: "/admin/agent-protocol", listKey: "admin_agent_protocol", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/agent-protocol`."}
 	},
 	func() datasource.DataSource {
@@ -117,6 +126,9 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_analytics", path: "/admin/analytics", listKey: "admin_analytics", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/analytics`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_annotations_queues", path: "/admin/annotations/queues", listKey: "admin_annotations_queues", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/annotations/queues`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_api_keys", path: "/admin/api-keys", listKey: "admin_api_keys", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/api-keys`."}
@@ -516,6 +528,12 @@ var generatedDataSources = []func() datasource.DataSource{
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_models", path: "/admin/models", listKey: "admin_models", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/models`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_models_lifecycle", path: "/admin/models/lifecycle", listKey: "admin_models_lifecycle", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/models/lifecycle`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "admin_models_lifecycle_compare", path: "/admin/models/lifecycle/compare", listKey: "admin_models_lifecycle_compare", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/models/lifecycle/compare`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "admin_multicloud_pack", path: "/admin/multicloud/pack", listKey: "admin_multicloud_pack", desc: "Endpoint d'administration (Bearer requis) — lecture GET de `/admin/multicloud/pack`."}
@@ -929,10 +947,25 @@ var generatedDataSources = []func() datasource.DataSource{
 		return &catalogDataSource{name: "org_observability_dashboards_quality", path: "/org/observability/dashboards/quality", listKey: "org_observability_dashboards_quality", desc: "Endpoint API AISIA — lecture GET de `/org/observability/dashboards/quality`."}
 	},
 	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_drift_baselines", path: "/org/observability/drift/baselines", listKey: "org_observability_drift_baselines", desc: "Endpoint API AISIA — lecture GET de `/org/observability/drift/baselines`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_drift_measurements", path: "/org/observability/drift/measurements", listKey: "org_observability_drift_measurements", desc: "Endpoint API AISIA — lecture GET de `/org/observability/drift/measurements`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_drift_scopes", path: "/org/observability/drift/scopes", listKey: "org_observability_drift_scopes", desc: "Endpoint API AISIA — lecture GET de `/org/observability/drift/scopes`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_eval_judges", path: "/org/observability/eval/judges", listKey: "org_observability_eval_judges", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/judges`."}
+	},
+	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_observability_eval_matrix", path: "/org/observability/eval/matrix", listKey: "org_observability_eval_matrix", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/matrix`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_observability_eval_runs", path: "/org/observability/eval/runs", listKey: "org_observability_eval_runs", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/runs`."}
+	},
+	func() datasource.DataSource {
+		return &catalogDataSource{name: "org_observability_eval_suites", path: "/org/observability/eval/suites", listKey: "org_observability_eval_suites", desc: "Endpoint API AISIA — lecture GET de `/org/observability/eval/suites`."}
 	},
 	func() datasource.DataSource {
 		return &catalogDataSource{name: "org_observability_gpu", path: "/org/observability/gpu", listKey: "org_observability_gpu", desc: "Endpoint API AISIA — lecture GET de `/org/observability/gpu`."}
